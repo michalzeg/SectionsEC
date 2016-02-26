@@ -56,11 +56,11 @@ namespace SectionsEC.Dimensioning
     public class Reinforcement
     {
         public double E { get; set; } //odkształcenie w zbrojeniu
-        //public double X { get; set; }
+        public double X { get; set; }
         
         //współrzedna x zbrojenia
-        //public double Y { get; set; } //współrzędna y zbrojenia
-        //public double As { get; set; } //pole przekroju zbrojenia
+        public double Y { get; set; } //współrzędna y zbrojenia
+        public double As { get; set; } //pole przekroju zbrojenia
         public double D { get; set; } //odległość zbrojenia od krawędzi najbardziej ściskanej (wysokość użytkowa dla danego pręta)
         public double Mz { get; set; } //moment od zbrojenia
 
