@@ -57,6 +57,7 @@ namespace SectionsEC.Dimensioning
     {
         public double E { get; set; } //odkształcenie w zbrojeniu
         public double X { get; set; }
+        
         //współrzedna x zbrojenia
         public double Y { get; set; } //współrzędna y zbrojenia
         public double As { get; set; } //pole przekroju zbrojenia

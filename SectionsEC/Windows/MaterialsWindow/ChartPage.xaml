@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="SectionsEC.Views.ChartPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SectionsEC.Views"
+             xmlns:lvc="clr-namespace:LiveCharts;assembly=LiveCharts"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <lvc:LineChart LegendLocation="Right" 
+                       Series="{Binding Data}" 
+                       Margin="{StaticResource MarginValue}"
+                       LineType="Polyline">
+            <lvc:LineChart.AxisY>
+                <lvc:Axis Title="Stress [MPa]" MinValue="0"/>
+            </lvc:LineChart.AxisY>
+            <lvc:LineChart.AxisX>
+                <lvc:Axis Title="&#x03B5; [&#x2030;]"/>
+            </lvc:LineChart.AxisX>
+        </lvc:LineChart>
+    </Grid>
+</UserControl>
