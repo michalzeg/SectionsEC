@@ -1,0 +1,46 @@
+﻿<RibbonWindow x:Class="SectionsEC.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SectionsEC.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Icon="/SectionsEC;component/Images/Buttons/ApplicationIcon.ico"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+    <DockPanel>
+        <Ribbon DockPanel.Dock="Top">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem Header="New" ImageSource="/Images/Ribbon/NewIcon.png"/>
+                    <RibbonApplicationMenuItem Header="Close" ImageSource="/Images/Ribbon/CloseIcon.png"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Section">
+                <RibbonGroup Header="Properties">
+                    <Grid>
+                        <RibbonButton Grid.Column="2" Label="Materials" Command="{Binding ShowMaterials}" LargeImageSource="/Images/Ribbon/Materials.png"/>
+                    </Grid>
+                </RibbonGroup>
+                <RibbonGroup Header="Section Type">
+                    <RibbonButton Label="Custom Section" LargeImageSource="/Images/Ribbon/CustomSection.png"/>
+                    <RibbonButton Label="Circular Section" LargeImageSource="/Images/Ribbon/CircularSection.png"/>
+                    <RibbonButton Label="Rectangular Section" LargeImageSource="/Images/Ribbon/RectangularSection.png"/>
+                    <RibbonButton Label="T Section" LargeImageSource="/Images/Ribbon/TSection.png"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Results">
+                <RibbonGroup Header="Results">
+                    <RibbonButton Label="Run" LargeImageSource="/Images/Ribbon/Run.png"/>
+                    <RibbonButton Label="InteractionCurve" LargeImageSource="/Images/Ribbon/InteractionCurve.png"/>
+                    <RibbonButton Label="Report" LargeImageSource="/Images/Ribbon/Report.png"/>
+                </RibbonGroup>
+            </RibbonTab>
+
+        </Ribbon>
+        <Grid>
+            <Grid.Resources>
+                
+            </Grid.Resources>
+        </Grid>
+    </DockPanel>
+</RibbonWindow>
