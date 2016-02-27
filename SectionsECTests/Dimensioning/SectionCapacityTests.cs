@@ -49,9 +49,11 @@ namespace SectionsEC.Dimensioning.Tests
 
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             Reinforcement reinf = new Reinforcement();
-            reinf.As = 30d / 10000d;
-            reinf.X = 0.5;
-            reinf.Y = 0.1;
+            Bar bar = new Bar();
+            bar.As = 30d / 10000d;
+            bar.X = 0.5;
+            bar.Y = 0.1;
+            reinf.Bar = bar;
             reinforcement.Add(reinf);
 
             var results = sc.CalculateCapacity(normalForce, section, reinforcement);
@@ -97,9 +99,12 @@ namespace SectionsEC.Dimensioning.Tests
 
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             Reinforcement reinf = new Reinforcement();
-            reinf.As = 30d / 10000d;
-            reinf.X = 0.5;
-            reinf.Y = 0.1;
+
+            Bar bar = new Bar();
+            bar.As = 30d / 10000d;
+            bar.X = 0.5;
+            bar.Y = 0.1;
+            reinf.Bar = bar;
             reinforcement.Add(reinf);
 
             var results = sc.CalculateCapacity(normalForce, section, reinforcement);
@@ -147,9 +152,12 @@ namespace SectionsEC.Dimensioning.Tests
 
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             Reinforcement reinf = new Reinforcement();
-            reinf.As = 30d / 10000d;
-            reinf.X = 0.05;
-            reinf.Y = 0.05;
+            Bar bar = new Bar();
+            
+            bar.As = 30d / 10000d;
+            bar.X = 0.05;
+            bar.Y = 0.05;
+            reinf.Bar = bar;
             reinforcement.Add(reinf);
 
             var results = sc.CalculateCapacity(normalForce, section, reinforcement);
@@ -196,9 +204,12 @@ namespace SectionsEC.Dimensioning.Tests
 
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             Reinforcement reinf = new Reinforcement();
-            reinf.As = 30d / 10000d;
-            reinf.X = 0.05;
-            reinf.Y = 0.05;
+            Bar bar = new Bar();
+
+            bar.As = 30d / 10000d;
+            bar.X = 0.05;
+            bar.Y = 0.05;
+            reinf.Bar = bar;
             reinforcement.Add(reinf);
 
             var results = sc.CalculateCapacity(normalForce, section, reinforcement);

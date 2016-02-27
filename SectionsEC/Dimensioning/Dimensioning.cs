@@ -56,11 +56,7 @@ namespace SectionsEC.Dimensioning
     public class Reinforcement
     {
         public double E { get; set; } //odkształcenie w zbrojeniu
-        public double X { get; set; }
-        
-        //współrzedna x zbrojenia
-        public double Y { get; set; } //współrzędna y zbrojenia
-        public double As { get; set; } //pole przekroju zbrojenia
+        public Bar Bar { get; set; }
         public double D { get; set; } //odległość zbrojenia od krawędzi najbardziej ściskanej (wysokość użytkowa dla danego pręta)
         public double Mz { get; set; } //moment od zbrojenia
 
@@ -201,7 +197,7 @@ namespace SectionsEC.Dimensioning
             var tempD = new List<double>();
             foreach (var bar in this.bars)
             {
-                double d = section.MaxY - bar.Y;
+                double d = section.MaxY - bar.Bar.Y;
                 tempD.Add(d);
                 bar.D = d;
             }
@@ -232,12 +228,12 @@ namespace SectionsEC.Dimensioning
             
             for (int i = 0; i <= this.bars.Count - 1; i++)
             {
-                if (this.bars[i].Y < yNeutralAxis)
+                if (this.bars[i].Bar.Y < yNeutralAxis)
                 {
                     var di = this.bars[i].D;
                     
                     var e = this.strainCalculations.StrainInAs1(x, di);
-                    resultantForce = resultantForce + this.bars[i].As * StressFunctions.SteelStressDesign(e, this.steel);
+                    resultantForce = resultantForce + this.bars[i].Bar.As * StressFunctions.SteelStressDesign(e, this.steel);
                     var barsTemp = this.bars[i];
                     barsTemp.E = e;
                     barsTemp.IsCompressed = false;
@@ -255,12 +251,12 @@ namespace SectionsEC.Dimensioning
             
             for (int i = 0; i <= this.bars.Count - 1; i++)
             {
-                if (this.bars[i].Y > yNeutralAxis)
+                if (this.bars[i].Bar.Y > yNeutralAxis)
                 {
                     var di = this.bars[i].D;
                     
                     var e = this.strainCalculations.StrainInAs2(x, di);
-                    resultantForce = resultantForce + this.bars[i].As * StressFunctions.SteelStressDesign(e, this.steel);
+                    resultantForce = resultantForce + this.bars[i].Bar.As * StressFunctions.SteelStressDesign(e, this.steel);
                     var barsTemp = this.bars[i];
                     barsTemp.E = e;
                     barsTemp.IsCompressed = true;
@@ -373,16 +369,16 @@ namespace SectionsEC.Dimensioning
                 //jeżeli zbrojenie znajduje się ponad osią obojętną to zbrojenie jest ściskane(+)
                 //jeżeli pod osia obojętną to zbrojenie jest rozciąganie (-)
                 barsTemp = this.bars[i];
-                if (this.bars[i].Y > yOsi)
+                if (this.bars[i].Bar.Y > yOsi)
                 {
                     //zbrojenie sciskane
-                    Mz = bars[i].As * StressFunctions.SteelStressDesign(bars[i].E, this.steel) * (bars[i].Y - this.section.MinY);
+                    Mz = bars[i].Bar.As * StressFunctions.SteelStressDesign(bars[i].E, this.steel) * (bars[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd + Mz;
                 }
                 else
                 {
                     //zbrojenie rozciagane(-)
-                    Mz = bars[i].As * StressFunctions.SteelStressDesign(bars[i].E, this.steel) * (bars[i].Y - this.section.MinY);
+                    Mz = bars[i].Bar.As * StressFunctions.SteelStressDesign(bars[i].E, this.steel) * (bars[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd - Mz;
                 }
                 barsTemp.Mz = Mz;
