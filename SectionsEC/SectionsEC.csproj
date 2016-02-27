@@ -109,6 +109,7 @@
       <DependentUpon>DrawingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CommonWindows\DrawingPageViewModel.cs" />
+    <Compile Include="Windows\Converters\MultiplyValueConverter.cs" />
     <Compile Include="Windows\MainWindow\MainViewModel.cs" />
     <Compile Include="Windows\MaterialsWindow\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>

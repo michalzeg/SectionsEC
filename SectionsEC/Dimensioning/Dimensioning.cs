@@ -59,7 +59,7 @@ namespace SectionsEC.Dimensioning
         public Bar Bar { get; set; }
         public double D { get; set; } //odległość zbrojenia od krawędzi najbardziej ściskanej (wysokość użytkowa dla danego pręta)
         public double Mz { get; set; } //moment od zbrojenia
-
+        
         public bool IsCompressed { get; set; }//okresla czy zbrojenie jest sciskane czy rozciagane
         
     }

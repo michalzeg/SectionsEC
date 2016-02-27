@@ -62,6 +62,7 @@ namespace SectionsEC.ViewModel
                 if (value != fck)
                 {
                     fck = value;
+                    Fcd = Acc * value / GammaM;
                     RaisePropertyChanged(() => Fck);
                     UpdateConcrete(SelectedMaterial);
                 }
@@ -76,6 +77,7 @@ namespace SectionsEC.ViewModel
                 if (value != gammaM)
                 {
                     gammaM = value;
+                    Fcd = Acc * Fck / value;
                     RaisePropertyChanged(() => GammaM);
                     UpdateConcrete(SelectedMaterial);
                 }
@@ -90,6 +92,7 @@ namespace SectionsEC.ViewModel
                 if (value != acc)
                 {
                     acc = value;
+                    Fcd = value * Fck / GammaM;
                     RaisePropertyChanged(() => Acc);
                     UpdateConcrete(SelectedMaterial);
                 }

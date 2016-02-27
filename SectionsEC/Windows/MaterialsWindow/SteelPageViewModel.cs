@@ -59,6 +59,7 @@ namespace SectionsEC.ViewModel
                 if (value!= fyk)
                 {
                     fyk = value;
+                    Fyd = value / GammaS;
                     RaisePropertyChanged(() => Fyk);
                     UpdateSteel(SelectedMaterial);
                 }
@@ -87,6 +88,7 @@ namespace SectionsEC.ViewModel
                 if (value!= gammaS)
                 {
                     gammaS = value;
+                    Fyd = Fyk / value;
                     RaisePropertyChanged(() => GammaS);
                     UpdateSteel(SelectedMaterial);
                 }
@@ -116,6 +118,7 @@ namespace SectionsEC.ViewModel
                 if (value!=euk)
                 {
                     euk = value;
+                    Eud = EukToEud * value;
                     RaisePropertyChanged(() => Euk);
                     UpdateSteel(SelectedMaterial);
                 }
@@ -145,6 +148,7 @@ namespace SectionsEC.ViewModel
                 if (value!=eukToEud)
                 {
                     eukToEud = value;
+                    Eud = value * Euk;
                     RaisePropertyChanged(() => EukToEud);
                     UpdateSteel(SelectedMaterial);
                 }
