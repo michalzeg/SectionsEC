@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace SectionsEC.Views
 {
@@ -23,6 +24,7 @@ namespace SectionsEC.Views
         public DrawingPage()
         {
             InitializeComponent();
+            Messenger.Default.Send<Grid>(this.canvas);
         }
     }
 }

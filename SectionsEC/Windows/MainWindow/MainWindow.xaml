@@ -22,7 +22,7 @@
                     </Grid>
                 </RibbonGroup>
                 <RibbonGroup Header="Section Type">
-                    <RibbonButton Label="Custom Section" LargeImageSource="/Images/Ribbon/CustomSection.png"/>
+                    <RibbonButton Label="Custom Section" Command="{Binding ShowCustomSection}" LargeImageSource="/Images/Ribbon/CustomSection.png"/>
                     <RibbonButton Label="Circular Section" LargeImageSource="/Images/Ribbon/CircularSection.png"/>
                     <RibbonButton Label="Rectangular Section" LargeImageSource="/Images/Ribbon/RectangularSection.png"/>
                     <RibbonButton Label="T Section" LargeImageSource="/Images/Ribbon/TSection.png"/>

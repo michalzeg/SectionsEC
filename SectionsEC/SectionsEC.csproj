@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\CustomSectionWindow\CustomSectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Dictionaries\CustomStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,11 +109,16 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Helpers\BaseClasses.cs" />
     <Compile Include="Helpers\Materials.cs" />
+    <Compile Include="Windows\CommonWindows\Drawing.cs" />
     <Compile Include="Windows\CommonWindows\DrawingPage.xaml.cs">
       <DependentUpon>DrawingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CommonWindows\DrawingPageViewModel.cs" />
     <Compile Include="Windows\Converters\MultiplyValueConverter.cs" />
+    <Compile Include="Windows\CustomSectionWindow\CustomSectionWindow.xaml.cs">
+      <DependentUpon>CustomSectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CustomSectionWindow\CustomSectionWindowViewModel.cs" />
     <Compile Include="Windows\MainWindow\MainViewModel.cs" />
     <Compile Include="Windows\MaterialsWindow\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
@@ -207,9 +216,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\materials.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\CustomSectionWindow\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

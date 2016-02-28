@@ -10,9 +10,7 @@ namespace SectionsEC.ViewModel
 {
     public class DrawingPageViewModel :ViewModelBase
     {
-        public delegate void UpdateDrawingEventHandler(IList<PointD> sectionCoordinates);
-        public event UpdateDrawingEventHandler UpdateDrawing;
-
+        
         public DrawingPageViewModel()
         {
 

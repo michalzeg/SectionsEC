@@ -28,7 +28,13 @@ namespace SectionsEC.ViewModel
                 var materialWindow = new MaterialWindow();
                 materialWindow.Show();
             });
+            this.ShowCustomSection = new RelayCommand(() =>
+            {
+                var sectionWindow = new CustomWindow();
+                sectionWindow.Show();
+            });
         }
         public RelayCommand ShowMaterials { get; private set; }
+        public RelayCommand ShowCustomSection { get; private set; }
     }
 }

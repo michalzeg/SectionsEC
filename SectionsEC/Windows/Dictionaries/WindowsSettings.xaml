@@ -18,6 +18,9 @@
     <DataTemplate x:Key="chartPage" DataType="{x:Type vm:ChartPageViewModel}">
         <views:ChartPage/>
     </DataTemplate>
-    
+
+    <DataTemplate x:Key="drawingPage" DataType="{x:Type vm:DrawingPageViewModel}">
+        <views:DrawingPage/>
+    </DataTemplate>
 
 </ResourceDictionary>

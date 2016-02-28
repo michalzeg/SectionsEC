@@ -59,4 +59,9 @@ namespace SectionsEC.ViewModel
             // TODO Clear the ViewModels
         }
     }
+
+    public enum MessageTag
+    {
+        Drawing,
+    }
 }

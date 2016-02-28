@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-
+using SectionsEC.Extensions;
 namespace SectionsEC.Helpers
 {
-    public class PointD
+    public class PointD :IEquatable<PointD>
     {
         private double x;
         private double y;
@@ -26,6 +26,28 @@ namespace SectionsEC.Helpers
         {
             get { return this.y; }
             set { this.y = value; }
+        }
+        public bool Equals(PointD other)
+        {
+            //Check whether the compared object is null. 
+            if (Object.ReferenceEquals(other, null)) return false;
+
+            //Check whether the compared object references the same data. 
+            if (Object.ReferenceEquals(this, other)) return true;
+
+
+            //Check whether the products' properties are equal. 
+            return X.IsApproximatelyEqualTo(other.X) && Y.IsApproximatelyEqualTo(other.Y);
+        }
+        public override int GetHashCode()
+        {
+            int hashY = X.GetHashCode();
+
+            //Get hash code for the Code field. 
+            int hashValue = Y.GetHashCode();
+
+            //Calculate the hash code for the product. 
+            return hashY ^ hashValue;
         }
     }
     public class Concrete
