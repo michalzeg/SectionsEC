@@ -20,6 +20,7 @@ namespace SectionsEC.Drawing
         private IList<IList<PointD>> perimeters;
         private Func<double> actualWidth;
         private Func<double> actualHeight;
+  
 
         public PerimeterProperties(Func<double> actualWidth, Func<double> actualHeight)
         {
@@ -31,6 +32,8 @@ namespace SectionsEC.Drawing
 
         public void AddPerimeter(IList<PointD> perimeter)
         {
+            if (perimeter == null || perimeter.Count == 0)
+                return;
             if (this.contains(perimeter))
                 return;
             perimeters.Add(perimeter);
@@ -51,6 +54,9 @@ namespace SectionsEC.Drawing
 
         public void UpdateProperties()
         {
+            if (perimeters == null || perimeters.Count == 0)
+                return;
+
             var xMax = perimeters.Max(e => e.Max(g => g.X));
             var xMin = perimeters.Min(e => e.Min(g => g.X));
             var yMax = perimeters.Max(e => e.Max(g => g.Y));
@@ -136,6 +142,8 @@ namespace SectionsEC.Drawing
 
         public void Perimeter(IList<PointD> perimeter)
         {
+            if (perimeter == null || perimeter.Count == 0)
+                return;
             this.perimeter = perimeter;
             this.perimeterProperties.ChangePerimeter(perimeter);
             this.Redraw();
@@ -143,7 +151,9 @@ namespace SectionsEC.Drawing
 
         public override void Redraw()
         {
-            
+            if (perimeter == null || perimeter.Count == 0)
+                return;
+
             this.polygon.Points.Clear();
             var transferedCoordinates = base.transformCoordinatesToCentreOfGrid(this.perimeter);
             foreach (var point in transferedCoordinates)
@@ -167,9 +177,10 @@ namespace SectionsEC.Drawing
 
         public void Bars(IList<Bar> bars)
         {
+            if (bars == null || bars.Count == 0)
+                return;
             this.bars = bars;
-            removeCircles();
-            createCircles();
+            Redraw();
         }
 
         private void createCircles()
@@ -208,7 +219,10 @@ namespace SectionsEC.Drawing
 
         public override void Redraw()
         {
-            throw new NotImplementedException();
+            if (bars == null || bars.Count == 0)
+                return;
+            removeCircles();
+            createCircles();
         }
     }
 

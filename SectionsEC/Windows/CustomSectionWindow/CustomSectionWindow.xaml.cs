@@ -46,13 +46,20 @@ namespace SectionsEC.Views
         private void DataGrid_TargetUpdated(object sender, DataTransferEventArgs e)
         {
             var sectionCoordinates = ((IEnumerable<PointD>)this.dataGridPoints.ItemsSource).ToList();
-            if (sectionCoordinates.Count!=0)
+            //if (sectionCoordinates.Count!=0)
                 sectionDrawing.Perimeter(sectionCoordinates);
 
             var barData = ((IEnumerable<Bar>)this.dataGridBars.ItemsSource).ToList();
-            if (barData.Count != 0)
+            //if (barData.Count != 0)
                 barsDrawing.Bars(barData);
 
+        }
+
+        private void ContentControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.perimeterProperties.UpdateProperties();
+            this.sectionDrawing.Redraw();
+            this.barsDrawing.Redraw();
         }
     }
 }

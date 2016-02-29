@@ -36,7 +36,11 @@
         </GroupBox>
         <GroupBox Header="Reinforcement" Grid.Column="0" Grid.Row="1">
             <DockPanel>
-                <Button DockPanel.Dock="Bottom" Content="Paste" HorizontalAlignment="Center"/>
+                <Button 
+                    DockPanel.Dock="Bottom" 
+                    Content="Paste" 
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource pasteButton}"/>
                 <DataGrid
                     Name="dataGridBars"
                     AutoGenerateColumns="False"
@@ -52,7 +56,7 @@
             </DockPanel>
         </GroupBox>
         <ContentControl Grid.Column="1" Grid.Row="1"
-                        ContentTemplate="{StaticResource drawingPage}"/>
+                        ContentTemplate="{StaticResource drawingPage}" SizeChanged="ContentControl_SizeChanged"/>
         <Image
             Grid.Column="1"
             Grid.Row="0"
