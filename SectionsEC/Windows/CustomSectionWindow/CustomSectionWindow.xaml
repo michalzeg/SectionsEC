@@ -17,7 +17,10 @@
         </Grid.RowDefinitions>
         <GroupBox Header="Coordinates" Grid.Column="0" Grid.Row="0">
             <DockPanel>
-                <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Content="Paste"/>
+                <Button DockPanel.Dock="Bottom" 
+                        HorizontalAlignment="Center" 
+                        Content="Paste"
+                        Style="{StaticResource pasteButton}"/>
                 <DataGrid
                     Name="dataGridPoints"
                     AutoGenerateColumns="False"
@@ -25,8 +28,8 @@
                     ColumnWidth="*"
                     ItemsSource="{Binding Points,Mode=TwoWay}" TargetUpdated="DataGrid_TargetUpdated">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="X" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                        <DataGridTextColumn Header="Y" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="X [m]" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="Y [m]" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>
@@ -34,10 +37,28 @@
         <GroupBox Header="Reinforcement" Grid.Column="0" Grid.Row="1">
             <DockPanel>
                 <Button DockPanel.Dock="Bottom" Content="Paste" HorizontalAlignment="Center"/>
-                <DataGrid/>
+                <DataGrid
+                    Name="dataGridBars"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="True"
+                    ColumnWidth="*"
+                    ItemsSource="{Binding Bars,Mode=TwoWay}" TargetUpdated="DataGrid_TargetUpdated">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="X [m]" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="Y [m]" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="As [m2]" Binding="{Binding Path=As,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </DockPanel>
         </GroupBox>
         <ContentControl Grid.Column="1" Grid.Row="1"
                         ContentTemplate="{StaticResource drawingPage}"/>
+        <Image
+            Grid.Column="1"
+            Grid.Row="0"
+            Stretch="Fill"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            Source="/Images/Windows/CustomSectionWindow.png">
+        </Image>
     </Grid>
 </Window>

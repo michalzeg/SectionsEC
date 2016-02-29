@@ -26,6 +26,7 @@ namespace SectionsEC.Views
         private PerimeterProperties perimeterProperties;
         private Grid canvas;
         private SectionDrawing sectionDrawing;
+        private BarsDrawing barsDrawing;
 
         public CustomWindow()
         {
@@ -39,6 +40,7 @@ namespace SectionsEC.Views
             this.canvas = canvas;
             this.perimeterProperties = new PerimeterProperties(() => canvas.ActualWidth, () => canvas.ActualHeight);
             this.sectionDrawing = new SectionDrawing(this.canvas, this.perimeterProperties);
+            this.barsDrawing = new BarsDrawing(this.canvas, this.perimeterProperties);
         }
 
         private void DataGrid_TargetUpdated(object sender, DataTransferEventArgs e)
@@ -46,6 +48,10 @@ namespace SectionsEC.Views
             var sectionCoordinates = ((IEnumerable<PointD>)this.dataGridPoints.ItemsSource).ToList();
             if (sectionCoordinates.Count!=0)
                 sectionDrawing.Perimeter(sectionCoordinates);
+
+            var barData = ((IEnumerable<Bar>)this.dataGridBars.ItemsSource).ToList();
+            if (barData.Count != 0)
+                barsDrawing.Bars(barData);
 
         }
     }

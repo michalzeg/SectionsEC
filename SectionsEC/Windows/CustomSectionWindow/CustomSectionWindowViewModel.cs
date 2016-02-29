@@ -14,8 +14,10 @@ namespace SectionsEC.ViewModel
         public CustomSectionWindowViewModel()
         {
             this.Points = new ObservableCollection<PointD>();
+            this.Bars = new ObservableCollection<Bar>();
         }
 
         public ObservableCollection<PointD> Points { get; set; }
+        public ObservableCollection<Bar> Bars { get; set; }
     }
 }

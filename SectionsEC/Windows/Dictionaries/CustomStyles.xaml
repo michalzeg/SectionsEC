@@ -40,7 +40,7 @@
             <Setter.Value>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image HorizontalAlignment="Left" Width="20" Height="20" Source="pack://application:,,,/CadAssistant;component/Resources/GetIcon.png"/>
+                        <Image HorizontalAlignment="Left" Width="20" Height="20" Source="/Images/Buttons/GetIcon.png"/>
                         <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=Content,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
                     </StackPanel>
                 </DataTemplate>
@@ -54,7 +54,7 @@
             <Setter.Value>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image HorizontalAlignment="Left" Width="20" Height="20" Source="pack://application:,,,/CadAssistant;component/Resources/CopyIcon.png"/>
+                        <Image HorizontalAlignment="Left" Width="20" Height="20" Source="/Images/Buttons/CopyIcon.png"/>
                         <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=Content,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
                     </StackPanel>
                 </DataTemplate>
@@ -68,7 +68,7 @@
             <Setter.Value>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image HorizontalAlignment="Left" Width="20" Height="20" Source="pack://application:,,,/CadAssistant;component/Resources/PasteIcon.png"/>
+                        <Image HorizontalAlignment="Left" Width="20" Height="20" Source="/Images/Buttons/PasteIcon.png"/>
                         <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Path=Content,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
                     </StackPanel>
                 </DataTemplate>

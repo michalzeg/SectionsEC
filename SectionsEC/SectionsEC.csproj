@@ -216,7 +216,16 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\materials.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Windows\CustomSectionWindow.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Buttons\CopyIcon.png" />
+    <Resource Include="Images\Buttons\PasteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Buttons\GetIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

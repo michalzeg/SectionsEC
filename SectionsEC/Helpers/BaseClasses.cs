@@ -9,24 +9,17 @@ namespace SectionsEC.Helpers
 {
     public class PointD :IEquatable<PointD>
     {
-        private double x;
-        private double y;
+   
         public PointD(double x, double y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
         public PointD() { }
-        public double X
-        {
-            get { return this.x; }
-            set { this.x = value; }
-        }
-        public double Y
-        {
-            get { return this.y; }
-            set { this.y = value; }
-        }
+        public double X { get; set; }
+        
+        public double Y { get; set; }
+        
         public bool Equals(PointD other)
         {
             //Check whether the compared object is null. 
@@ -105,11 +98,35 @@ namespace SectionsEC.Helpers
             }
         }
     }
-    public class Bar
+    public class Bar :IEquatable<Bar>
     {
         public double X { get; set; }
         public double Y { get; set; }
         public double As { get; set; }
+
+        public bool Equals(Bar other)
+        {
+            //Check whether the compared object is null. 
+            if (Object.ReferenceEquals(other, null)) return false;
+
+            //Check whether the compared object references the same data. 
+            if (Object.ReferenceEquals(this, other)) return true;
+
+
+
+            //Check whether the products' properties are equal. 
+            return X.IsApproximatelyEqualTo(other.X) && Y.IsApproximatelyEqualTo(other.Y) && As.IsApproximatelyEqualTo(other.As);
+        }
+        public override int GetHashCode()
+        {
+            int hashX = X.GetHashCode();
+
+            int hashY = Y.GetHashCode();
+
+            int hashAs = As.GetHashCode();
+
+            return hashX ^ hashY ^ hashAs;
+        }
     }
 
 }
