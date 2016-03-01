@@ -44,7 +44,7 @@ namespace SectionsEC.ViewModel
                     EukToEud = selectedMaterial.EukToEud;
                     GammaS = selectedMaterial.GammaS;
                     UpdateSteel(SelectedMaterial);
-                    //RaisePropertyChanged(() => SelectedMaterial);
+                    RaisePropertyChanged(() => SelectedMaterial);
                     
                 }
             }

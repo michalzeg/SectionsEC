@@ -93,6 +93,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\LoadCasesWindow\LoadCasesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow\LeftPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow\MainPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +131,18 @@
       <DependentUpon>CustomSectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CustomSectionWindow\CustomSectionWindowViewModel.cs" />
+    <Compile Include="Windows\LoadCasesWindow\LoadCasesWindow.xaml.cs">
+      <DependentUpon>LoadCasesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LoadCasesWindow\LoadCaseWindowViewModel.cs" />
+    <Compile Include="Windows\MainWindow\LeftPanel.xaml.cs">
+      <DependentUpon>LeftPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow\LeftPanelViewModel.cs" />
+    <Compile Include="Windows\MainWindow\MainPanel.xaml.cs">
+      <DependentUpon>MainPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow\MainPanelViewModel.cs" />
     <Compile Include="Windows\MainWindow\MainViewModel.cs" />
     <Compile Include="Windows\MaterialsWindow\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
@@ -225,6 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Buttons\GetIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ribbon\LoadIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

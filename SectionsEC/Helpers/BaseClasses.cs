@@ -128,5 +128,29 @@ namespace SectionsEC.Helpers
             return hashX ^ hashY ^ hashAs;
         }
     }
+    public class LoadCase :IEquatable<LoadCase>
+    {
+        public string Name { get; set; }
+        public double NormalForce { get; set; }
 
+        public bool Equals(LoadCase other)
+        {
+            if (Object.ReferenceEquals(other, null)) return false;
+
+            if (Object.ReferenceEquals(this, other)) return true;
+
+
+            return ((Name == other.Name) && NormalForce.IsApproximatelyEqualTo(other.NormalForce));
+        }
+        public override int GetHashCode()
+        {
+            int hashName = Name.GetHashCode();
+
+            //Get hash code for the Code field. 
+            int hashNormalForce = NormalForce.GetHashCode();
+
+            //Calculate the hash code for the product. 
+            return hashName ^ hashNormalForce;
+        }
+    }
 }

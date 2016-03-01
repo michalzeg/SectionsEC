@@ -23,4 +23,13 @@
         <views:DrawingPage/>
     </DataTemplate>
 
+    
+    <!--Main window-->
+    <DataTemplate x:Key="mainPanel" DataType="{x:Type vm:MainPanelViewModel}">
+        <views:MainPanel/>
+    </DataTemplate>
+    <DataTemplate x:Key="leftPanel" DataType="{x:Type vm:LeftPanelViewModel}">
+        <views:LeftPanel/>
+    </DataTemplate>
+
 </ResourceDictionary>

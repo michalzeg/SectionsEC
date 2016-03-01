@@ -41,7 +41,6 @@ namespace SectionsEC.ViewModel
             Func<double, double> designFunction = (e) => StressFunctions.ConcreteStressDesign(e, concrete);
             this.ConcreteChartVM.AddDesignChart("fcd", concrete.Ecu2, designFunction);
         }
-
         private void updateSteel(Steel steel)
         {
             this.steel = steel;
@@ -51,6 +50,12 @@ namespace SectionsEC.ViewModel
 
             Func<double, double> designFunction = (e) => StressFunctions.SteelStressDesign(e, steel);
             this.SteelChartVM.AddDesignChart("fyd", steel.Eud, designFunction);
+        }
+
+        public void SendData()
+        {
+            Messenger.Default.Send<Concrete>(this.concrete);
+            Messenger.Default.Send<Steel>(this.steel);
         }
     }
 }

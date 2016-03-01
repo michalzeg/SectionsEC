@@ -27,6 +27,9 @@
                     <RibbonButton Label="Rectangular Section" LargeImageSource="/Images/Ribbon/RectangularSection.png"/>
                     <RibbonButton Label="T Section" LargeImageSource="/Images/Ribbon/TSection.png"/>
                 </RibbonGroup>
+                <RibbonGroup Header="Loads">
+                    <RibbonButton Label="Load Cases" LargeImageSource="/Images/Ribbon/LoadIcon.png"/>
+                </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Results">
                 <RibbonGroup Header="Results">
@@ -35,12 +38,8 @@
                     <RibbonButton Label="Report" LargeImageSource="/Images/Ribbon/Report.png"/>
                 </RibbonGroup>
             </RibbonTab>
-
         </Ribbon>
-        <Grid>
-            <Grid.Resources>
-                
-            </Grid.Resources>
-        </Grid>
+        <ContentControl ContentTemplate="{StaticResource mainPanel}"
+                        Content="{Binding MainPanelVM}"/>
     </DockPanel>
 </RibbonWindow>

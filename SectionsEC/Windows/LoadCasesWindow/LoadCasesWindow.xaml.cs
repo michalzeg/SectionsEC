@@ -11,27 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SectionsEC.ViewModel;
-using GalaSoft.MvvmLight.Ioc;
 
 namespace SectionsEC.Views
 {
     /// <summary>
-    /// Interaction logic for MaterialWindow.xaml
+    /// Interaction logic for LoadCasesWindow.xaml
     /// </summary>
-    public partial class MaterialWindow : Window
+    public partial class LoadCasesWindow : Window
     {
-        private MaterialWindowViewModel vm;
-        public MaterialWindow()
+        public LoadCasesWindow()
         {
             InitializeComponent();
-            vm = SimpleIoc.Default.GetInstance<MaterialWindowViewModel>();
-            this.DataContext = vm;
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            vm.SendData();
         }
     }
 }

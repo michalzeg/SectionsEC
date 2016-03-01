@@ -10,28 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SectionsEC.ViewModel;
-using GalaSoft.MvvmLight.Ioc;
 
 namespace SectionsEC.Views
 {
     /// <summary>
-    /// Interaction logic for MaterialWindow.xaml
+    /// Interaction logic for LeftPanel.xaml
     /// </summary>
-    public partial class MaterialWindow : Window
+    public partial class LeftPanel : UserControl
     {
-        private MaterialWindowViewModel vm;
-        public MaterialWindow()
+        public LeftPanel()
         {
             InitializeComponent();
-            vm = SimpleIoc.Default.GetInstance<MaterialWindowViewModel>();
-            this.DataContext = vm;
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            vm.SendData();
         }
     }
 }
