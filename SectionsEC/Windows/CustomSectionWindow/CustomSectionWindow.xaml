@@ -56,7 +56,7 @@
             </DockPanel>
         </GroupBox>
         <ContentControl Grid.Column="1" Grid.Row="1"
-                        ContentTemplate="{StaticResource drawingPage}" SizeChanged="ContentControl_SizeChanged"/>
+                        ContentTemplate="{StaticResource drawingPage}"/>
         <Image
             Grid.Column="1"
             Grid.Row="0"
