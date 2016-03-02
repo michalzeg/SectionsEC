@@ -8,6 +8,7 @@ namespace SectionsEC.ViewModel
     {
         public MainPanelViewModel MainPanelVM { get; set; }
 
+        
         public MainViewModel()
         {
             this.MainPanelVM = new MainPanelViewModel();

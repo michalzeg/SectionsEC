@@ -89,11 +89,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Dictionaries\CustomStyles.xaml">
+    <Page Include="Windows\Styles\CustomStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LoadCasesWindow\LoadCasesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow\CentralPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +139,10 @@
       <DependentUpon>LoadCasesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoadCasesWindow\LoadCaseWindowViewModel.cs" />
+    <Compile Include="Windows\MainWindow\CentralPanel.xaml.cs">
+      <DependentUpon>CentralPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow\CentralPanelViewModel.cs" />
     <Compile Include="Windows\MainWindow\LeftPanel.xaml.cs">
       <DependentUpon>LeftPanel.xaml</DependentUpon>
     </Compile>
@@ -177,11 +185,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Dictionaries\Styles.xaml">
+    <Page Include="Windows\Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Dictionaries\WindowsSettings.xaml">
+    <Page Include="Windows\WindowsSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

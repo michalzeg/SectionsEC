@@ -14,12 +14,13 @@ namespace SectionsEC.ViewModel
     public class MainPanelViewModel :ViewModelBase
     {
         public LeftPanelViewModel LeftPanelVM { get; private set; }
-
+        public CentralPanelViewModel CentralPanelVM { get; private set; }
 
         public MainPanelViewModel()
         {
             this.LoadCaseList = new ObservableCollection<LoadCase>();
             this.LeftPanelVM = new LeftPanelViewModel();
+            this.CentralPanelVM = new CentralPanelViewModel();
 
             Messenger.Default.Register<Concrete>(this, (c) => CurrentConcrete = c);
             Messenger.Default.Register<Steel>(this, (s) => CurrentSteel = s);

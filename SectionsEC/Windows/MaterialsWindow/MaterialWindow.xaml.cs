@@ -25,7 +25,8 @@ namespace SectionsEC.Views
         public MaterialWindow()
         {
             InitializeComponent();
-            vm = SimpleIoc.Default.GetInstance<MaterialWindowViewModel>();
+            //vm = SimpleIoc.Default.GetInstance<MaterialWindowViewModel>();
+            vm = new MaterialWindowViewModel();
             this.DataContext = vm;
         }
 
