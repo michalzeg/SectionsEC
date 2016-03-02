@@ -28,7 +28,7 @@
                     <RibbonButton Label="T Section" LargeImageSource="/Images/Ribbon/TSection.png"/>
                 </RibbonGroup>
                 <RibbonGroup Header="Loads">
-                    <RibbonButton Label="Load Cases" LargeImageSource="/Images/Ribbon/LoadIcon.png"/>
+                    <RibbonButton Label="Load Cases" Command="{Binding ShowLoadCases}" LargeImageSource="/Images/Ribbon/LoadIcon.png"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Results">

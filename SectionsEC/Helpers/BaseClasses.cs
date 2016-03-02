@@ -132,6 +132,10 @@ namespace SectionsEC.Helpers
     {
         public string Name { get; set; }
         public double NormalForce { get; set; }
+        public LoadCase()
+        {
+            Name = string.Empty;
+        }
 
         public bool Equals(LoadCase other)
         {
@@ -144,6 +148,7 @@ namespace SectionsEC.Helpers
         }
         public override int GetHashCode()
         {
+
             int hashName = Name.GetHashCode();
 
             //Get hash code for the Code field. 

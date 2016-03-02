@@ -19,6 +19,7 @@ namespace SectionsEC.ViewModel
         public MainPanelViewModel()
         {
             this.LoadCaseList = new ObservableCollection<LoadCase>();
+
             this.LeftPanelVM = new LeftPanelViewModel();
             this.CentralPanelVM = new CentralPanelViewModel();
 
@@ -58,18 +59,5 @@ namespace SectionsEC.ViewModel
 
         public ObservableCollection<LoadCase> LoadCaseList { get; set; }
 
-
-        /*private void updateConcrete(Concrete concrete)
-        {
-            this.CurrentConcrete = concrete;
-        }
-        private void updateSteel(Steel steel)
-        {
-            this.CurrentSteel = steel;
-        }
-        private void updateLoadCaseList(IEnumerable<LoadCase> loadCases)
-        {
-            this.LoadCaseList = loadCases.ToObservableCollection<LoadCase>();
-        }*/
     }
 }

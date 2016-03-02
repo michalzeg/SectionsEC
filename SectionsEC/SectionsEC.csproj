@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\MainWindow\RightPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Styles\CustomStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +156,10 @@
     </Compile>
     <Compile Include="Windows\MainWindow\MainPanelViewModel.cs" />
     <Compile Include="Windows\MainWindow\MainViewModel.cs" />
+    <Compile Include="Windows\MainWindow\RightPanel.xaml.cs">
+      <DependentUpon>RightPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow\RightPanelViewModel.cs" />
     <Compile Include="Windows\MaterialsWindow\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
     </Compile>

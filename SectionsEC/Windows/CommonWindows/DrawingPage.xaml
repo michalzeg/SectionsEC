@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SectionsEC.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" SizeChanged="UserControl_SizeChanged">
-    <Grid Name="canvas">
+    <Grid Name="canvas" Margin="{StaticResource MarginValue}">
             
     </Grid>
 </UserControl>

@@ -13,7 +13,10 @@
             DockPanel.Dock="Top">
             <StackPanel>
                 <TextBlock Text="Name:"/>
-                <ComboBox></ComboBox>
+                <ComboBox
+                    ItemsSource="{Binding LoadCaseList}"
+                    SelectedItem="{Binding SelectedLoadCase}"
+                    DisplayMemberPath="Name"></ComboBox>
                 <TextBlock>
                     <Run Text="Axial Force="/>
                     <Run Text="{Binding NormalForce,StringFormat={}{0:#.##}}"/>

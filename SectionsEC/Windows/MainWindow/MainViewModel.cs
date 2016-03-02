@@ -23,9 +23,14 @@ namespace SectionsEC.ViewModel
                 var sectionWindow = new CustomWindow();
                 sectionWindow.Show();
             });
+            this.ShowLoadCases = new RelayCommand(() =>
+            {
+                var loadCaseWindow = new LoadCasesWindow();
+                loadCaseWindow.Show();
+            });
         }
         public RelayCommand ShowMaterials { get; private set; }
         public RelayCommand ShowCustomSection { get; private set; }
-
+        public RelayCommand ShowLoadCases { get; private set; }
     }
 }

@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using GalaSoft.MvvmLight.Messaging;
+using SectionsEC.Helpers;
+using SectionsEC.ViewModel;
 namespace SectionsEC.Views
 {
     /// <summary>
@@ -22,6 +24,13 @@ namespace SectionsEC.Views
         public LoadCasesWindow()
         {
             InitializeComponent();
+            this.DataContext = new LoadCaseWindowViewModel();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            var loadCaseList = ((IEnumerable<LoadCase>)this.dataLoadCases.ItemsSource);
+            Messenger.Default.Send<IEnumerable<LoadCase>>(loadCaseList);
         }
     }
 }
