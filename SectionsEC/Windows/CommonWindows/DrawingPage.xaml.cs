@@ -13,7 +13,6 @@ namespace SectionsEC.Views
     public partial class DrawingPage : UserControl
     {
         private PerimeterProperties perimeterProperties;
-        //private Grid canvas;
         private SectionDrawing sectionDrawing;
         private BarsDrawing barsDrawing;
 
@@ -23,12 +22,10 @@ namespace SectionsEC.Views
             InitializeComponent();
             Messenger.Default.Register<IList<PointD>>(this, updatePerimeter);
             Messenger.Default.Register<IList<Bar>>(this, updateBars);
-            //Messenger.Default.Send<Grid>(this.canvas);
             createCanvas();
         }
         private void createCanvas()
         {
-            //this.canvas = canvas;
             this.perimeterProperties = new PerimeterProperties(() => canvas.ActualWidth, () => canvas.ActualHeight);
             this.sectionDrawing = new SectionDrawing(this.canvas, this.perimeterProperties);
             this.barsDrawing = new BarsDrawing(this.canvas, this.perimeterProperties);
