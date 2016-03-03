@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:SectionsEC.Views"
         mc:Ignorable="d"
         Title="LoadCasesWindow" Height="300" Width="300" Closed="Window_Closed">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Windows/Style/Styles.xaml"/>
+                <ResourceDictionary Source="/Windows/Style/CustomStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <DockPanel>
         <TextBlock DockPanel.Dock="Bottom"
             Text="   + is compression" FontStyle="Italic"/>

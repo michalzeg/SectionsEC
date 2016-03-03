@@ -7,6 +7,14 @@
              xmlns:lvc="clr-namespace:LiveCharts;assembly=LiveCharts"
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Windows/Style/Styles.xaml"/>
+                <ResourceDictionary Source="/Windows/Style/CustomStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <lvc:LineChart LegendLocation="Right" 
                        Series="{Binding Data}" 

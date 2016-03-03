@@ -15,6 +15,7 @@ namespace SectionsEC.ViewModel
     {
         public LeftPanelViewModel LeftPanelVM { get; private set; }
         public CentralPanelViewModel CentralPanelVM { get; private set; }
+        public RightPanelViewModel RightPanelVM { get; private set; }
 
         public MainPanelViewModel()
         {
@@ -22,6 +23,7 @@ namespace SectionsEC.ViewModel
 
             this.LeftPanelVM = new LeftPanelViewModel();
             this.CentralPanelVM = new CentralPanelViewModel();
+            this.RightPanelVM = new RightPanelViewModel();
 
             Messenger.Default.Register<Concrete>(this, (c) => CurrentConcrete = c);
             Messenger.Default.Register<Steel>(this, (s) => CurrentSteel = s);

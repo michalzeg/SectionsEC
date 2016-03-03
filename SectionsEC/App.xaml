@@ -11,8 +11,7 @@
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:SectionsEC.ViewModel" />
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Windows/Styles/Styles.xaml"/>
-                <ResourceDictionary Source="Windows/Styles/CustomStyles.xaml"/>
+
                 <ResourceDictionary Source="Windows/WindowsSettings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 

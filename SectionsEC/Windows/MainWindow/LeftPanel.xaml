@@ -7,6 +7,14 @@
              xmlns:helpers="clr-namespace:SectionsEC.Helpers"
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Windows/Style/Styles.xaml"/>
+                <ResourceDictionary Source="/Windows/Style/CustomStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <DockPanel LastChildFill="True">
         <GroupBox 
             Header="Load Case"
@@ -19,7 +27,7 @@
                     DisplayMemberPath="Name"></ComboBox>
                 <TextBlock>
                     <Run Text="Axial Force="/>
-                    <Run Text="{Binding NormalForce,StringFormat={}{0:#.##}}"/>
+                    <Run Text="{Binding NormalForce,StringFormat={}{0:0.##}}"/>
                     <Run Text=" [kN]"/>
                 </TextBlock>
             </StackPanel>

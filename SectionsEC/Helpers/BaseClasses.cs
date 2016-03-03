@@ -135,6 +135,7 @@ namespace SectionsEC.Helpers
         public LoadCase()
         {
             Name = string.Empty;
+            NormalForce = 0d;
         }
 
         public bool Equals(LoadCase other)

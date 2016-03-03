@@ -8,7 +8,16 @@
              mc:Ignorable="d" 
              >
     <UserControl.Resources>
-        <converters:MultiplyValueConverter x:Key="MultiplyValueConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Windows/Style/Styles.xaml"/>
+                <ResourceDictionary Source="/Windows/Style/CustomStyles.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+            <converters:MultiplyValueConverter x:Key="MultiplyValueConverter"/>
+        </ResourceDictionary>
+
+
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

@@ -34,5 +34,8 @@
     <DataTemplate x:Key="centralPanel" DataType="{x:Type vm:CentralPanelViewModel}">
         <views:CentralPanel/>
     </DataTemplate>
+    <DataTemplate x:Key="rightPanel" DataType="{x:Type vm:RightPanelViewModel}">
+        <views:RightPanel/>
+    </DataTemplate>
 
 </ResourceDictionary>

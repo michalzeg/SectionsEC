@@ -1,6 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:SectionsEC.Windows">
+                    xmlns:local="clr-namespace:SectionsEC.Views">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Windows/Style/Styles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
     <Style x:Key="dataGrid" TargetType="DataGrid">
         <Setter Property="Margin" Value="{StaticResource MarginValue}"/>
         <Setter Property="ColumnWidth" Value="*"/>

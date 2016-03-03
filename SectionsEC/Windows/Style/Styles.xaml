@@ -5,7 +5,7 @@
     <!--<vm:ViewModelLocator xmlns:vm="clr-namespace:CadAssistant.ViewModel"
                            x:Key="Locator" /> -->   
     <Thickness x:Key="MarginValue" Bottom="5" Top="5" Left="5" Right="5"/>
-    <Thickness x:Key="PaddingValue" Bottom="1" Top="1" Left="1" Right="1"/>
+    <Thickness x:Key="PaddingValue" Bottom="5" Top="5" Left="5" Right="5"/>
     
     <Style TargetType="TextBox">
         <Setter Property="Margin" Value="{StaticResource MarginValue}"/>

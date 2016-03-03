@@ -23,10 +23,11 @@ namespace SectionsEC.ViewModel
         private void updateLoadCaseList(IEnumerable<LoadCase> loadCaseList)
         {
             this.LoadCaseList = loadCaseList.ToObservableCollection();
-            RaisePropertyChanged(() => LoadCaseList);
+            //
 
             this.SelectedLoadCase = loadCaseList.FirstOrDefault();
             //RaisePropertyChanged(() => SelectedLoadCase);
+            RaisePropertyChanged(() => LoadCaseList);
 
         }
         public ObservableCollection<LoadCase> LoadCaseList { get; set; }

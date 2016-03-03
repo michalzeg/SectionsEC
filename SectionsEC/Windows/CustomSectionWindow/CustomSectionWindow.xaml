@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:SectionsEC.Views"
         mc:Ignorable="d"
         Title="CustomWindow" Height="600" Width="600">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Windows/Style/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Windows/Style/CustomStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -62,7 +70,7 @@
             Grid.Row="0"
             Stretch="Fill"
             RenderOptions.BitmapScalingMode="HighQuality"
-            Source="/Images/Windows/CustomSectionWindow.png">
+            Source="pack://application:,,,/Images/Windows/CustomSectionWindow.png">
         </Image>
     </Grid>
 </Window>
