@@ -11,31 +11,54 @@
         <Ribbon DockPanel.Dock="Top">
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu>
-                    <RibbonApplicationMenuItem Header="New" ImageSource="/SectionsEC;component/Images/Ribbon/NewIcon.png"/>
-                    <RibbonApplicationMenuItem Header="Close" ImageSource="/SectionsEC;component/Images/Ribbon/CloseIcon.png"/>
+                    <RibbonApplicationMenuItem 
+                        Header="New" 
+                        ImageSource="/SectionsEC;component/Images/Ribbon/NewIcon.png"/>
+                    <RibbonApplicationMenuItem 
+                        Header="Close" 
+                        ImageSource="/SectionsEC;component/Images/Ribbon/CloseIcon.png"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Section">
                 <RibbonGroup Header="Properties">
                     <Grid>
-                        <RibbonButton Grid.Column="2" Label="Materials" Command="{Binding ShowMaterials}" LargeImageSource="/SectionsEC;component/Images/Ribbon/Materials.png"/>
+                        <RibbonButton 
+                            Label="Materials" 
+                            Command="{Binding ShowMaterials}" 
+                            LargeImageSource="/SectionsEC;component/Images/Ribbon/Materials.png"/>
                     </Grid>
                 </RibbonGroup>
                 <RibbonGroup Header="Section Type">
-                    <RibbonButton Label="Custom Section" Command="{Binding ShowCustomSection}" LargeImageSource="/SectionsEC;component/Images/Ribbon/CustomSection.png"/>
-                    <RibbonButton Label="Circular Section" LargeImageSource="/SectionsEC;component/Images/Ribbon/CircularSection.png"/>
-                    <RibbonButton Label="Rectangular Section" LargeImageSource="/SectionsEC;component/Images/Ribbon/RectangularSection.png"/>
-                    <RibbonButton Label="T Section" LargeImageSource="/SectionsEC;component/Images/Ribbon/TSection.png"/>
+                    <RibbonButton Label="Custom Section" 
+                                  Command="{Binding ShowCustomSection}" 
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/CustomSection.png"/>
+                    <RibbonButton Label="Circular Section" 
+                                  Command="{Binding ShowCircularSection}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/CircularSection.png"/>
+                    <RibbonButton Label="Rectangular Section" 
+                                  Command="{Binding ShowRectangularSection}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/RectangularSection.png"/>
+                    <RibbonButton Label="T Section" 
+                                  Command="{Binding ShowTSection}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/TSection.png"/>
                 </RibbonGroup>
                 <RibbonGroup Header="Loads">
-                    <RibbonButton Label="Load Cases" Command="{Binding ShowLoadCases}" LargeImageSource="/SectionsEC;component/Images/Ribbon/LoadIcon.png"/>
+                    <RibbonButton Label="Load Cases"
+                                  Command="{Binding ShowLoadCases}" 
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/LoadIcon.png"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Results">
                 <RibbonGroup Header="Results">
-                    <RibbonButton Label="Run" LargeImageSource="/SectionsEC;component/Images/Ribbon/Run.png"/>
-                    <RibbonButton Label="InteractionCurve" LargeImageSource="/SectionsEC;component/Images/Ribbon/InteractionCurve.png"/>
-                    <RibbonButton Label="Report" LargeImageSource="/SectionsEC;component/Images/Ribbon/Report.png"/>
+                    <RibbonButton Label="Run" 
+                                  Command="{Binding Run}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/Run.png"/>
+                    <RibbonButton Label="InteractionCurve" 
+                                  Command="{Binding ShowInteractionCurve}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/InteractionCurve.png"/>
+                    <RibbonButton Label="Report" 
+                                  Command="{Binding ShowReport}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/Report.png"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
