@@ -29,8 +29,8 @@ namespace SectionsEC.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            var loadCaseList = ((IEnumerable<LoadCase>)this.dataLoadCases.ItemsSource);
-            Messenger.Default.Send<IEnumerable<LoadCase>>(loadCaseList);
+            var loadCaseList = ((IEnumerable<LoadCase>)this.dataLoadCases.ItemsSource).ToList();
+            Messenger.Default.Send<IList<LoadCase>>(loadCaseList);
         }
     }
 }

@@ -11,159 +11,25 @@ using SectionsEC.StressCalculations;
 //all units in [m] and [kN]
 namespace SectionsEC.Dimensioning
 {
-    /*public class Concrete
+
+    public static class CapacityCalculator
     {
-        public string Grade { get; set; } 
-        public double Fck { get; set; }
-        public double Acc { get; set; }
-        public double GammaM { get; set; }
-        public double N { get; set; }
-        public double Ec2 { get; set; }
-        public double Ecu2 { get; set; } 
-        public double Fcd 
+        public static Dictionary<LoadCase,CalculationResults> CalculateSectionCapacity(Concrete concrete,Steel steel,IList<PointD> sectionCoordinates,IList<Bar> bars,IList<LoadCase> loadCases)
         {
-            get
+            var capacity = new SectionCapacity(concrete, steel);
+            var section = new Section(sectionCoordinates);
+            var resultDictionary = new Dictionary<LoadCase, CalculationResults>();
+            foreach (var load in loadCases)
             {
-                return Acc * Fck/GammaM;
-            }
-        }
-    }
-    public class Steel
-    {
-        public string Grade { get; set; }
-        public double Fyk { get; set; }
-        public double GammaS { get; set; }
-        public double K { get; set; }
-        public double Es { get; set; }
-        public double Euk { get; set; }
-        public double EudToEuk { get; set; }
-        public double Fyd 
-        {
-            get
-            {
-                return Fyk / GammaS;
-            }
-        }
-        public double Eud 
-        {
-            get
-            {
-                return Euk * EudToEuk;
-            }
-        }
-    }*/
-    
-    public class Reinforcement
-    {
-
-
-        public double E { get; set; } //odkształcenie w zbrojeniu
-        public Bar Bar { get; set; }
-        public double D { get; set; } //odległość zbrojenia od krawędzi najbardziej ściskanej (wysokość użytkowa dla danego pręta)
-        public double Mz { get; set; } //moment od zbrojenia
-        
-        public bool IsCompressed { get; set; }//okresla czy zbrojenie jest sciskane czy rozciagane
-        
-    }
-    public class Section:IIntegrable
-    {
-        public IList<PointD> Coordinates { get; private set;} //wspolrzedne przekroju
-        public double D { get; set; }      //wysokosc uzyteczna przekroju
-        public double MaxY { get; private set; } //najwieksza wspolrzedna y
-        public double MinY { get; private set; } // najmniejsza wsplrzedna y
-        public double H { get; private set; } //wysokosc przekroju
-        public double B { get; private set; }//szerokosc przekroju;
-        public double Cz { get; private set; }// odleglosc srodka ciezkosci od najbardziej sciskanego wlokna
-        public double IntegrationPointY { get; set; }
-
-        public Section(IList<PointD> coordinates)
-        {
-            Coordinates = checkIfCoordinatesAreClockwise(coordinates);
-
-            calculateExtrementsAndDepth();
-            Cz = SectionProperties.Cz(Coordinates, MaxY);
-            IntegrationPointY = MinY;
-        }
-        
-        private IList<PointD> checkIfCoordinatesAreClockwise(IList<PointD> coordinates) //procedura sprawdza czy wspolrzedne przekroju sa wprowadzone zgodnie ze wskazowkami zegara
-        {
-            //procedura bierze dwa pierwsze punkty i liczy iloczyn wektorowy. Jezeli wynik jest dodatni(wspolrzedna "z" to układ jest prawoskretny
-            // co oznacza ze wspolrzedne wprowadzone sa przeciwnie do ruchu wskazowek zegara
-            //jesli iloczyn wektorowy jest rowny 0 tzn ze wektory sa rownolegle ->nalezy wziasc kolejny punkt
-            double iw; //iloczyn wektorowy
-            try
-            {
-                for (int i = 0; i <= coordinates.Count - 3; i++)
-                {
-                    iw = crossProduct(coordinates[i], coordinates[i + 1], coordinates[i + 2]);
-                    if (iw > 0)
-                    {
-                        //uklad prawoskretny
-                        break;
-                    }
-                    else if (iw < 0)
-                    {
-                        //uklad lewoskretny, nalezy odwrocic wspolrzedne
-                        coordinates.Reverse();
-                        break;
-                    }
-                    else
-                    {
-                        //dwa rownolegle wektory, nie rob nic, wez kolejne punkty
-                    }
-                }
-            }
-            catch
-            {
+                var result = capacity.CalculateCapacity(load.NormalForce, section, bars);
+                resultDictionary.Add(load, result);
             }
 
-            return coordinates;
-        }
-
-        private double crossProduct(PointD p0, PointD p1, PointD p2)//funckja oblicza iloczyn wektorowy
-        {
-            double[] vector1 = new double[2]; //wspolrzedne wektora 1 (0 - X, 1 - y) 
-            double[] vector2 = new double[2];//wspolrzedne wektora 2
-
-            vector1[0] = p1.X - p0.X;
-            vector1[1] = p1.Y - p0.Y;
-            vector2[0] = p2.X - p1.X;
-            vector2[1] = p2.Y - p1.Y;
-
-            double wynik; //ax*by-ay*bz
-            wynik = vector1[0] * vector2[1] - vector1[1] * vector2[0];
-            return wynik;
-        }
-        private void calculateExtrementsAndDepth() //procedura wyznacza maksymalne wartosci wspolrzdnej y oraz wysokosc przekroju
-        {
-            /*double[] taby = new double[Coordinates.Count];//pomocnicza tablica
-            double[] tabx = new double[Coordinates.Count];
-            for (int i = 0; i < Coordinates.Count; i++)
-            {
-                taby[i] = Coordinates[i].Y;
-                tabx[i] = Coordinates[i].X;
-            }*/
-            MinY = this.Coordinates.Min(p => p.Y);
-            MaxY = this.Coordinates.Max(p => p.Y);
-            H = MaxY - MinY; //wysokosc
+            return resultDictionary;
         }
     }
 
-    
 
-    public class CalculationResults
-    {
-        //opisuje wszystkie wyniki
-        public double Mrd { get; set; } //nosnosc
-        public double X { get; set; } //zasieg strefy sciskanej
-        public double Ec { get; set; } //odksztalcenie w betonie
-        public double Es { get; set; } //odksztalcenie w stali
-        public IList<PointD> CompressionZone { get; set; }
-        public double D { get; set; } //wysokosc uzyteczna przekroju
-        public double MrdConcrete { get; set; }//nosnosc ze wzgledu na beton
-        public double ForceConcrete { get; set; }// sila w betonie
-        public IEnumerable<Reinforcement> Bars { get; set; } //wyniki dla zbrojenia
-    }
     public class SectionCapacity
     {
         // equlibrium equation
@@ -221,7 +87,7 @@ namespace SectionsEC.Dimensioning
             double result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
             return result;
         }
-
+    
         private double forceInAs1(double x) //funkcja wyliczajaca wypadkowa w zbrojeniu rozciaganym
         {
             double resultantForce = 0; //wartosc wypadkowej sily z zbrojeniu rozciaganym
@@ -393,7 +259,7 @@ namespace SectionsEC.Dimensioning
                     Mz = reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd - Mz;
                 }
-                barsTemp.Mz = Mz;
+                barsTemp.My = Mz;
                 this.reinforcement[i] = barsTemp;
 
             }

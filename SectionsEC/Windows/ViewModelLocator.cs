@@ -42,15 +42,17 @@ namespace SectionsEC.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<MaterialWindowViewModel>();
+            SimpleIoc.Default.Register<CustomSectionWindowViewModel>();
+            SimpleIoc.Default.Register<LoadCaseWindowViewModel>();
         }
 
-        public MainViewModel Main
+        public MainWindowViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
             }
         }
         

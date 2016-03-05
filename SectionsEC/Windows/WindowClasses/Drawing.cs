@@ -136,7 +136,10 @@ namespace SectionsEC.Drawing
         {
             this.polygon = new Polygon();
             this.canvas.Children.Add(polygon);
-            polygon.Stroke = Brushes.Red;
+            polygon.Stroke = Brushes.DimGray;
+
+            polygon.Fill = new LinearGradientBrush(Brushes.LightGray.Color, Brushes.Gray.Color, 90);
+
             polygon.StrokeThickness = 2;
         }
 

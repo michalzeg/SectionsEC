@@ -35,6 +35,11 @@ namespace SectionsEC.Extensions
             return double.IsNaN(initialValue);
         }
 
+        public static string ToFormatedString(this double initialValue)
+        {
+            return initialValue.Round().ToString("F");
+        }
+
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> enumerable)
         {
             var col = new ObservableCollection<T>();
@@ -44,5 +49,6 @@ namespace SectionsEC.Extensions
             }
             return col;
         }
+
     }
 }

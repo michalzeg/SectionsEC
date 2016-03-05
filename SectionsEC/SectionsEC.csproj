@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\WindowClasses\ResultString.cs" />
     <Page Include="Windows\CommonWindows\DrawingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,7 +130,7 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Helpers\BaseClasses.cs" />
     <Compile Include="Helpers\Materials.cs" />
-    <Compile Include="Windows\CommonWindows\Drawing.cs" />
+    <Compile Include="Windows\WindowClasses\Drawing.cs" />
     <Compile Include="Windows\CommonWindows\DrawingPage.xaml.cs">
       <DependentUpon>DrawingPage.xaml</DependentUpon>
     </Compile>
@@ -147,6 +148,7 @@
       <DependentUpon>CentralPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow\CentralPanelViewModel.cs" />
+    <Compile Include="Windows\WindowClasses\CommandService.cs" />
     <Compile Include="Windows\MainWindow\LeftPanel.xaml.cs">
       <DependentUpon>LeftPanel.xaml</DependentUpon>
     </Compile>
@@ -155,7 +157,7 @@
       <DependentUpon>MainPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow\MainPanelViewModel.cs" />
-    <Compile Include="Windows\MainWindow\MainViewModel.cs" />
+    <Compile Include="Windows\MainWindow\MainWindowViewModel.cs" />
     <Compile Include="Windows\MainWindow\RightPanel.xaml.cs">
       <DependentUpon>RightPanel.xaml</DependentUpon>
     </Compile>

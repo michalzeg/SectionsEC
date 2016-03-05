@@ -16,7 +16,7 @@ namespace SectionsEC.ViewModel
         public LeftPanelViewModel()
         {
             this.LoadCaseList = new ObservableCollection<LoadCase>();
-            Messenger.Default.Register<IEnumerable<LoadCase>>(this, updateLoadCaseList);
+            Messenger.Default.Register<IList<LoadCase>>(this, updateLoadCaseList);
 
         }
 

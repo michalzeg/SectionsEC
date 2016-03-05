@@ -18,9 +18,12 @@
         <GroupBox Header="Results" DockPanel.Dock="Top">
             <TextBlock>
                 <Run Text="Section capacity: "/>
-                <Run Text=" 500 " FontWeight="DemiBold" TextDecorations="Underline" Foreground="Blue"/>
+                <Run Text="{Binding Capacity,Mode=OneWay}" FontWeight="DemiBold" TextDecorations="Underline" Foreground="Blue"/>
                 <Run Text=" [kNm]"/>
             </TextBlock>
+        </GroupBox>
+        <GroupBox Header="Detailed results">
+            <TextBlock Text="{Binding DetailedResults,Mode=OneWay}"/>
         </GroupBox>
         
     </DockPanel>

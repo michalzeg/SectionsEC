@@ -9,6 +9,12 @@ namespace SectionsEC.ViewModel
 {
     public class RightPanelViewModel :ViewModelBase
     {
+        public RightPanelViewModel()
+        {
 
+        }
+
+        public string Capacity { get; private set; }
+        public string DetailedResults { get; private set; }
     }
 }

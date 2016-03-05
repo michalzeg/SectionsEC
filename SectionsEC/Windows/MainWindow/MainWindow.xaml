@@ -13,9 +13,11 @@
                 <RibbonApplicationMenu>
                     <RibbonApplicationMenuItem 
                         Header="New" 
+                        Command="New"
                         ImageSource="/SectionsEC;component/Images/Ribbon/NewIcon.png"/>
                     <RibbonApplicationMenuItem 
                         Header="Close" 
+                        Command="Close"
                         ImageSource="/SectionsEC;component/Images/Ribbon/CloseIcon.png"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
@@ -54,10 +56,10 @@
                                   Command="{Binding Run}"
                                   LargeImageSource="/SectionsEC;component/Images/Ribbon/Run.png"/>
                     <RibbonButton Label="InteractionCurve" 
-                                  Command="{Binding ShowInteractionCurve}"
+                                  Command="{Binding InteractionCurve}"
                                   LargeImageSource="/SectionsEC;component/Images/Ribbon/InteractionCurve.png"/>
                     <RibbonButton Label="Report" 
-                                  Command="{Binding ShowReport}"
+                                  Command="{Binding Report}"
                                   LargeImageSource="/SectionsEC;component/Images/Ribbon/Report.png"/>
                 </RibbonGroup>
             </RibbonTab>

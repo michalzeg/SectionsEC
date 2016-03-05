@@ -19,47 +19,11 @@ namespace SectionsEC.ViewModel
 
         public MainPanelViewModel()
         {
-            this.LoadCaseList = new ObservableCollection<LoadCase>();
-
             this.LeftPanelVM = new LeftPanelViewModel();
             this.CentralPanelVM = new CentralPanelViewModel();
             this.RightPanelVM = new RightPanelViewModel();
-
-            Messenger.Default.Register<Concrete>(this, (c) => CurrentConcrete = c);
-            Messenger.Default.Register<Steel>(this, (s) => CurrentSteel = s);
-            Messenger.Default.Register<IEnumerable<LoadCase>>(this, (l) => LoadCaseList = l.ToObservableCollection());
-
         }
-
-        private Concrete currentConcrete;
-        public Concrete CurrentConcrete
-        {
-            get { return currentConcrete; }
-            set
-            {
-                if (value!=currentConcrete)
-                {
-                    currentConcrete = value;
-                    RaisePropertyChanged(() => CurrentConcrete);
-                }
-            }
-        }
-
-        private Steel currentSteel;
-        public Steel CurrentSteel
-        {
-            get { return currentSteel; }
-            set
-            {
-                if (value!=currentSteel)
-                {
-                    currentSteel = value;
-                    RaisePropertyChanged(() => CurrentSteel);
-                }
-            }
-        }
-
-        public ObservableCollection<LoadCase> LoadCaseList { get; set; }
+        
 
     }
 }

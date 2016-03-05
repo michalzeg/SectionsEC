@@ -52,5 +52,9 @@
         <Setter Property="Padding" Value="{StaticResource PaddingValue}"/>
     </Style>
 
+    <Style TargetType="DataGrid">
+        <Setter Property="CanUserReorderColumns" Value="False"/>
+        <Setter Property="CanUserSortColumns" Value="False"/>
+    </Style>
 
 </ResourceDictionary>
