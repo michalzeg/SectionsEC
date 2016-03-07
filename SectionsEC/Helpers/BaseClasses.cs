@@ -174,7 +174,8 @@ namespace SectionsEC.Helpers
         public double MrdConcrete { get; set; }//nosnosc ze wzgledu na beton
         public double ForceConcrete { get; set; }// sila w betonie
         public IEnumerable<Reinforcement> Bars { get; set; } //wyniki dla zbrojenia
-
+        public double H { get; set; }
+        public double Cz { get; set; }
     }
     public class Reinforcement
     {

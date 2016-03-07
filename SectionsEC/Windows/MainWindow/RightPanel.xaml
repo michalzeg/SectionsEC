@@ -23,7 +23,9 @@
             </TextBlock>
         </GroupBox>
         <GroupBox Header="Detailed results">
-            <TextBlock Text="{Binding DetailedResults,Mode=OneWay}"/>
+            <ScrollViewer>
+                <TextBlock Text="{Binding DetailedResults,Mode=OneWay}" FontFamily="Consolas"/>
+            </ScrollViewer>
         </GroupBox>
         
     </DockPanel>

@@ -9,9 +9,9 @@ using SectionsEC.Extensions;
 
 namespace SectionsEC.Windows.WindowClasses
 {
-    public class ResultString
+    public class DetailedResults
     {
-        public static StringBuilder PrepareDetailedResults(CalculationResults result, Section section, double Ned, Steel steel, Concrete concrete)
+        public static StringBuilder PrepareDetailedResults(CalculationResults result, double Ned, Steel steel, Concrete concrete)
         {
             //symbole lacinskie
  
@@ -21,14 +21,14 @@ namespace SectionsEC.Windows.WindowClasses
             string sumSymbol = "\u03A3";
 
 
-            double centreDistanceFromBottom = section.H - section.Cz;
+            double centreDistanceFromBottom = result.H - result.Cz;
             //List<string> text = new List<string>();
             StringBuilder text = new StringBuilder();
 
             //nowa text to nowa linijka
             text.AppendLine("Section:");
             //text.AppendLine(nl);
-            text.AppendLine(string.Format("{0,-30}{1,-10}", "Section depth ", "H=" + section.H.ToFormatedString() + "m"));
+            text.AppendLine(string.Format("{0,-30}{1,-10}", "Section depth ", "H=" + result.H.ToFormatedString() + "m"));
             //text.AppendLine(nl);
             text.AppendLine("Centre of gravity from");
             //text.AppendLine(nl);

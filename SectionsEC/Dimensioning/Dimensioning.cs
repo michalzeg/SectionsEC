@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using CommonMethods;
 using SectionsEC.Helpers;
 using SectionsEC.StressCalculations;
+using SectionsEC.Windows.WindowClasses;
+using System.Text;
 
 
 
@@ -14,7 +16,7 @@ namespace SectionsEC.Dimensioning
 
     public static class CapacityCalculator
     {
-        public static Dictionary<LoadCase,CalculationResults> CalculateSectionCapacity(Concrete concrete,Steel steel,IList<PointD> sectionCoordinates,IList<Bar> bars,IList<LoadCase> loadCases)
+        public static IDictionary<LoadCase,CalculationResults> GetSectionCapacity(Concrete concrete,Steel steel,IList<PointD> sectionCoordinates,IList<Bar> bars,IList<LoadCase> loadCases)
         {
             var capacity = new SectionCapacity(concrete, steel);
             var section = new Section(sectionCoordinates);
@@ -24,8 +26,18 @@ namespace SectionsEC.Dimensioning
                 var result = capacity.CalculateCapacity(load.NormalForce, section, bars);
                 resultDictionary.Add(load, result);
             }
-
             return resultDictionary;
+        }
+        public static IDictionary<LoadCase,StringBuilder> GetDetailedResults(Concrete concrete, Steel steel, IDictionary<LoadCase,CalculationResults> calcualtionResults)
+        {
+            var result = new Dictionary<LoadCase, StringBuilder>();
+
+            foreach (var item in calcualtionResults)
+            {
+                var detailedResult = DetailedResults.PrepareDetailedResults(item.Value, item.Key.NormalForce, steel, concrete);
+                result.Add(item.Key, detailedResult);
+            }
+            return result;
         }
     }
 
@@ -223,6 +235,8 @@ namespace SectionsEC.Dimensioning
 
             result.Ec = this.strainCalculations.StrainInConcrete(result.X, 0);
 
+            result.H = section.H;
+            result.Cz = section.Cz;
             return result;
         }
 

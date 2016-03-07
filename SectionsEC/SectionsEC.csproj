@@ -81,7 +81,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\WindowClasses\ResultString.cs" />
+    <Compile Include="Windows\CircularSectionWindow\CircularSectionViewModel.cs" />
+    <Compile Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml.cs">
+      <DependentUpon>CircularSectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowClasses\CircularSectionCoordinates.cs" />
+    <Compile Include="Windows\WindowClasses\DetailedResults.cs" />
+    <Page Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\CommonWindows\DrawingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,6 +279,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ribbon\LoadIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Windows\CircularSectionWindow.PNG" />
+    <Resource Include="Images\Windows\RectangularSectionWindow.PNG" />
+    <Resource Include="Images\Windows\TSectionWindow.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
