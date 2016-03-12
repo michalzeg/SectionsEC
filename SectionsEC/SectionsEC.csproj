@@ -91,7 +91,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CommonWindows\DrawingPage.xaml">
+    <Page Include="Windows\DrawingPage\DrawingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,10 +140,10 @@
     <Compile Include="Helpers\BaseClasses.cs" />
     <Compile Include="Helpers\Materials.cs" />
     <Compile Include="Windows\WindowClasses\Drawing.cs" />
-    <Compile Include="Windows\CommonWindows\DrawingPage.xaml.cs">
+    <Compile Include="Windows\DrawingPage\DrawingPage.xaml.cs">
       <DependentUpon>DrawingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CommonWindows\DrawingPageViewModel.cs" />
+    <Compile Include="Windows\DrawingPage\DrawingPageViewModel.cs" />
     <Compile Include="Windows\Converters\MultiplyValueConverter.cs" />
     <Compile Include="Windows\CustomSectionWindow\CustomSectionWindow.xaml.cs">
       <DependentUpon>CustomSectionWindow.xaml</DependentUpon>

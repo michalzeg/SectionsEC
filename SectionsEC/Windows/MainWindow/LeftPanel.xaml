@@ -15,7 +15,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="False">
         <GroupBox 
             Header="Load Case"
             DockPanel.Dock="Top">
@@ -32,6 +32,22 @@
                 </TextBlock>
             </StackPanel>
         </GroupBox>
-        
+        <GroupBox Header="Concrete" DockPanel.Dock="Top">
+            <StackPanel>
+                <TextBlock>
+                    <Run Text="Grade - "></Run>
+                    <Run Text="{Binding Grade}" Foreground="Green"/>
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Steel" DockPanel.Dock="Top">
+            <StackPanel>
+                <TextBlock>
+                    <Run Text="Grade - "/>
+                    <Run Text="{Binding Grade}" Foreground="Green"/>
+                </TextBlock>
+            </StackPanel>
+            
+        </GroupBox>
     </DockPanel>
 </UserControl>

@@ -9,6 +9,7 @@ using SectionsEC.Extensions;
 
 namespace SectionsEC.Windows.WindowClasses
 {
+    
     public class DetailedResults
     {
         public static StringBuilder PrepareDetailedResults(CalculationResults result, double Ned, Steel steel, Concrete concrete)
@@ -140,8 +141,32 @@ namespace SectionsEC.Windows.WindowClasses
             }
             return result;
         }
+    }
 
+    [Obsolete]
+    public enum FormatType
+    {
+        Italic,
+        Underline,
+        Normal
+    }
+
+    [Obsolete]
+    public class DetailedResultLine
+    {
+        public string Message { get; set; }
+        public FormatType Format { get; set; }
+
+        public DetailedResultLine(string message)
+        {
+            Message = message;
+        }
+        public DetailedResultLine(string message,FormatType format)
+        {
+            Message = message;
+            Format = format;
+        }
+    }
 
     
-    }
 }
