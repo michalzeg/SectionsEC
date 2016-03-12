@@ -117,7 +117,6 @@ namespace SectionsEC.Windows.WindowClasses
             return text;
         }
 
-
         private static StringBuilder convertReinforcementDataToString(IEnumerable<Reinforcement> reinforcement, Steel steel, ref double sumForce, ref double sumMoment)
         {
 
@@ -142,5 +141,7 @@ namespace SectionsEC.Windows.WindowClasses
             return result;
         }
 
+
+    
     }
 }
