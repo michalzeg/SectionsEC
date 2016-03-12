@@ -135,7 +135,7 @@ namespace SectionsEC.Windows.WindowClasses
                 sumForce = sumForce + force;
                 sumMoment = sumMoment + moment;
 
-                string str = String.Format("{0,-6}{1,10}{2,10}{3,10}{4,10}{5,10}", (i + 1).ToString(), barArea.ToFormatedString(), force.ToFormatedString(), strain.ToFormatedString(), stress.ToFormatedString(), moment.ToFormatedString());
+                string str = String.Format("{0,-6}{1,10}{2,10}{3,10}{4,10}{5,10}", (i + 1).ToString(), (barArea*10000).ToFormatedString(), force.ToFormatedString(), (strain*100).ToFormatedString(), (stress/1000).ToFormatedString(), moment.ToFormatedString());
                 result.AppendLine(str);
                 i++;
             }

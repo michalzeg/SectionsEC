@@ -10,9 +10,9 @@ using CommonMethods;
 
 namespace SectionsEC.Helpers
 {
-    public class PointD :IEquatable<PointD>
+    public class PointD : IEquatable<PointD>
     {
-   
+
         public PointD(double x, double y)
         {
             X = x;
@@ -20,9 +20,9 @@ namespace SectionsEC.Helpers
         }
         public PointD() { }
         public double X { get; set; }
-        
+
         public double Y { get; set; }
-        
+
         public bool Equals(PointD other)
         {
             //Check whether the compared object is null. 
@@ -101,7 +101,7 @@ namespace SectionsEC.Helpers
             }
         }
     }
-    public class Bar :IEquatable<Bar>
+    public class Bar : IEquatable<Bar>
     {
         public double X { get; set; }
         public double Y { get; set; }
@@ -131,7 +131,7 @@ namespace SectionsEC.Helpers
             return hashX ^ hashY ^ hashAs;
         }
     }
-    public class LoadCase :IEquatable<LoadCase>
+    public class LoadCase : IEquatable<LoadCase>
     {
         public string Name { get; set; }
         public double NormalForce { get; set; }
@@ -211,33 +211,29 @@ namespace SectionsEC.Helpers
             // co oznacza ze wspolrzedne wprowadzone sa przeciwnie do ruchu wskazowek zegara
             //jesli iloczyn wektorowy jest rowny 0 tzn ze wektory sa rownolegle ->nalezy wziasc kolejny punkt
             double iw; //iloczyn wektorowy
-            try
+            IList<PointD> result = coordinates;
+
+            for (int i = 0; i <= coordinates.Count - 3; i++)
             {
-                for (int i = 0; i <= coordinates.Count - 3; i++)
+                iw = crossProduct(coordinates[i], coordinates[i + 1], coordinates[i + 2]);
+                if (iw > 0)
                 {
-                    iw = crossProduct(coordinates[i], coordinates[i + 1], coordinates[i + 2]);
-                    if (iw > 0)
-                    {
-                        //uklad prawoskretny
-                        break;
-                    }
-                    else if (iw < 0)
-                    {
-                        //uklad lewoskretny, nalezy odwrocic wspolrzedne
-                        coordinates.Reverse();
-                        break;
-                    }
-                    else
-                    {
-                        //dwa rownolegle wektory, nie rob nic, wez kolejne punkty
-                    }
+                    //uklad prawoskretny
+                    break;
+                }
+                else if (iw < 0)
+                {
+                    //uklad lewoskretny, nalezy odwrocic wspolrzedne
+                    result = coordinates.Reverse().ToList();
+                    break;
+                }
+                else
+                {
+                    //dwa rownolegle wektory, nie rob nic, wez kolejne punkty
                 }
             }
-            catch
-            {
-            }
 
-            return coordinates;
+            return result;
         }
 
         private double crossProduct(PointD p0, PointD p1, PointD p2)//funckja oblicza iloczyn wektorowy
