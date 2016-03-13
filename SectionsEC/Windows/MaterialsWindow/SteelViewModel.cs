@@ -8,70 +8,67 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class SteelPageViewModel :ViewModelBase
+    public class SteelViewModel:ViewModelBase
     {
-        public SteelViewModel SteelVM { get; private set; }
+        public delegate void SteelUpdatedEventHandler();
+        public event SteelUpdatedEventHandler SteelUpdated;
 
-        public SteelPageViewModel()
-        {
-            this.SteelVM = new SteelViewModel();
-            SteelVM.SteelUpdated += () => UpdateSteel(SteelVM.Steel);
-        }
+        public SteelViewModel() { }
 
-        public delegate void UpdatingEventHandler(Steel steel);
-        public event UpdatingEventHandler UpdateSteel;
-
-        private Steel selectedMaterial;
-        public Steel SelectedMaterial
+        public Steel Steel
         {
             get
             {
-                /* steel = new Steel();
+                Steel steel = new Steel();
                 steel.Es = Es;
-                //steel.Eud = Eud;
                 steel.Euk = Euk;
-                steel.Fyk = Fyk;
                 steel.EukToEud = EukToEud;
+                steel.Fyk = Fyk;
                 steel.GammaS = GammaS;
+                steel.Grade = Grade;
                 steel.K = K;
-                steel.Grade = selectedMaterial.Grade;
-                return steel;*/
-                return SteelVM.Steel;
-                //return selectedMaterial;
+                return steel;
             }
             set
             {
-                if (value != selectedMaterial)
-                {
-                    selectedMaterial = value;
-                    SteelVM.Steel = value;
-                    //K = selectedMaterial.K;
-                    //Fyk = selectedMaterial.Fyk;
-                    //Fyd = selectedMaterial.Fyd;
-                    //Es = selectedMaterial.Es;
-                    //Euk = selectedMaterial.Euk;
-                    //Eud = selectedMaterial.Eud;
-                    //EukToEud = selectedMaterial.EukToEud;
-                    //GammaS = selectedMaterial.GammaS;
-                    UpdateSteel(SelectedMaterial);
-                    //RaisePropertyChanged(() => SelectedMaterial);
-                    
-                }
+                Es = value.Es;
+                Eud = value.Eud;
+                Euk = value.Euk;
+                EukToEud = value.EukToEud;
+                Fyd = value.Fyd;
+                Fyk = value.Fyk;
+                GammaS = value.GammaS;
+                Grade = value.Grade;
+                K = value.K;
             }
         }
 
-        /*private double fyk;
+        private string grade;
+        public string Grade
+        {
+            get { return grade; }
+            set
+            {
+                if (value != grade)
+                {
+                    grade = value;
+                    RaisePropertyChanged(() => Grade);
+                    SteelUpdated();
+                }
+            }
+        }
+        private double fyk;
         public double Fyk
         {
             get { return fyk; }
             set
             {
-                if (value!= fyk)
+                if (value != fyk)
                 {
                     fyk = value;
                     Fyd = value / GammaS;
                     RaisePropertyChanged(() => Fyk);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
             }
         }
@@ -85,7 +82,7 @@ namespace SectionsEC.ViewModel
                 {
                     fyd = value;
                     RaisePropertyChanged(() => Fyd);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
             }
         }
@@ -95,12 +92,12 @@ namespace SectionsEC.ViewModel
             get { return gammaS; }
             set
             {
-                if (value!= gammaS)
+                if (value != gammaS)
                 {
                     gammaS = value;
                     Fyd = Fyk / value;
                     RaisePropertyChanged(() => GammaS);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
             }
         }
@@ -110,11 +107,11 @@ namespace SectionsEC.ViewModel
             get { return es; }
             set
             {
-                if (value!=es)
+                if (value != es)
                 {
                     es = value;
                     RaisePropertyChanged(() => Es);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
 
             }
@@ -125,12 +122,12 @@ namespace SectionsEC.ViewModel
             get { return euk; }
             set
             {
-                if (value!=euk)
+                if (value != euk)
                 {
                     euk = value;
                     Eud = EukToEud * value;
                     RaisePropertyChanged(() => Euk);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
             }
         }
@@ -144,7 +141,7 @@ namespace SectionsEC.ViewModel
                 {
                     eud = value;
                     RaisePropertyChanged(() => Eud);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
 
             }
@@ -155,12 +152,12 @@ namespace SectionsEC.ViewModel
             get { return eukToEud; }
             set
             {
-                if (value!=eukToEud)
+                if (value != eukToEud)
                 {
                     eukToEud = value;
                     Eud = value * Euk;
                     RaisePropertyChanged(() => EukToEud);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
             }
         }
@@ -170,13 +167,13 @@ namespace SectionsEC.ViewModel
             get { return k; }
             set
             {
-                if (value !=k)
+                if (value != k)
                 {
                     k = value;
                     RaisePropertyChanged(() => K);
-                    UpdateSteel(SelectedMaterial);
+                    SteelUpdated();
                 }
             }
-        }*/
+        }
     }
 }

@@ -5,59 +5,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SectionsEC.StressCalculations;
 
 namespace SectionsEC.ViewModel
-
 {
-    public class ConcretePageViewModel:ViewModelBase
+    public class ConcreteViewModel :ViewModelBase
     {
-        public ConcreteViewModel ConcreteVM { get; private set; }
+        public delegate void ConcreteUpdatedEventHandler();
+        public event ConcreteUpdatedEventHandler ConcreteUpdated;
 
-        public ConcretePageViewModel()
-        {
-            ConcreteVM = new ConcreteViewModel();
-            ConcreteVM.ConcreteUpdated += () => UpdateConcrete(ConcreteVM.Concrete);
-        }
-
-        public delegate void UpdatingConcreteEventHandler(Concrete concrete);
-        public event UpdatingConcreteEventHandler UpdateConcrete;
-
-        private Concrete selectedMaterial;
-        public Concrete SelectedMaterial
+        public Concrete Concrete
         {
             get
             {
-                /*Concrete concrete = new Concrete();
+                Concrete concrete = new Concrete();
+                concrete.Grade = Grade;
                 concrete.Acc = Acc;
                 concrete.Ec2 = Ec2;
                 concrete.Ecu2 = Ecu2;
                 concrete.Fck = Fck;
+                concrete.Grade = Grade;
                 concrete.N = N;
-                concrete.GammaM = GammaM;*/
-                return ConcreteVM.Concrete;
-                //return selectedMaterial;
+                concrete.GammaM = GammaM;
+                return concrete;
             }
             set
             {
-                if (value !=selectedMaterial)
+                Acc = value.Acc;
+                Ec2 = value.Ec2;
+                Ecu2 = value.Ecu2;
+                Fck = value.Fck;
+                Grade = value.Grade;
+                N = value.N;
+                GammaM = value.GammaM;
+                Fcd = value.Fcd;
+                Grade = value.Grade;
+                if (ConcreteUpdated != null)
+                    ConcreteUpdated();
+            }
+        }
+
+        private string grade;
+        public string Grade
+        {
+            get { return grade; }
+            set
+            {
+                if (value!=grade)
                 {
-                    selectedMaterial = value;
-                    ConcreteVM.Concrete = value;
-                    /*Fck = selectedMaterial.Fck;
-                    GammaM = selectedMaterial.GammaM;
-                    Acc = selectedMaterial.Acc;
-                    Fcd = selectedMaterial.Fcd;
-                    N = selectedMaterial.N;
-                    Ec2 = selectedMaterial.Ec2;
-                    Ecu2 = selectedMaterial.Ecu2;*/
-                    UpdateConcrete(SelectedMaterial);
-                    //RaisePropertyChanged(() => SelectedMaterial);
+                    grade = value;
+                    RaisePropertyChanged(() => Grade);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
-        
-        /*
+
         private double fck;
         public double Fck
         {
@@ -69,7 +71,8 @@ namespace SectionsEC.ViewModel
                     fck = value;
                     Fcd = Acc * value / GammaM;
                     RaisePropertyChanged(() => Fck);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
@@ -84,7 +87,8 @@ namespace SectionsEC.ViewModel
                     gammaM = value;
                     Fcd = Acc * Fck / value;
                     RaisePropertyChanged(() => GammaM);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
@@ -99,7 +103,8 @@ namespace SectionsEC.ViewModel
                     acc = value;
                     Fcd = value * Fck / GammaM;
                     RaisePropertyChanged(() => Acc);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
@@ -109,11 +114,12 @@ namespace SectionsEC.ViewModel
             get { return fcd; }
             set
             {
-                if (value !=fcd)
+                if (value != fcd)
                 {
                     fcd = value;
                     RaisePropertyChanged(() => Fcd);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
@@ -127,7 +133,8 @@ namespace SectionsEC.ViewModel
                 {
                     n = value;
                     RaisePropertyChanged(() => N);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
@@ -141,7 +148,8 @@ namespace SectionsEC.ViewModel
                 {
                     ec2 = value;
                     RaisePropertyChanged(() => Ec2);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated(); 
                 }
             }
         }
@@ -155,10 +163,10 @@ namespace SectionsEC.ViewModel
                 {
                     ecu2 = value;
                     RaisePropertyChanged(() => Ecu2);
-                    UpdateConcrete(SelectedMaterial);
+                    if (ConcreteUpdated != null)
+                        ConcreteUpdated();
                 }
             }
         }
-    */
     }
 }

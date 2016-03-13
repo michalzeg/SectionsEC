@@ -13,14 +13,19 @@ namespace SectionsEC.ViewModel
 {
     public class LeftPanelViewModel :ViewModelBase
     {
+        public ConcreteViewModel ConcreteVM { get; private set; }
+
         public LeftPanelViewModel()
         {
+            ConcreteVM = new ConcreteViewModel();
+
             this.results = new Dictionary<LoadCase, CalculationResults>();
             this.detailedResults = new Dictionary<LoadCase, StringBuilder>();
             this.LoadCaseList = new ObservableCollection<LoadCase>();
             Messenger.Default.Register<IList<LoadCase>>(this, updateLoadCaseList);
             Messenger.Default.Register<IDictionary<LoadCase, CalculationResults>>(this, updateResults);
             Messenger.Default.Register<IDictionary<LoadCase, StringBuilder>>(this, updateDetailedResults);
+            Messenger.Default.Register<Concrete>(this, updateConcrete);
         }
 
         private void updateLoadCaseList(IEnumerable<LoadCase> loadCaseList)
@@ -42,6 +47,10 @@ namespace SectionsEC.ViewModel
         {
             this.detailedResults = results;
             this.sendResults(this.SelectedLoadCase);
+        }
+        private void updateConcrete(Concrete concrete)
+        {
+            ConcreteVM.Concrete = concrete;
         }
 
         private IDictionary<LoadCase, StringBuilder> detailedResults;

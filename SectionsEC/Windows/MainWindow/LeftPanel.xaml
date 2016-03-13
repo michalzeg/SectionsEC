@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SectionsEC.Views"
+             xmlns:converters="clr-namespace:SectionsEC.Converters"
              xmlns:helpers="clr-namespace:SectionsEC.Helpers"
              mc:Ignorable="d" 
              >
@@ -13,6 +14,7 @@
                 <ResourceDictionary Source="/Windows/Style/Styles.xaml"/>
                 <ResourceDictionary Source="/Windows/Style/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:MultiplyValueConverter x:Key="MultiplyValueConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="False">
@@ -32,11 +34,18 @@
                 </TextBlock>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Concrete" DockPanel.Dock="Top">
+        <GroupBox Header="Concrete" 
+                  DockPanel.Dock="Top"
+                  DataContext="{Binding ConcreteVM}">
             <StackPanel>
                 <TextBlock>
                     <Run Text="Grade - "></Run>
                     <Run Text="{Binding Grade}" Foreground="Green"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Fcd = "/>
+                    <Run Text="{Binding Fcd,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=0.001,StringFormat={}{0:#.##}}"/>
+                    <Run Text=" [MPa]"/>
                 </TextBlock>
             </StackPanel>
         </GroupBox>
@@ -45,6 +54,11 @@
                 <TextBlock>
                     <Run Text="Grade - "/>
                     <Run Text="{Binding Grade}" Foreground="Green"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Fyd = "/>
+                    <Run Text="{Binding Fyd,Converter={StaticResource MultiplyValueConverter},ConverterParameter=0.001,StringFormat={}{0:#.##}}"/>
+                    <Run Text=" [MPa]"/>
                 </TextBlock>
             </StackPanel>
             

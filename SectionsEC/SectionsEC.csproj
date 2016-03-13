@@ -85,6 +85,8 @@
     <Compile Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml.cs">
       <DependentUpon>CircularSectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MaterialsWindow\ConcreteViewModel.cs" />
+    <Compile Include="Windows\MaterialsWindow\SteelViewModel.cs" />
     <Compile Include="Windows\WindowClasses\CircularSectionCoordinates.cs" />
     <Compile Include="Windows\WindowClasses\DetailedResults.cs" />
     <Page Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml">
