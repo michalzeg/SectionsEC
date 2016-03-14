@@ -20,6 +20,7 @@ namespace SectionsEC.ViewModel
         }
 
         public string Capacity { get; private set; }
+
         public string DetailedResults { get; private set; }
 
         private void updateResult(CalculationResults result)

@@ -87,7 +87,15 @@
     </Compile>
     <Compile Include="Windows\MaterialsWindow\ConcreteViewModel.cs" />
     <Compile Include="Windows\MaterialsWindow\SteelViewModel.cs" />
-    <Compile Include="Windows\WindowClasses\CircularSectionCoordinates.cs" />
+    <Compile Include="Windows\RectangularSectionWindow\RectangularSectionWindow.xaml.cs">
+      <DependentUpon>RectangularSectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RectangularSectionWindow\RectangularSectionWindowViewModel.cs" />
+    <Compile Include="Windows\TSectionWindow\TSectionWindowViewModel.cs" />
+    <Compile Include="Windows\TSectionWindow\TSectionWindow.xaml.cs">
+      <DependentUpon>TSectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowClasses\SectionCoordinates.cs" />
     <Compile Include="Windows\WindowClasses\DetailedResults.cs" />
     <Page Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml">
       <SubType>Designer</SubType>
@@ -104,6 +112,10 @@
     <Page Include="Windows\MainWindow\RightPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RectangularSectionWindow\RectangularSectionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Style\CustomStyles.xaml">
       <SubType>Designer</SubType>
@@ -207,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Style\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\TSectionWindow\TSectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

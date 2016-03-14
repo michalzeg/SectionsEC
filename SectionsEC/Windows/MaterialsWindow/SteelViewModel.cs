@@ -53,7 +53,8 @@ namespace SectionsEC.ViewModel
                 {
                     grade = value;
                     RaisePropertyChanged(() => Grade);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
             }
         }
@@ -68,7 +69,8 @@ namespace SectionsEC.ViewModel
                     fyk = value;
                     Fyd = value / GammaS;
                     RaisePropertyChanged(() => Fyk);
-                    SteelUpdated();
+                    if (SteelUpdated!=null)
+                        SteelUpdated();
                 }
             }
         }
@@ -82,7 +84,8 @@ namespace SectionsEC.ViewModel
                 {
                     fyd = value;
                     RaisePropertyChanged(() => Fyd);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
             }
         }
@@ -97,7 +100,8 @@ namespace SectionsEC.ViewModel
                     gammaS = value;
                     Fyd = Fyk / value;
                     RaisePropertyChanged(() => GammaS);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
             }
         }
@@ -111,7 +115,8 @@ namespace SectionsEC.ViewModel
                 {
                     es = value;
                     RaisePropertyChanged(() => Es);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
 
             }
@@ -127,7 +132,8 @@ namespace SectionsEC.ViewModel
                     euk = value;
                     Eud = EukToEud * value;
                     RaisePropertyChanged(() => Euk);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
             }
         }
@@ -141,7 +147,8 @@ namespace SectionsEC.ViewModel
                 {
                     eud = value;
                     RaisePropertyChanged(() => Eud);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
 
             }
@@ -157,7 +164,8 @@ namespace SectionsEC.ViewModel
                     eukToEud = value;
                     Eud = value * Euk;
                     RaisePropertyChanged(() => EukToEud);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
             }
         }
@@ -171,7 +179,8 @@ namespace SectionsEC.ViewModel
                 {
                     k = value;
                     RaisePropertyChanged(() => K);
-                    SteelUpdated();
+                    if (SteelUpdated != null)
+                        SteelUpdated();
                 }
             }
         }

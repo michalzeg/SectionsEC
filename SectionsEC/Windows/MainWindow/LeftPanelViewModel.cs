@@ -14,10 +14,12 @@ namespace SectionsEC.ViewModel
     public class LeftPanelViewModel :ViewModelBase
     {
         public ConcreteViewModel ConcreteVM { get; private set; }
+        public SteelViewModel SteelVM { get; private set; }
 
         public LeftPanelViewModel()
         {
             ConcreteVM = new ConcreteViewModel();
+            SteelVM = new SteelViewModel();
 
             this.results = new Dictionary<LoadCase, CalculationResults>();
             this.detailedResults = new Dictionary<LoadCase, StringBuilder>();
@@ -26,6 +28,7 @@ namespace SectionsEC.ViewModel
             Messenger.Default.Register<IDictionary<LoadCase, CalculationResults>>(this, updateResults);
             Messenger.Default.Register<IDictionary<LoadCase, StringBuilder>>(this, updateDetailedResults);
             Messenger.Default.Register<Concrete>(this, updateConcrete);
+            Messenger.Default.Register<Steel>(this, updateSteel);
         }
 
         private void updateLoadCaseList(IEnumerable<LoadCase> loadCaseList)
@@ -51,6 +54,10 @@ namespace SectionsEC.ViewModel
         private void updateConcrete(Concrete concrete)
         {
             ConcreteVM.Concrete = concrete;
+        }
+        private void updateSteel(Steel steel)
+        {
+            SteelVM.Steel = steel;
         }
 
         private IDictionary<LoadCase, StringBuilder> detailedResults;

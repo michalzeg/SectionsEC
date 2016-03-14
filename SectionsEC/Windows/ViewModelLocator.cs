@@ -47,6 +47,8 @@ namespace SectionsEC.ViewModel
             SimpleIoc.Default.Register<CustomSectionWindowViewModel>();
             SimpleIoc.Default.Register<LoadCaseWindowViewModel>();
             SimpleIoc.Default.Register<CircularSectionViewModel>();
+            SimpleIoc.Default.Register<TSectionViewModel>();
+            SimpleIoc.Default.Register<RectangularSectionViewModel>();
         }
 
         public MainWindowViewModel Main

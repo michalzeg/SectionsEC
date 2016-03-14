@@ -49,7 +49,7 @@
                 </TextBlock>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Steel" DockPanel.Dock="Top">
+        <GroupBox Header="Steel" DockPanel.Dock="Top" DataContext="{Binding SteelVM}">
             <StackPanel>
                 <TextBlock>
                     <Run Text="Grade - "/>
