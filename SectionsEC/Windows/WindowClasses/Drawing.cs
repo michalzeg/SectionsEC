@@ -139,7 +139,7 @@ namespace SectionsEC.Drawing
             polygon.Stroke = Brushes.DimGray;
 
             polygon.Fill = new LinearGradientBrush(Brushes.LightGray.Color, Brushes.Gray.Color, 90);
-
+          
             polygon.StrokeThickness = 2;
         }
 
@@ -281,6 +281,53 @@ namespace SectionsEC.Drawing
 
                 return new PathGeometry(createPolyline());
             }
+        }
+    }
+
+
+    public class Hatch
+    {
+        public static VisualBrush GetHatch()
+        {
+            var visualBrush = new VisualBrush();
+            visualBrush.TileMode = TileMode.Tile;
+            visualBrush.Viewport = new Rect(new Point(0, 0), new Point(15, 15));
+            visualBrush.ViewportUnits = BrushMappingMode.Absolute;
+            visualBrush.Viewbox = new Rect(new Point(0, 0), new Point(15, 15));
+            visualBrush.ViewboxUnits = BrushMappingMode.Absolute;
+
+            Grid grid = new Grid();
+            grid.Background = Brushes.Transparent;
+
+            //PathGeometry geometry1 = getLine(new Point(0, 0), new Point(15, 15);
+            //Path path1 = new Path();
+            //path1.Data = geometry1;
+            grid.Children.Add(new Path() { Data = getLine(new Point(0, 0), new Point(15, 15)),Stroke=Brushes.Gray });
+            grid.Children.Add(new Path() { Data = getLine(new Point(0, 15), new Point(15, 0)),Stroke=Brushes.Gray });
+
+            visualBrush.Visual = grid;
+            return visualBrush;
+        }
+
+        private static PathGeometry getLine(Point point1,Point point2)
+        {
+            var pathFigure = new PathFigure();
+            pathFigure.StartPoint = point1;
+            LineSegment lineSegment = new LineSegment();
+            lineSegment.Point = point2;
+            
+            PathSegmentCollection pathSegmentCollection = new PathSegmentCollection();
+            pathSegmentCollection.Add(lineSegment);
+            pathFigure.Segments = pathSegmentCollection;
+            
+            PathFigureCollection pathFigureCollection = new PathFigureCollection();
+            pathFigureCollection.Add(pathFigure);
+
+
+            var geometry1 = new PathGeometry();
+            geometry1.Figures = pathFigureCollection;
+            
+            return geometry1;
         }
     }
 }
