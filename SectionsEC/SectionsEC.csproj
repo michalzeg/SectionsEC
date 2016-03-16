@@ -85,6 +85,9 @@
     <Compile Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml.cs">
       <DependentUpon>CircularSectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MainWindow\InteractionCurvePage.xaml.cs">
+      <DependentUpon>InteractionCurvePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MaterialsWindow\ConcreteViewModel.cs" />
     <Compile Include="Windows\MaterialsWindow\SteelViewModel.cs" />
     <Compile Include="Windows\RectangularSectionWindow\RectangularSectionWindow.xaml.cs">
@@ -95,6 +98,7 @@
     <Compile Include="Windows\TSectionWindow\TSectionWindow.xaml.cs">
       <DependentUpon>TSectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowClasses\MessangerTokens.cs" />
     <Compile Include="Windows\WindowClasses\SectionCoordinates.cs" />
     <Compile Include="Windows\WindowClasses\DetailedResults.cs" />
     <Page Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml">
@@ -106,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CustomSectionWindow\CustomSectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow\InteractionCurvePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

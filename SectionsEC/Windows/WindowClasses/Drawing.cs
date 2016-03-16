@@ -129,17 +129,22 @@ namespace SectionsEC.Drawing
     public class SectionDrawing:Drawing
     {
 
-        private IList<PointD> perimeter;
-        private Polygon polygon;
+        protected IList<PointD> perimeter;
+        protected Polygon polygon;
 
         public SectionDrawing(Grid canvas,PerimeterProperties perimeterProperties):base(canvas,perimeterProperties)
         {
             this.polygon = new Polygon();
             this.canvas.Children.Add(polygon);
+            setPolygonProperties();
+        }
+
+        protected virtual void setPolygonProperties()
+        {
             polygon.Stroke = Brushes.DimGray;
 
             polygon.Fill = new LinearGradientBrush(Brushes.LightGray.Color, Brushes.Gray.Color, 90);
-          
+
             polygon.StrokeThickness = 2;
         }
 
@@ -164,6 +169,22 @@ namespace SectionsEC.Drawing
                 this.polygon.Points.Add(new Point(point.X, point.Y));
             }
 
+        }
+    }
+
+    public class HatchDrawing : SectionDrawing
+    {
+        public HatchDrawing(Grid canvas, PerimeterProperties perimeterProperties)
+            : base(canvas, perimeterProperties)
+        { }
+
+        protected override void setPolygonProperties()
+        {
+            polygon.Stroke = Brushes.Transparent;
+
+            polygon.Fill = Hatch.GetHatch();
+
+            polygon.StrokeThickness = 1;
         }
     }
 
@@ -302,8 +323,8 @@ namespace SectionsEC.Drawing
             //PathGeometry geometry1 = getLine(new Point(0, 0), new Point(15, 15);
             //Path path1 = new Path();
             //path1.Data = geometry1;
-            grid.Children.Add(new Path() { Data = getLine(new Point(0, 0), new Point(15, 15)),Stroke=Brushes.Gray });
-            grid.Children.Add(new Path() { Data = getLine(new Point(0, 15), new Point(15, 0)),Stroke=Brushes.Gray });
+            grid.Children.Add(new Path() { Data = getLine(new Point(0, 0), new Point(15, 15)),Stroke=Brushes.Red });
+            grid.Children.Add(new Path() { Data = getLine(new Point(0, 15), new Point(15, 0)),Stroke=Brushes.Red });
 
             visualBrush.Visual = grid;
             return visualBrush;

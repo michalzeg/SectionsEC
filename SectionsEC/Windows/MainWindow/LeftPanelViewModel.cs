@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.Helpers;
 using System.Collections.ObjectModel;
 using SectionsEC.Extensions;
+using SectionsEC.WindowClasses;
 
 namespace SectionsEC.ViewModel
 {
@@ -86,7 +87,10 @@ namespace SectionsEC.ViewModel
         {
             CalculationResults currentResult;
             if (results.TryGetValue(value, out currentResult))
+            {
                 Messenger.Default.Send(currentResult);
+                Messenger.Default.Send(currentResult.CompressionZone, MessangerTokens.CompressionZoneDrawing);
+            }
             StringBuilder detailedResult;
             if (detailedResults.TryGetValue(value, out detailedResult))
                 Messenger.Default.Send(detailedResult);

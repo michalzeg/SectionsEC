@@ -7,6 +7,7 @@ using SectionsEC.Helpers;
 using SectionsEC.StressCalculations;
 using SectionsEC.Windows.WindowClasses;
 using System.Text;
+using SectionsEC.Dimensioning;
 
 
 
@@ -16,7 +17,7 @@ namespace SectionsEC.Dimensioning
 
     public static class CapacityCalculator
     {
-        public static IDictionary<LoadCase,CalculationResults> GetSectionCapacity(Concrete concrete,Steel steel,IList<PointD> sectionCoordinates,IList<Bar> bars,IList<LoadCase> loadCases)
+        public static IDictionary<LoadCase, CalculationResults> GetSectionCapacity(Concrete concrete, Steel steel, IList<PointD> sectionCoordinates, IList<Bar> bars, IList<LoadCase> loadCases)
         {
             var capacity = new SectionCapacity(concrete, steel);
             var section = new Section(sectionCoordinates);
@@ -28,7 +29,7 @@ namespace SectionsEC.Dimensioning
             }
             return resultDictionary;
         }
-        public static IDictionary<LoadCase,StringBuilder> GetDetailedResults(Concrete concrete, Steel steel, IDictionary<LoadCase,CalculationResults> calcualtionResults)
+        public static IDictionary<LoadCase, StringBuilder> GetDetailedResults(Concrete concrete, Steel steel, IDictionary<LoadCase, CalculationResults> calcualtionResults)
         {
             var result = new Dictionary<LoadCase, StringBuilder>();
 
@@ -39,7 +40,112 @@ namespace SectionsEC.Dimensioning
             }
             return result;
         }
+
+
+
     }
+
+    public class InteractionCurveCalculator
+    {
+        private readonly int deltaAngle = 1;
+
+        private IList<Bar> bars;
+        private IList<PointD> coordinates;
+        private Concrete concrete;
+        private Steel steel;
+        IList<LoadCase> loadCases;
+
+        public InteractionCurveCalculator(Concrete concrete, Steel steel, IList<Bar> bars, IList<PointD> coordinates, IList<LoadCase> loadCases)
+        {
+            this.concrete = concrete;
+            this.steel = steel;
+            this.concrete = concrete;
+            this.steel = steel;
+            this.loadCases = loadCases;
+            this.bars = bars;
+            this.coordinates = coordinates;
+        }
+
+        public IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> GetInteractionCurve()
+        {
+
+            var sectionCapacity = new SectionCapacity(concrete, steel);
+
+            var result = new Dictionary<LoadCase, IEnumerable<InteractionCurveResult>>();
+
+            foreach (var loadCase in this.loadCases)
+            {
+                var interactionResult = new List<InteractionCurveResult>();
+                int angle = 0;
+                while (angle <= 360)
+                {
+                    var rotatedCoordinates = this.rotateSectionCoordinates(angle);
+                    var rotatedSection = new Section(rotatedCoordinates);
+                    var rotatedBars = this.rotateBarCoordinates(angle);
+                    var capacityResult = sectionCapacity.CalculateCapacity(loadCase.NormalForce, rotatedSection, rotatedBars);
+                    if (double.IsNaN(capacityResult.X))
+                    {
+                        throw new NotImplementedException();
+                    }
+                    double mx, my;
+                    calculatePrincipalMoments(angle, capacityResult.Mrd, out mx, out my);
+                    var interactionMoments = new InteractionCurveResult();
+                    interactionMoments.Mx = mx;
+                    interactionMoments.My = my;
+                    interactionResult.Add(interactionMoments);
+
+                    angle = angle + this.deltaAngle;
+
+                }
+                result.Add(loadCase, interactionResult);
+            }
+            return result;
+        }
+
+
+        private IList<Bar> rotateBarCoordinates(double angle)
+        {
+
+            List<Bar> newBars = new List<Bar>();
+            //loop through all bars
+            foreach (var bar in this.bars)
+            {
+
+                double x = bar.X * Math.Cos(angle * Math.PI / 180) - bar.Y * Math.Sin(angle * Math.PI / 180);
+                double y = bar.X * Math.Sin(angle * Math.PI / 180) + bar.Y * Math.Cos(angle * Math.PI / 180);
+
+                var newBar = new Bar() { X = x, Y = y, As = bar.As };
+
+                newBars.Add(newBar);
+
+            }
+            return newBars;
+        }
+        private IList<PointD> rotateSectionCoordinates(double angle)
+        {
+
+            List<PointD> coordinates = new List<PointD>();
+
+            foreach (var point in this.coordinates)
+            {
+                //dla kazdego punktu przekroju
+
+                double x = point.X * Math.Cos(angle * Math.PI / 180) - point.Y * Math.Sin(angle * Math.PI / 180);
+                double y = point.X * Math.Sin(angle * Math.PI / 180) + point.Y * Math.Cos(angle * Math.PI / 180);
+                coordinates.Add(new PointD(x, y));
+            }
+
+            return coordinates;
+        }
+
+        private void calculatePrincipalMoments(double angle, double moment, out double mx, out double my)
+        {
+            //procedura wylicza moment glowny bazujac na momentcie wypadkowym
+            my = moment * Math.Cos((90 - angle) * Math.PI / 180);
+            mx = moment * Math.Sin((90 - angle) * Math.PI / 180);
+        }
+    }
+
 
 
     public class SectionCapacity
@@ -92,26 +198,26 @@ namespace SectionsEC.Dimensioning
             // Fs1(x) - resultant force in tension reinforcement
             // Nsd - normal force, + compression, -tension
 
-            
+
             double forceInConcrete = this.forceInConcrete(x);
             double forceInAs1 = this.forceInAs1(x);
             double forceInAs2 = this.forceInAs2(x);
             double result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
             return result;
         }
-    
+
         private double forceInAs1(double x) //funkcja wyliczajaca wypadkowa w zbrojeniu rozciaganym
         {
             double resultantForce = 0; //wartosc wypadkowej sily z zbrojeniu rozciaganym
-            
+
             double yNeutralAxis = this.section.MaxY - x; //wspolrzedna osi obojetnej
-            
+
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y < yNeutralAxis)
                 {
                     var di = this.reinforcement[i].D;
-                    
+
                     var e = this.strainCalculations.StrainInAs1(x, di);
                     resultantForce = resultantForce + this.reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(e, this.steel);
                     var barsTemp = this.reinforcement[i];
@@ -126,15 +232,15 @@ namespace SectionsEC.Dimensioning
         private double forceInAs2(double x) //funkcja wyliczajaca wypadkową w zbrojeniu sciskanym
         {
             double resultantForce = 0; //wartosc wypadkowej sily z zbrojeniu sciskanym
-                
+
             double yNeutralAxis = this.section.MaxY - x; //wspolrzedna osi obojetnej
-            
+
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y > yNeutralAxis)
                 {
                     var di = this.reinforcement[i].D;
-                    
+
                     var e = this.strainCalculations.StrainInAs2(x, di);
                     resultantForce = resultantForce + this.reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(e, this.steel);
                     var barsTemp = this.reinforcement[i];
@@ -150,26 +256,26 @@ namespace SectionsEC.Dimensioning
             var result = this.compressionZoneCalculations.Calculate(x, this.section);
 
             return result.NormalForce;
-            
+
 
         }
         private double solveEqulibriumEquation() //rozwiazywanie rowniaina rownowagi metoda polowienia, zgodnie z wikipedia
         {
             double EPS = 0.00000000001; //dokladnosc poszukwiania wyniku
-        
-            double fL,fR,fM; //wartosc rownania rownowagi w 3 punktach przedzialu
+
+            double fL, fR, fM; //wartosc rownania rownowagi w 3 punktach przedzialu
 
 
-            double xL =0.000001*this.section.H; //granica lewa przedzialu
+            double xL = 0.000001 * this.section.H; //granica lewa przedzialu
 
-            double xR =10*this.section.H; //granica prawa przedzialu, strefa sciskana nie moze byc wieksza od h
-            double xM = (xL+xR)/2;
+            double xR = 10 * this.section.H; //granica prawa przedzialu, strefa sciskana nie moze byc wieksza od h
+            double xM = (xL + xR) / 2;
             double x0;
             int k = 0;
-            while ((Math.Abs(xL - xR) > EPS) && (k <10000))
+            while ((Math.Abs(xL - xR) > EPS) && (k < 10000))
             {
                 k++;
-                xM = (xR + xL) / 2; 
+                xM = (xR + xL) / 2;
                 fL = this.equlibriumEquation(xL);
                 fR = this.equlibriumEquation(xR);
                 fM = this.equlibriumEquation(xM);
@@ -190,10 +296,10 @@ namespace SectionsEC.Dimensioning
             {
                 x0 = (xR + xL) / 2;
             }
-            
+
             return x0;
         }
-        
+
 
         public CalculationResults CalculateCapacity(double nEd, Section section, IList<Bar> bars) //funkcja wyznaczajaca zasieg strefy sciskanej
         {
@@ -254,9 +360,9 @@ namespace SectionsEC.Dimensioning
             //moment jest obliczany wzgledem dolnej krawedzi przekroju (ymin)
             double Mrd = 0;
             double yOsi = this.section.MaxY - x;
-            double Mz=0;
+            double Mz = 0;
             Reinforcement barsTemp;
-            for (int i = 0; i <= this.reinforcement.Count-1; i++)
+            for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 //jeżeli zbrojenie znajduje się ponad osią obojętną to zbrojenie jest ściskane(+)
                 //jeżeli pod osia obojętną to zbrojenie jest rozciąganie (-)
@@ -279,11 +385,11 @@ namespace SectionsEC.Dimensioning
             }
             return Mrd;
         }
-        
+
     }
 
-    
+}
     
 
     
-}
+

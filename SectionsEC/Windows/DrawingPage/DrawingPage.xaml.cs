@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using SectionsEC.Drawing;
 using SectionsEC.Helpers;
 using GalaSoft.MvvmLight.Messaging;
-
+using SectionsEC.WindowClasses;
 namespace SectionsEC.Views
 {
     /// <summary>
@@ -15,13 +15,14 @@ namespace SectionsEC.Views
         private PerimeterProperties perimeterProperties;
         private SectionDrawing sectionDrawing;
         private BarsDrawing barsDrawing;
-
+        private HatchDrawing compressionZoneDrawing;
 
         public DrawingPage()
         {
             InitializeComponent();
             Messenger.Default.Register<IList<PointD>>(this, updatePerimeter);
             Messenger.Default.Register<IList<Bar>>(this, updateBars);
+            Messenger.Default.Register<IList<PointD>>(this, MessangerTokens.CompressionZoneDrawing, updateCompressionZone);
             createCanvas();
         }
         private void createCanvas()
@@ -29,6 +30,7 @@ namespace SectionsEC.Views
             this.perimeterProperties = new PerimeterProperties(() => canvas.ActualWidth, () => canvas.ActualHeight);
             this.sectionDrawing = new SectionDrawing(this.canvas, this.perimeterProperties);
             this.barsDrawing = new BarsDrawing(this.canvas, this.perimeterProperties);
+            this.compressionZoneDrawing = new HatchDrawing(this.canvas, this.perimeterProperties);
         }
 
         private void updatePerimeter(IList<PointD> perimeter)
@@ -39,12 +41,18 @@ namespace SectionsEC.Views
         {
             barsDrawing.Bars(bars);
         }
+        private void updateCompressionZone(IList<PointD> compressionZone)
+        {
+            compressionZoneDrawing.Perimeter(compressionZone);
+        }
+
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this.perimeterProperties.UpdateProperties();
             this.sectionDrawing.Redraw();
             this.barsDrawing.Redraw();
+            this.compressionZoneDrawing.Redraw();
         }
     }
 }
