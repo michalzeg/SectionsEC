@@ -21,8 +21,7 @@
         <ContentControl DockPanel.Dock="Left"
                         ContentTemplate="{StaticResource centralPanel}"
                         Content="{Binding CentralPanelVM}"/>
-        <ContentControl ContentTemplate="{StaticResource rightPanel}"
-                        Content="{Binding RightPanelVM}"/>
+        <ContentControl Content="{Binding ResultViewModel}"/>
         
     </DockPanel>
 </UserControl>

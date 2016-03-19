@@ -47,7 +47,7 @@ namespace SectionsEC.Dimensioning
 
     public class InteractionCurveCalculator
     {
-        private readonly int deltaAngle = 1;
+        private readonly int deltaAngle = 5;
 
         private IList<Bar> bars;
         private IList<PointD> coordinates;
@@ -146,7 +146,30 @@ namespace SectionsEC.Dimensioning
         }
     }
 
+    public class AxialCapacity
+    {
 
+        public static double TensionCapacity(IList<Bar> bars,Steel steel)
+        {
+
+            double capacity = 0;
+
+            foreach (var bar in bars)
+            {
+                capacity += bar.As * steel.Fyd * steel.K;
+            }
+            return -capacity;
+        }
+
+        public static double CompressionCapacity(IList<PointD> sectionCoordinates,Concrete concrete)
+        {
+
+            var section = new Section(sectionCoordinates); 
+            double areaOfConcrete = SectionProperties.A(section.Coordinates);
+
+            return areaOfConcrete * concrete.Fcd;
+        }
+    }
 
     public class SectionCapacity
     {

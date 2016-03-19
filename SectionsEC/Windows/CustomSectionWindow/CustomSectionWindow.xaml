@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SectionsEC.Views"
         mc:Ignorable="d"
-        Title="CustomWindow" Height="600" Width="600">
+        Title="CustomWindow" Height="600" Width="600" Icon="/SectionsEC;component/Images/Ribbon/CustomSection.png">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,10 +25,7 @@
         </Grid.RowDefinitions>
         <GroupBox Header="Coordinates" Grid.Column="0" Grid.Row="0">
             <DockPanel>
-                <Button DockPanel.Dock="Bottom" 
-                        HorizontalAlignment="Center" 
-                        Content="Paste"
-                        Style="{StaticResource pasteButton}"/>
+              
                 <DataGrid
                     Name="dataGridPoints"
                     AutoGenerateColumns="False"
@@ -44,11 +41,7 @@
         </GroupBox>
         <GroupBox Header="Reinforcement" Grid.Column="0" Grid.Row="1">
             <DockPanel>
-                <Button 
-                    DockPanel.Dock="Bottom" 
-                    Content="Paste" 
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource pasteButton}"/>
+                
                 <DataGrid
                     Name="dataGridBars"
                     AutoGenerateColumns="False"

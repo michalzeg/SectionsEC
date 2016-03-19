@@ -61,7 +61,20 @@
                     <Run Text=" [MPa]"/>
                 </TextBlock>
             </StackPanel>
-            
+        </GroupBox>
+        <GroupBox Header="Axial Capacity">
+            <StackPanel>
+                <TextBlock>
+                    <Run Text="Tension capacity = "/>
+                    <Run Text="{Binding TensionCapacity,Mode=OneWay,StringFormat={}{0:#.##}}"/>
+                    <Run Text=" [kN]"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Compression capacity = "/>
+                    <Run Text="{Binding CompressionCapacity,Mode=OneWay,StringFormat={}{0:#.##}}"/>
+                    <Run Text=" [kN]"/>
+                </TextBlock>    
+            </StackPanel>
         </GroupBox>
     </DockPanel>
 </UserControl>

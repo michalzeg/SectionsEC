@@ -23,6 +23,9 @@
         <views:DrawingPage/>
     </DataTemplate>
 
+    <DataTemplate x:Key="interactionChart" DataType="{x:Type vm:InteractionCurvePageViewModel}">
+        <views:InteractionCurvePage/>
+    </DataTemplate>
     
     <!--Main window-->
     <DataTemplate x:Key="mainPanel" DataType="{x:Type vm:MainPanelViewModel}">
@@ -34,8 +37,11 @@
     <DataTemplate x:Key="centralPanel" DataType="{x:Type vm:CentralPanelViewModel}">
         <views:CentralPanel/>
     </DataTemplate>
-    <DataTemplate x:Key="rightPanel" DataType="{x:Type vm:RightPanelViewModel}">
-        <views:RightPanel/>
+    <DataTemplate DataType="{x:Type vm:SectionCapacityResultViewModel}">
+        <views:SectionCapacityResultPanel/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:InteractionCurvePageViewModel}">
+        <views:InteractionCurvePage/>
     </DataTemplate>
 
 </ResourceDictionary>

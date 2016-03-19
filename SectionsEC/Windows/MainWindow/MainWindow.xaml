@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SectionsEC.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Icon="/SectionsEC;component/Images/Buttons/ApplicationIcon.ico"
+        Title="MainWindow" Height="800" Width="800" Icon="/SectionsEC;component/Images/Buttons/ApplicationIcon.ico"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <DockPanel>
         <Ribbon DockPanel.Dock="Top">
@@ -52,15 +52,13 @@
             </RibbonTab>
             <RibbonTab Header="Results">
                 <RibbonGroup Header="Results">
-                    <RibbonButton Label="Run" 
+                    <RibbonButton Label="Section Capacity" 
                                   Command="{Binding Run}"
                                   LargeImageSource="/SectionsEC;component/Images/Ribbon/Run.png"/>
                     <RibbonButton Label="InteractionCurve" 
                                   Command="{Binding InteractionCurve}"
                                   LargeImageSource="/SectionsEC;component/Images/Ribbon/InteractionCurve.png"/>
-                    <RibbonButton Label="Report" 
-                                  Command="{Binding Report}"
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/Report.png"/>
+                    
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

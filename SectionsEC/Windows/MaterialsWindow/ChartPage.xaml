@@ -19,7 +19,7 @@
         <lvc:LineChart LegendLocation="Right" 
                        Series="{Binding Data}" 
                        Margin="{StaticResource MarginValue}"
-                       LineType="Polyline">
+                       >
             <lvc:LineChart.AxisY>
                 <lvc:Axis Title="Stress [MPa]" MinValue="0"/>
             </lvc:LineChart.AxisY>

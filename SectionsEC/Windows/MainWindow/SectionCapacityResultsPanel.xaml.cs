@@ -18,9 +18,9 @@ namespace SectionsEC.Views
     /// <summary>
     /// Interaction logic for RightPanel.xaml
     /// </summary>
-    public partial class RightPanel : UserControl
+    public partial class SectionCapacityResultPanel : UserControl
     {
-        public RightPanel()
+        public SectionCapacityResultPanel()
         {
             InitializeComponent();
         }

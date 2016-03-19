@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SectionsEC.Windows.MainWindow
+namespace SectionsEC.Views
 {
     /// <summary>
     /// Interaction logic for InteractionCurvePage.xaml
@@ -23,6 +23,7 @@ namespace SectionsEC.Windows.MainWindow
         public InteractionCurvePage()
         {
             InitializeComponent();
+            
         }
     }
 }

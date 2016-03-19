@@ -11,9 +11,9 @@ using SectionsEC.Windows.WindowClasses;
 
 namespace SectionsEC.ViewModel
 {
-    public class RightPanelViewModel :ViewModelBase
+    public class SectionCapacityResultViewModel :ViewModelBase
     {
-        public RightPanelViewModel()
+        public SectionCapacityResultViewModel()
         {
             Messenger.Default.Register<CalculationResults>(this,updateResult);
             Messenger.Default.Register<StringBuilder>(this, updateDetailedResult);
