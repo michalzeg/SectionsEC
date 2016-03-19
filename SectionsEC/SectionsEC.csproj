@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Windows\Validator\Validator.cs" />
     <Compile Include="Windows\WindowClasses\MessangerHelpers.cs" />
+    <Compile Include="Windows\WindowClasses\ProgressArgument.cs" />
     <Compile Include="Windows\WindowClasses\SectionCoordinates.cs" />
     <Compile Include="Windows\WindowClasses\DetailedResults.cs" />
     <Page Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml">

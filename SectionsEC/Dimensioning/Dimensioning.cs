@@ -8,6 +8,7 @@ using SectionsEC.StressCalculations;
 using SectionsEC.Windows.WindowClasses;
 using System.Text;
 using SectionsEC.Dimensioning;
+using SectionsEC.WindowClasses;
 
 
 
@@ -17,18 +18,25 @@ namespace SectionsEC.Dimensioning
 
     public static class CapacityCalculator
     {
-        public static IDictionary<LoadCase, CalculationResults> GetSectionCapacity(Concrete concrete, Steel steel, IList<PointD> sectionCoordinates, IList<Bar> bars, IList<LoadCase> loadCases)
+        public static IDictionary<LoadCase, CalculationResults> GetSectionCapacity(Concrete concrete, Steel steel, IList<PointD> sectionCoordinates, IList<Bar> bars, IList<LoadCase> loadCases, IProgress<ProgressArgument> progressIndicatior)
         {
             var capacity = new SectionCapacity(concrete, steel);
             var section = new Section(sectionCoordinates);
             var resultDictionary = new Dictionary<LoadCase, CalculationResults>();
-            foreach (var load in loadCases)
+            for (int i = 0; i <= loadCases.Count - 1; i++) 
             {
+                var load = loadCases[i];
                 var result = capacity.CalculateCapacity(load.NormalForce, section, bars);
                 resultDictionary.Add(load, result);
+
+                var progress = new ProgressArgument();
+                progress.Progress = (i + 1) * 100 / loadCases.Count;
+                progress.LoadCaseName = load.Name;
+                progressIndicatior.Report(progress);
+
             }
             return resultDictionary;
-            ///cccc
+            
         }
         public static IDictionary<LoadCase, StringBuilder> GetDetailedResults(Concrete concrete, Steel steel, IDictionary<LoadCase, CalculationResults> calcualtionResults)
         {
