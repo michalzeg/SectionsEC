@@ -28,6 +28,7 @@ namespace SectionsEC.Dimensioning
                 resultDictionary.Add(load, result);
             }
             return resultDictionary;
+            ///cccc
         }
         public static IDictionary<LoadCase, StringBuilder> GetDetailedResults(Concrete concrete, Steel steel, IDictionary<LoadCase, CalculationResults> calcualtionResults)
         {
