@@ -25,14 +25,15 @@ namespace SectionsEC.Dimensioning
             var resultDictionary = new Dictionary<LoadCase, CalculationResults>();
             for (int i = 0; i <= loadCases.Count - 1; i++) 
             {
-                var load = loadCases[i];
-                var result = capacity.CalculateCapacity(load.NormalForce, section, bars);
-                resultDictionary.Add(load, result);
+                var loadCase = loadCases[i];
 
-                var progress = new ProgressArgument();
-                progress.Progress = (i + 1) * 100 / loadCases.Count;
-                progress.LoadCaseName = load.Name;
-                progressIndicatior.Report(progress);
+                progressIndicatior.Report(ProgressArgument.CalculateProgress(i, loadCases.Count, loadCase.Name));
+
+                var result = capacity.CalculateCapacity(loadCase.NormalForce, section, bars);
+                resultDictionary.Add(loadCase, result);
+
+                
+                
 
             }
             return resultDictionary;
@@ -75,15 +76,19 @@ namespace SectionsEC.Dimensioning
             this.coordinates = coordinates;
         }
 
-        public IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> GetInteractionCurve()
+        public IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> GetInteractionCurve(IProgress<ProgressArgument> progress)
         {
 
             var sectionCapacity = new SectionCapacity(concrete, steel);
 
             var result = new Dictionary<LoadCase, IEnumerable<InteractionCurveResult>>();
 
-            foreach (var loadCase in this.loadCases)
+            for (int i = 0; i <= loadCases.Count - 1; i++) 
             {
+                var loadCase = loadCases[i];
+
+                progress.Report(ProgressArgument.CalculateProgress(i, loadCases.Count, loadCase.Name));
+
                 var interactionResult = new List<InteractionCurveResult>();
                 int angle = 0;
                 while (angle <= 360)
@@ -160,6 +165,8 @@ namespace SectionsEC.Dimensioning
 
         public static double TensionCapacity(IList<Bar> bars,Steel steel)
         {
+            if (bars.Count == 0)
+                return 0;
 
             double capacity = 0;
 
@@ -172,7 +179,8 @@ namespace SectionsEC.Dimensioning
 
         public static double CompressionCapacity(IList<PointD> sectionCoordinates,Concrete concrete)
         {
-
+            if (sectionCoordinates.Count == 0)
+                return 0;
             var section = new Section(sectionCoordinates); 
             double areaOfConcrete = SectionProperties.A(section.Coordinates);
 

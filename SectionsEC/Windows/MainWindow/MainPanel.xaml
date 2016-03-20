@@ -14,14 +14,20 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel>
-        <ContentControl DockPanel.Dock="Left"
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ContentControl Grid.Column="0"
             ContentTemplate="{StaticResource leftPanel}"
             Content="{Binding LeftPanelVM}"/>
-        <ContentControl DockPanel.Dock="Left"
+        <ContentControl Grid.Column="1"
                         ContentTemplate="{StaticResource centralPanel}"
                         Content="{Binding CentralPanelVM}"/>
-        <ContentControl Content="{Binding ResultViewModel}"/>
+        <ContentControl Grid.Column="2"
+            Content="{Binding ResultViewModel}"/>
         
-    </DockPanel>
+    </Grid>
 </UserControl>

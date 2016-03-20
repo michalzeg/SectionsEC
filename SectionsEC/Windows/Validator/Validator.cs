@@ -30,7 +30,11 @@ namespace SectionsEC.Windows.Validator
             {
                 var loadCasesValidation = validateLoadCases(concrete, steel, loadCases, bars, sectionCoordinates);
                 if (loadCasesValidation != string.Empty)
-                    result.AppendLine(loadCasesValidation.ToString());
+                    result.AppendLine(loadCasesValidation);
+
+                var loadCasesDuplication = checkDuplicatedLoadCases(loadCases);
+                if (loadCasesDuplication != string.Empty)
+                    result.AppendLine(loadCasesDuplication);
             }
             return result.ToString();
         }
@@ -41,12 +45,25 @@ namespace SectionsEC.Windows.Validator
 
             double tensionCapacity = AxialCapacity.TensionCapacity(bars, steel);
             double compressionCapacity = AxialCapacity.CompressionCapacity(sectionCoordinates, concrete);
+
             foreach (var load in loadCases)
             {
                 if (load.NormalForce > compressionCapacity)
                     result.AppendLine(string.Format("Normal force in load case {0} exceedes axial compression capacity", load.Name));
                 else if (load.NormalForce < tensionCapacity)
                     result.AppendLine(string.Format("Normal force in load case {0} exceedes axial tension capacity", load.Name));
+            }
+            return result.ToString();
+        }
+
+        private static string checkDuplicatedLoadCases(IList<LoadCase> loadCases)
+        {
+            var result = new StringBuilder();
+            var duplicatedLoadCases = loadCases.GroupBy(e => e.Name).Where(e => e.Count() > 1).Select(e => e.Key);
+            if (duplicatedLoadCases.Count() > 0)
+            {
+                foreach (var loadCase in duplicatedLoadCases)
+                    result.AppendLine(string.Format("{0} is duplicated", loadCase));
             }
             return result.ToString();
         }

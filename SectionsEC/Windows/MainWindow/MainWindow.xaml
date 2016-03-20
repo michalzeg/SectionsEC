@@ -11,16 +11,32 @@
     <xceed:BusyIndicator IsBusy="{Binding Busy}">
         <xceed:BusyIndicator.BusyContentTemplate>
             <DataTemplate>
-                <StackPanel >
-                    <TextBlock Text="Calculations are being performed..."/>
-                    <TextBlock>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Calculations are being performed..." FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center">
                         <Run Text="Current load case: "/>
-                        <Run Text="{Binding CurrentLoadCase,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" FontWeight="Bold"/>
+                        <Run Text="{Binding Path=DataContext.CurrentLoadCase,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" TextDecorations="Underline"/>
                     </TextBlock>
-                    <ProgressBar Value="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}"/>
-                </StackPanel>
+                    <Grid Grid.Row="2">
+                        <ProgressBar Value="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" Height="20"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}"/>
+                            <Run Text="%"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
             </DataTemplate>
         </xceed:BusyIndicator.BusyContentTemplate>
+        <xceed:BusyIndicator.ProgressBarStyle>
+            <Style TargetType="ProgressBar">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Style>
+        </xceed:BusyIndicator.ProgressBarStyle>
         <DockPanel>
             <Ribbon DockPanel.Dock="Top">
                 <Ribbon.ApplicationMenu>
