@@ -121,7 +121,7 @@ namespace SectionsEC.Dimensioning
         {
 
             List<Bar> newBars = new List<Bar>();
-            //loop through all bars
+
             foreach (var bar in this.bars)
             {
 
@@ -142,7 +142,6 @@ namespace SectionsEC.Dimensioning
 
             foreach (var point in this.coordinates)
             {
-                //dla kazdego punktu przekroju
 
                 double x = point.X * Math.Cos(angle * Math.PI / 180) - point.Y * Math.Sin(angle * Math.PI / 180);
                 double y = point.X * Math.Sin(angle * Math.PI / 180) + point.Y * Math.Cos(angle * Math.PI / 180);
@@ -154,7 +153,6 @@ namespace SectionsEC.Dimensioning
 
         private void calculatePrincipalMoments(double angle, double moment, out double mx, out double my)
         {
-            //procedura wylicza moment glowny bazujac na momentcie wypadkowym
             my = moment * Math.Cos((90 - angle) * Math.PI / 180);
             mx = moment * Math.Sin((90 - angle) * Math.PI / 180);
         }
@@ -196,9 +194,9 @@ namespace SectionsEC.Dimensioning
         private ICompressionZoneCalculations compressionZoneCalculations;
         private IStrainCalculations strainCalculations;
         private IList<Reinforcement> reinforcement;
-        private Concrete concrete; //wlasciwosci betonu
-        private Steel steel; //wslasciwosci stali
-        private Section section; //wlasciwosci przekroju
+        private Concrete concrete; 
+        private Steel steel; 
+        private Section section; 
         private double nEd;
 
         public SectionCapacity(Concrete concrete, Steel steel)
@@ -208,18 +206,6 @@ namespace SectionsEC.Dimensioning
         }
         private double calculateEffectiveDepthOfSectionAndBars()
         {
-
-            /*Reinforcement barsTemp;
-
-            double[] tab = new double[this.bars.Count];
-            for (int i = 0; i <= this.bars.Count - 1; i++)
-            {
-                barsTemp = this.bars[i];
-                barsTemp.D = this.section.MaxY - this.bars[i].Y;
-                this.bars[i] = barsTemp;
-                tab[i] = barsTemp.D;
-            }*/
-
             var tempD = new List<double>();
             foreach (var bar in this.reinforcement)
             {
@@ -229,9 +215,9 @@ namespace SectionsEC.Dimensioning
             }
             return tempD.Max();
         }
-        private double equlibriumEquation(double x) //równanie równowagi sily w zbrojeniu i w betonie, funkcja ktora bedzie rozwiazywana
+        private double equlibriumEquation(double x) 
         {
-            //Rownianie równowagi
+            //equilibrium equation
             // Fc(x) + Fs2(x) - Fs1(x) - Nsd = 0;
             //Fc(x) - resultant force in concrete
             // Fs2(x) - resultant force in compressed reinforcement
@@ -246,11 +232,11 @@ namespace SectionsEC.Dimensioning
             return result;
         }
 
-        private double forceInAs1(double x) //funkcja wyliczajaca wypadkowa w zbrojeniu rozciaganym
+        private double forceInAs1(double x) 
         {
-            double resultantForce = 0; //wartosc wypadkowej sily z zbrojeniu rozciaganym
+            double resultantForce = 0; 
 
-            double yNeutralAxis = this.section.MaxY - x; //wspolrzedna osi obojetnej
+            double yNeutralAxis = this.section.MaxY - x; 
 
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
@@ -269,11 +255,11 @@ namespace SectionsEC.Dimensioning
             }
             return resultantForce;
         }
-        private double forceInAs2(double x) //funkcja wyliczajaca wypadkową w zbrojeniu sciskanym
+        private double forceInAs2(double x) 
         {
-            double resultantForce = 0; //wartosc wypadkowej sily z zbrojeniu sciskanym
+            double resultantForce = 0; 
 
-            double yNeutralAxis = this.section.MaxY - x; //wspolrzedna osi obojetnej
+            double yNeutralAxis = this.section.MaxY - x; 
 
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
@@ -291,7 +277,7 @@ namespace SectionsEC.Dimensioning
             }
             return resultantForce;
         }
-        private double forceInConcrete(double x) //funkcja wylcizajaca wypadkowa w betonie
+        private double forceInConcrete(double x)
         {
             var result = this.compressionZoneCalculations.Calculate(x, this.section);
 
@@ -299,16 +285,16 @@ namespace SectionsEC.Dimensioning
 
 
         }
-        private double solveEqulibriumEquation() //rozwiazywanie rowniaina rownowagi metoda polowienia, zgodnie z wikipedia
+        private double solveEqulibriumEquation()
         {
-            double EPS = 0.00000000001; //dokladnosc poszukwiania wyniku
+            double EPS = 0.00000000001; 
 
-            double fL, fR, fM; //wartosc rownania rownowagi w 3 punktach przedzialu
+            double fL, fR, fM; 
 
 
-            double xL = 0.000001 * this.section.H; //granica lewa przedzialu
+            double xL = 0.000001 * this.section.H; 
 
-            double xR = 10 * this.section.H; //granica prawa przedzialu, strefa sciskana nie moze byc wieksza od h
+            double xR = 10 * this.section.H; 
             double xM = (xL + xR) / 2;
             double x0;
             int k = 0;
@@ -345,7 +331,7 @@ namespace SectionsEC.Dimensioning
         {
             this.section = section;
             this.strainCalculations = new StrainCalculations(this.concrete, this.steel, section);
-            //this.compressionZoneCalculations = new CompressionZoneCalculationsGreenFormula(this.concrete, this.strainCalculations);
+            
             if (this.concrete.N == 2d)
                 this.compressionZoneCalculations = new CompressionZoneCalculationsGreenFormula(this.concrete, this.strainCalculations);
             else
@@ -361,23 +347,22 @@ namespace SectionsEC.Dimensioning
             result.X = this.solveEqulibriumEquation();
             if (double.IsNaN(result.X))
             {
-                return result; //przerwanie kiedy brak wyniku
+                return result; 
             }
 
-            //wyznaczanie wypadkowej sily w betonie
 
             var forces = this.compressionZoneCalculations.Calculate(result.X, this.section);
 
-            result.MrdConcrete = forces.Moment; //moment wzgledem dolnej krawedzi
+            result.MrdConcrete = forces.Moment; 
             result.ForceConcrete = forces.NormalForce;
             result.Mrd = mrdReinforcement(result.X) + result.MrdConcrete - this.nEd * (this.section.H - this.section.Cz);
 
-            //wyznaczenie obwiedni strefy sciskanej do wykresu
+
 
             result.CompressionZone = CompressionZoneCoordinates.CoordinatesOfCompressionZone(this.section.Coordinates, this.section.MaxY - result.X);
 
             result.Bars = this.reinforcement;
-            //wyznaczenie maksymalnych odksztalcen w stali i betonie
+ 
 
             result.Ec = this.strainCalculations.StrainInConcrete(result.X, 0);
 
@@ -395,27 +380,23 @@ namespace SectionsEC.Dimensioning
             }
         }
 
-        private double mrdReinforcement(double x) //funkcja wyznacza moment (nośność) od zbrojenia
+        private double mrdReinforcement(double x) 
         {
-            //moment jest obliczany wzgledem dolnej krawedzi przekroju (ymin)
+
             double Mrd = 0;
             double yOsi = this.section.MaxY - x;
             double Mz = 0;
             Reinforcement barsTemp;
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
-                //jeżeli zbrojenie znajduje się ponad osią obojętną to zbrojenie jest ściskane(+)
-                //jeżeli pod osia obojętną to zbrojenie jest rozciąganie (-)
                 barsTemp = this.reinforcement[i];
                 if (this.reinforcement[i].Bar.Y > yOsi)
                 {
-                    //zbrojenie sciskane
                     Mz = reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd + Mz;
                 }
                 else
                 {
-                    //zbrojenie rozciagane(-)
                     Mz = reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd - Mz;
                 }
