@@ -88,74 +88,74 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\CircularSectionWindow\CircularSectionViewModel.cs" />
-    <Compile Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml.cs">
+    <Compile Include="View\CircularSectionWindow\CircularSectionViewModel.cs" />
+    <Compile Include="View\CircularSectionWindow\CircularSectionWindow.xaml.cs">
       <DependentUpon>CircularSectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainWindow\InteractionCurvePage.xaml.cs">
+    <Compile Include="View\MainWindow\InteractionCurvePage.xaml.cs">
       <DependentUpon>InteractionCurvePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MaterialsWindow\ConcreteViewModel.cs" />
-    <Compile Include="Windows\MainWindow\InteractionCurvePageViewModel.cs" />
-    <Compile Include="Windows\MaterialsWindow\SteelViewModel.cs" />
-    <Compile Include="Windows\RectangularSectionWindow\RectangularSectionWindow.xaml.cs">
+    <Compile Include="View\MaterialsWindow\ConcreteViewModel.cs" />
+    <Compile Include="View\MainWindow\InteractionCurvePageViewModel.cs" />
+    <Compile Include="View\MaterialsWindow\SteelViewModel.cs" />
+    <Compile Include="View\RectangularSectionWindow\RectangularSectionWindow.xaml.cs">
       <DependentUpon>RectangularSectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\RectangularSectionWindow\RectangularSectionWindowViewModel.cs" />
-    <Compile Include="Windows\TSectionWindow\TSectionWindowViewModel.cs" />
-    <Compile Include="Windows\TSectionWindow\TSectionWindow.xaml.cs">
+    <Compile Include="View\RectangularSectionWindow\RectangularSectionWindowViewModel.cs" />
+    <Compile Include="View\TSectionWindow\TSectionWindowViewModel.cs" />
+    <Compile Include="View\TSectionWindow\TSectionWindow.xaml.cs">
       <DependentUpon>TSectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Validator\Validator.cs" />
-    <Compile Include="Windows\WindowClasses\MessangerHelpers.cs" />
-    <Compile Include="Windows\WindowClasses\ProgressArgument.cs" />
-    <Compile Include="Windows\WindowClasses\SectionCoordinates.cs" />
-    <Compile Include="Windows\WindowClasses\DetailedResults.cs" />
-    <Page Include="Windows\CircularSectionWindow\CircularSectionWindow.xaml">
+    <Compile Include="View\Validator\Validator.cs" />
+    <Compile Include="View\ViewClasses\MessangerHelpers.cs" />
+    <Compile Include="View\ViewClasses\ProgressArgument.cs" />
+    <Compile Include="View\ViewClasses\SectionCoordinates.cs" />
+    <Compile Include="View\ViewClasses\DetailedResults.cs" />
+    <Page Include="View\CircularSectionWindow\CircularSectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DrawingPage\DrawingPage.xaml">
+    <Page Include="View\DrawingPage\DrawingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CustomSectionWindow\CustomSectionWindow.xaml">
+    <Page Include="View\CustomSectionWindow\CustomSectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainWindow\InteractionCurvePage.xaml">
+    <Page Include="View\MainWindow\InteractionCurvePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainWindow\SectionCapacityResultsPanel.xaml">
+    <Page Include="View\MainWindow\SectionCapacityResultsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\RectangularSectionWindow\RectangularSectionWindow.xaml">
+    <Page Include="View\RectangularSectionWindow\RectangularSectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Style\CustomStyles.xaml">
+    <Page Include="View\Style\CustomStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LoadCasesWindow\LoadCasesWindow.xaml">
+    <Page Include="View\LoadCasesWindow\LoadCasesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainWindow\CentralPanel.xaml">
+    <Page Include="View\MainWindow\CentralPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainWindow\LeftPanel.xaml">
+    <Page Include="View\MainWindow\LeftPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainWindow\MainPanel.xaml">
+    <Page Include="View\MainWindow\MainPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainWindow\MainWindow.xaml">
+    <Page Include="View\MainWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -171,84 +171,84 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Helpers\BaseClasses.cs" />
     <Compile Include="Helpers\Materials.cs" />
-    <Compile Include="Windows\WindowClasses\Drawing.cs" />
-    <Compile Include="Windows\DrawingPage\DrawingPage.xaml.cs">
+    <Compile Include="View\ViewClasses\Drawing.cs" />
+    <Compile Include="View\DrawingPage\DrawingPage.xaml.cs">
       <DependentUpon>DrawingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\DrawingPage\DrawingPageViewModel.cs" />
-    <Compile Include="Windows\Converters\MultiplyValueConverter.cs" />
-    <Compile Include="Windows\CustomSectionWindow\CustomSectionWindow.xaml.cs">
+    <Compile Include="View\DrawingPage\DrawingPageViewModel.cs" />
+    <Compile Include="View\Converters\MultiplyValueConverter.cs" />
+    <Compile Include="View\CustomSectionWindow\CustomSectionWindow.xaml.cs">
       <DependentUpon>CustomSectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CustomSectionWindow\CustomSectionWindowViewModel.cs" />
-    <Compile Include="Windows\LoadCasesWindow\LoadCasesWindow.xaml.cs">
+    <Compile Include="View\CustomSectionWindow\CustomSectionWindowViewModel.cs" />
+    <Compile Include="View\LoadCasesWindow\LoadCasesWindow.xaml.cs">
       <DependentUpon>LoadCasesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LoadCasesWindow\LoadCaseWindowViewModel.cs" />
-    <Compile Include="Windows\MainWindow\CentralPanel.xaml.cs">
+    <Compile Include="View\LoadCasesWindow\LoadCaseWindowViewModel.cs" />
+    <Compile Include="View\MainWindow\CentralPanel.xaml.cs">
       <DependentUpon>CentralPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainWindow\CentralPanelViewModel.cs" />
-    <Compile Include="Windows\WindowClasses\CommandService.cs" />
-    <Compile Include="Windows\MainWindow\LeftPanel.xaml.cs">
+    <Compile Include="View\MainWindow\CentralPanelViewModel.cs" />
+    <Compile Include="View\ViewClasses\CommandService.cs" />
+    <Compile Include="View\MainWindow\LeftPanel.xaml.cs">
       <DependentUpon>LeftPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainWindow\LeftPanelViewModel.cs" />
-    <Compile Include="Windows\MainWindow\MainPanel.xaml.cs">
+    <Compile Include="View\MainWindow\LeftPanelViewModel.cs" />
+    <Compile Include="View\MainWindow\MainPanel.xaml.cs">
       <DependentUpon>MainPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainWindow\MainPanelViewModel.cs" />
-    <Compile Include="Windows\MainWindow\MainWindowViewModel.cs" />
-    <Compile Include="Windows\MainWindow\SectionCapacityResultsPanel.xaml.cs">
+    <Compile Include="View\MainWindow\MainPanelViewModel.cs" />
+    <Compile Include="View\MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="View\MainWindow\SectionCapacityResultsPanel.xaml.cs">
       <DependentUpon>SectionCapacityResultsPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainWindow\SectionCapacityResultsViewModel.cs" />
-    <Compile Include="Windows\MaterialsWindow\ChartPage.xaml.cs">
+    <Compile Include="View\MainWindow\SectionCapacityResultsViewModel.cs" />
+    <Compile Include="View\MaterialsWindow\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MaterialsWindow\ChartPageViewModel.cs" />
-    <Compile Include="Windows\MaterialsWindow\ConcretePage.xaml.cs">
+    <Compile Include="View\MaterialsWindow\ChartPageViewModel.cs" />
+    <Compile Include="View\MaterialsWindow\ConcretePage.xaml.cs">
       <DependentUpon>ConcretePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MaterialsWindow\ConcretePageViewModel.cs" />
-    <Compile Include="Windows\MaterialsWindow\MaterialWindow.xaml.cs">
+    <Compile Include="View\MaterialsWindow\ConcretePageViewModel.cs" />
+    <Compile Include="View\MaterialsWindow\MaterialWindow.xaml.cs">
       <DependentUpon>MaterialWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MaterialsWindow\MaterialWindowViewModel.cs" />
-    <Compile Include="Windows\MaterialsWindow\SteelPage.xaml.cs">
+    <Compile Include="View\MaterialsWindow\MaterialWindowViewModel.cs" />
+    <Compile Include="View\MaterialsWindow\SteelPage.xaml.cs">
       <DependentUpon>SteelPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MaterialsWindow\SteelPageViewModel.cs" />
-    <Compile Include="Windows\ViewModelLocator.cs" />
-    <Compile Include="Windows\MainWindow\MainWindow.xaml.cs">
+    <Compile Include="View\MaterialsWindow\SteelPageViewModel.cs" />
+    <Compile Include="View\ViewModelLocator.cs" />
+    <Compile Include="View\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\MaterialsWindow\ChartPage.xaml">
+    <Page Include="View\MaterialsWindow\ChartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MaterialsWindow\ConcretePage.xaml">
+    <Page Include="View\MaterialsWindow\ConcretePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MaterialsWindow\MaterialWindow.xaml">
+    <Page Include="View\MaterialsWindow\MaterialWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Style\Styles.xaml">
+    <Page Include="View\Style\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\TSectionWindow\TSectionWindow.xaml">
+    <Page Include="View\TSectionWindow\TSectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\WindowsSettings.xaml">
+    <Page Include="View\WindowsSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\MaterialsWindow\SteelPage.xaml">
+    <Page Include="View\MaterialsWindow\SteelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

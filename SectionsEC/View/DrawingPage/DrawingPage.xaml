@@ -9,8 +9,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Windows/Style/Styles.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Windows/Style/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/View/Style/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/View/Style/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources> 

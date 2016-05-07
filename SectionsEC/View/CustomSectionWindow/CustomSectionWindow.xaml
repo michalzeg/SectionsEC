@@ -9,8 +9,8 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SectionsEC;component/Windows/Style/Styles.xaml"/>
-                <ResourceDictionary Source="/SectionsEC;component/Windows/Style/CustomStyles.xaml"/>
+                <ResourceDictionary Source="/SectionsEC;component/View/Style/Styles.xaml"/>
+                <ResourceDictionary Source="/SectionsEC;component/View/Style/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
