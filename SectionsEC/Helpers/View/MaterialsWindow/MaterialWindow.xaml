@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SectionsEC.Views"
         mc:Ignorable="d"
-        Title="Materials" Height="600" Width="600" Closed="Window_Closed" Icon="/SectionsEC;component/Images/Ribbon/Materials.PNG">
+        Title="Materials" Height="500" Width="600" Closed="Window_Closed" Icon="/SectionsEC;component/Images/Ribbon/Materials.PNG">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
