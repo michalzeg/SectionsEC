@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SectionsEC.Extensions;
-using SectionsEC.Windows.WindowClasses;
+using SectionsEC.Dimensioning;
 
 namespace SectionsEC.ViewModel
 {
@@ -16,7 +16,7 @@ namespace SectionsEC.ViewModel
         public SectionCapacityResultViewModel()
         {
             Messenger.Default.Register<CalculationResults>(this,updateResult);
-            Messenger.Default.Register<StringBuilder>(this, updateDetailedResult);
+            Messenger.Default.Register<DetailedResult>(this, updateDetailedResult);
         }
 
         public string Capacity { get; private set; }
@@ -28,9 +28,9 @@ namespace SectionsEC.ViewModel
             Capacity = result.Mrd.ToFormatedString();
             RaisePropertyChanged(() => Capacity);
         }
-        private void updateDetailedResult(StringBuilder text)
+        private void updateDetailedResult(DetailedResult detailedResult)
         {
-            this.DetailedResults = text.ToString();
+            this.DetailedResults = detailedResult.Text.ToString();
             RaisePropertyChanged(() => DetailedResults);
         }
         

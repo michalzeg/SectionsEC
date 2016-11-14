@@ -154,34 +154,34 @@ namespace SectionsEC.Helpers
     }
     public class CalculationResults
     {
-        public double Mrd { get; set; } //section capacity
-        public double X { get; set; }   //depth of compression zone
+        public IEnumerable<Reinforcement> Bars { get; set; } //reinforcement
+        public IList<PointD> CompressionZone { get; set; } //coordinates of compression zone
+        public double Cz { get; set; }//position of centre of gravity
+        public double D { get; set; } //efective depth of section
         public double Ec { get; set; }  //max strain in concrete
         public double Es { get; set; }  //max strain in steel
-        public IList<PointD> CompressionZone { get; set; } //coordinates of compression zone
-        public double D { get; set; } //efective depth of section
-        public double MrdConcrete { get; set; } //moment due to compression zone
         public double ForceConcrete { get; set; } //force in compression zone
-        public IEnumerable<Reinforcement> Bars { get; set; } //reinforcement
         public double H { get; set; }//height of section
-        public double Cz { get; set; }//position of centre of gravity
         public LoadCase LoadCase { get; set; } //load case
+        public double Mrd { get; set; } //section capacity
+        public double MrdConcrete { get; set; } //moment due to compression zone
+        public double X { get; set; }   //depth of compression zone
     }
     public class Reinforcement
     {
-        public double E { get; set; } 
+        public double E { get; set; }
         public Bar Bar { get; set; }
-        public double D { get; set; } 
-        public double My { get; set; } 
+        public double D { get; set; }
+        public double My { get; set; }
         public bool IsCompressed { get; set; }
     }
     public class Section : IIntegrable
     {
-        public IList<PointD> Coordinates { get; private set; } 
-        public double D { get; set; }      
-        public double MaxY { get; private set; } 
-        public double MinY { get; private set; } 
-        public double H { get; private set; } 
+        public IList<PointD> Coordinates { get; private set; }
+        public double D { get; set; }
+        public double MaxY { get; private set; }
+        public double MinY { get; private set; }
+        public double H { get; private set; }
         public double B { get; private set; }
         public double Cz { get; private set; }
         public double IntegrationPointY { get; set; }
@@ -192,9 +192,9 @@ namespace SectionsEC.Helpers
             Cz = SectionProperties.Cz(Coordinates, MaxY);
             IntegrationPointY = MinY;
         }
-        private IList<PointD> checkIfCoordinatesAreClockwise(IList<PointD> coordinates) 
+        private IList<PointD> checkIfCoordinatesAreClockwise(IList<PointD> coordinates)
         {
-            double iw; 
+            double iw;
             var result = coordinates;
             for (int i = 0; i <= coordinates.Count - 3; i++)
             {
@@ -216,22 +216,22 @@ namespace SectionsEC.Helpers
         }
         private double crossProduct(PointD p0, PointD p1, PointD p2)
         {
-            var vector1 = new double[2]; 
+            var vector1 = new double[2];
             var vector2 = new double[2];
             vector1[0] = p1.X - p0.X;
             vector1[1] = p1.Y - p0.Y;
             vector2[0] = p2.X - p1.X;
             vector2[1] = p2.Y - p1.Y;
-            double wynik; 
+            double wynik;
             wynik = vector1[0] * vector2[1] - vector1[1] * vector2[0];
             return wynik;
         }
-        private void calculateExtrementsAndDepth() 
+        private void calculateExtrementsAndDepth()
         {
-            
+
             MinY = this.Coordinates.Min(p => p.Y);
             MaxY = this.Coordinates.Max(p => p.Y);
-            H = MaxY - MinY; 
+            H = MaxY - MinY;
         }
     }
     public class InteractionCurveResult
@@ -239,4 +239,7 @@ namespace SectionsEC.Helpers
         public double Mx { get; set; }
         public double My { get; set; }
     }
+    
+
+
 }
