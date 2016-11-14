@@ -98,6 +98,18 @@ namespace SectionsEC.Helpers
             if (Object.ReferenceEquals(this, other)) return true;
             return X.IsApproximatelyEqualTo(other.X) && Y.IsApproximatelyEqualTo(other.Y) && As.IsApproximatelyEqualTo(other.As);
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            var bar = obj as Bar;
+            if (bar == null)
+                return false;
+            else
+                return this.Equals(bar);
+
+        }
         public override int GetHashCode()
         {
             int hashX = X.GetHashCode();
@@ -108,19 +120,31 @@ namespace SectionsEC.Helpers
     }
     public class LoadCase : IEquatable<LoadCase>
     {
+        private static int ID;
+
         public string Name { get; set; }
         public double NormalForce { get; set; }
+        public int Id { get; private set; }
         public LoadCase()
         {
-            Name = string.Empty;
-            NormalForce = 0d;
+            ID++;
+            this.Id = ID;
+            this.Name = string.Empty;
+            this.NormalForce = 0d;
         }
         public bool Equals(LoadCase other)
         {
-            if (Object.ReferenceEquals(other, null)) return false;
-            if (Object.ReferenceEquals(this, other)) return true;
-            return ((Name == other.Name) && NormalForce.IsApproximatelyEqualTo(other.NormalForce));
+            if (other == null)
+                return false;
+
+            if (this.Name == other.Name
+                && this.NormalForce.IsApproximatelyEqualTo(other.NormalForce)
+                && this.Id == other.Id)
+                return true;
+            else
+                return false;
         }
+
         public override int GetHashCode()
         {
             int hashName = Name.GetHashCode();
@@ -130,17 +154,18 @@ namespace SectionsEC.Helpers
     }
     public class CalculationResults
     {
-        public double Mrd { get; set; } 
-        public double X { get; set; } 
-        public double Ec { get; set; } 
-        public double Es { get; set; } 
-        public IList<PointD> CompressionZone { get; set; }
-        public double D { get; set; } 
-        public double MrdConcrete { get; set; }
-        public double ForceConcrete { get; set; }
-        public IEnumerable<Reinforcement> Bars { get; set; } 
-        public double H { get; set; }
-        public double Cz { get; set; }
+        public double Mrd { get; set; } //section capacity
+        public double X { get; set; }   //depth of compression zone
+        public double Ec { get; set; }  //max strain in concrete
+        public double Es { get; set; }  //max strain in steel
+        public IList<PointD> CompressionZone { get; set; } //coordinates of compression zone
+        public double D { get; set; } //efective depth of section
+        public double MrdConcrete { get; set; } //moment due to compression zone
+        public double ForceConcrete { get; set; } //force in compression zone
+        public IEnumerable<Reinforcement> Bars { get; set; } //reinforcement
+        public double H { get; set; }//height of section
+        public double Cz { get; set; }//position of centre of gravity
+        public LoadCase LoadCase { get; set; } //load case
     }
     public class Reinforcement
     {
@@ -170,7 +195,7 @@ namespace SectionsEC.Helpers
         private IList<PointD> checkIfCoordinatesAreClockwise(IList<PointD> coordinates) 
         {
             double iw; 
-            IList<PointD> result = coordinates;
+            var result = coordinates;
             for (int i = 0; i <= coordinates.Count - 3; i++)
             {
                 iw = crossProduct(coordinates[i], coordinates[i + 1], coordinates[i + 2]);
@@ -191,8 +216,8 @@ namespace SectionsEC.Helpers
         }
         private double crossProduct(PointD p0, PointD p1, PointD p2)
         {
-            double[] vector1 = new double[2]; 
-            double[] vector2 = new double[2];
+            var vector1 = new double[2]; 
+            var vector2 = new double[2];
             vector1[0] = p1.X - p0.X;
             vector1[1] = p1.Y - p0.Y;
             vector2[0] = p2.X - p1.X;
@@ -203,13 +228,7 @@ namespace SectionsEC.Helpers
         }
         private void calculateExtrementsAndDepth() 
         {
-            /*double[] taby = new double[Coordinates.Count];
-            double[] tabx = new double[Coordinates.Count];
-            for (int i = 0; i < Coordinates.Count; i++)
-            {
-                taby[i] = Coordinates[i].Y;
-                tabx[i] = Coordinates[i].X;
-            }*/
+            
             MinY = this.Coordinates.Min(p => p.Y);
             MaxY = this.Coordinates.Max(p => p.Y);
             H = MaxY - MinY; 

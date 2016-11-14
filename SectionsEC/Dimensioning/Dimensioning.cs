@@ -174,16 +174,16 @@ namespace SectionsEC.Dimensioning
         }
         private double equlibriumEquation(double x) 
         {
-            double forceInConcrete = this.forceInConcrete(x);
-            double forceInAs1 = this.forceInAs1(x);
-            double forceInAs2 = this.forceInAs2(x);
-            double result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
+            var forceInConcrete = this.forceInConcrete(x);
+            var forceInAs1 = this.forceInAs1(x);
+            var forceInAs2 = this.forceInAs2(x);
+            var result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
             return result;
         }
         private double forceInAs1(double x) 
         {
-            double resultantForce = 0; 
-            double yNeutralAxis = this.section.MaxY - x; 
+            var resultantForce = 0d; 
+            var yNeutralAxis = this.section.MaxY - x; 
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y < yNeutralAxis)
@@ -201,8 +201,8 @@ namespace SectionsEC.Dimensioning
         }
         private double forceInAs2(double x) 
         {
-            double resultantForce = 0; 
-            double yNeutralAxis = this.section.MaxY - x; 
+            var resultantForce = 0d; 
+            var yNeutralAxis = this.section.MaxY - x; 
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y > yNeutralAxis)
@@ -262,14 +262,16 @@ namespace SectionsEC.Dimensioning
         {
             this.section = section;
             this.strainCalculations = new StrainCalculations(this.concrete, this.steel, section);
+
             if (this.concrete.N == 2d)
                 this.compressionZoneCalculations = new CompressionZoneCalculationsGreenFormula(this.concrete, this.strainCalculations);
             else
                 this.compressionZoneCalculations = new CompressionZoneCalculationsNumericalFormula(this.concrete, this.strainCalculations);
+
             createReinforcement(bars);
             this.section.D = this.calculateEffectiveDepthOfSectionAndBars();
             this.nEd = nEd;
-            CalculationResults result = new CalculationResults();
+            var result = new CalculationResults();
             result.D = this.section.D;
             result.X = this.solveEqulibriumEquation();
             if (double.IsNaN(result.X))
