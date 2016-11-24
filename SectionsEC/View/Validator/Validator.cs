@@ -15,15 +15,15 @@ namespace SectionsEC.Windows.Validator
         {
             StringBuilder result = new StringBuilder();
 
-            if (concrete.isNull())
+            if (concrete.IsNull())
                 result.AppendLine("Concrete has not been defined");
-            if (steel.isNull())
+            if (steel.IsNull())
                 result.AppendLine("Steel has not been defined");
-            if (loadCases.isNull())
+            if (loadCases.IsNull())
                 result.AppendLine("Loads have not been defined");
-            if (bars.isNull())
+            if (bars.IsNull())
                 result.AppendLine("Bars have not been defined");
-            if (sectionCoordinates.isNull())
+            if (sectionCoordinates.IsNull())
                 result.AppendLine("Section has not been defined");
 
             if (result.ToString() == string.Empty)
