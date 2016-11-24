@@ -28,13 +28,13 @@ namespace SectionsEC.ViewModel
             ConcreteVM = new ConcreteViewModel();
             SteelVM = new SteelViewModel();
 
-            this.sectionCapacityResults = new Dictionary<LoadCase, CalculationResults>();
-            this.detailedSectionCapacityResults = new Dictionary<LoadCase, StringBuilder>();
+            this.sectionCapacityResults = new List<CalculationResults>();
+            this.detailedSectionCapacityResults = new List<DetailedResult>();
             this.LoadCaseList = new ObservableCollection<LoadCase>();
 
             Messenger.Default.Register<IList<LoadCase>>(this, updateLoadCaseList);
-            Messenger.Default.Register<IDictionary<LoadCase, CalculationResults>>(this, updateResults);
-            Messenger.Default.Register<IDictionary<LoadCase, StringBuilder>>(this, updateDetailedResults);
+            Messenger.Default.Register<IEnumerable<CalculationResults>>(this, updateResults);
+            Messenger.Default.Register<IEnumerable<DetailedResult>>(this, updateDetailedResults);
             Messenger.Default.Register<Concrete>(this, updateConcrete);
             Messenger.Default.Register<Steel>(this, updateSteel);
             Messenger.Default.Register<ResultViewModelMessage>(this, updateResultsSender);
@@ -53,12 +53,12 @@ namespace SectionsEC.ViewModel
             RaisePropertyChanged(() => LoadCaseList);
 
         }
-        private void updateResults(IDictionary<LoadCase,CalculationResults> results)
+        private void updateResults(IEnumerable<CalculationResults> results)
         {
             this.sectionCapacityResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
-        private void updateDetailedResults(IDictionary<LoadCase, StringBuilder> results)
+        private void updateDetailedResults(IEnumerable<DetailedResult> results)
         {
             this.detailedSectionCapacityResults = results;
             this.sendResults(this.SelectedLoadCase);
@@ -108,8 +108,8 @@ namespace SectionsEC.ViewModel
 
         }
 
-        private IDictionary<LoadCase, StringBuilder> detailedSectionCapacityResults;
-        private IDictionary<LoadCase, CalculationResults> sectionCapacityResults;
+        private IEnumerable<DetailedResult> detailedSectionCapacityResults;
+        private IEnumerable<CalculationResults> sectionCapacityResults;
         private IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> interactionResults;
 
         public ObservableCollection<LoadCase> LoadCaseList { get; set; }
@@ -146,14 +146,14 @@ namespace SectionsEC.ViewModel
         }
         private void sendSectionCapacityResults(LoadCase value)
         {
-            CalculationResults currentResult;
-            if (sectionCapacityResults.TryGetValue(value, out currentResult))
+            CalculationResults currentResult = this.sectionCapacityResults.FirstOrDefault(e => e.LoadCase == value);
+            if (currentResult != null)
             {
                 Messenger.Default.Send(currentResult);
                 Messenger.Default.Send(currentResult.CompressionZone, MessangerTokens.CompressionZoneDrawing);
             }
-            StringBuilder detailedResult;
-            if (detailedSectionCapacityResults.TryGetValue(value, out detailedResult))
+            var detailedResult = this.detailedSectionCapacityResults.FirstOrDefault(e => e.LoadCase == value);
+            if (detailedResult != null)
                 Messenger.Default.Send(detailedResult);
 
         }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using CommonMethods;
 using SectionsEC.Helpers;
 using SectionsEC.StressCalculations;
-using SectionsEC.Windows.WindowClasses;
 using System.Text;
 using SectionsEC.Dimensioning;
 using SectionsEC.WindowClasses;
@@ -12,29 +11,30 @@ namespace SectionsEC.Dimensioning
 {
     public static class CapacityCalculator
     {
-        public static IDictionary<LoadCase, CalculationResults> GetSectionCapacity(Concrete concrete, Steel steel, IList<PointD> sectionCoordinates, IList<Bar> bars, IList<LoadCase> loadCases, IProgress<ProgressArgument> progressIndicatior)
+        public static IEnumerable<CalculationResults> GetSectionCapacity(Concrete concrete, Steel steel, IList<PointD> sectionCoordinates, IList<Bar> bars, IList<LoadCase> loadCases, IProgress<ProgressArgument> progressIndicatior)
         {
             var capacity = new SectionCapacity(concrete, steel);
             var section = new Section(sectionCoordinates);
-            var resultDictionary = new Dictionary<LoadCase, CalculationResults>();
+            var results = new List<CalculationResults>();
             for (int i = 0; i <= loadCases.Count - 1; i++) 
             {
                 var loadCase = loadCases[i];
                 progressIndicatior.Report(ProgressArgument.CalculateProgress(i, loadCases.Count, loadCase.Name));
                 var result = capacity.CalculateCapacity(loadCase.NormalForce, section, bars);
-                resultDictionary.Add(loadCase, result);
+                result.LoadCase = loadCase;
+                results.Add(result);
             }
-            return resultDictionary;
+            return results;
         }
-        public static IDictionary<LoadCase, StringBuilder> GetDetailedResults(Concrete concrete, Steel steel, IDictionary<LoadCase, CalculationResults> calcualtionResults)
+        public static IEnumerable<DetailedResult> GetDetailedResults(Concrete concrete, Steel steel, IEnumerable<CalculationResults> calcualtionResults)
         {
-            var result = new Dictionary<LoadCase, StringBuilder>();
-            foreach (var item in calcualtionResults)
+            var resultList = new List<DetailedResult>();
+            foreach (var calculationResult in calcualtionResults)
             {
-                var detailedResult = DetailedResults.PrepareDetailedResults(item.Value, item.Key.NormalForce, steel, concrete);
-                result.Add(item.Key, detailedResult);
+                var result = DetailedResult.PrepareDetailedResults(calculationResult, steel, concrete);
+                resultList.Add(result);
             }
-            return result;
+            return resultList;
         }
     }
     public class InteractionCurveCalculator
@@ -174,16 +174,16 @@ namespace SectionsEC.Dimensioning
         }
         private double equlibriumEquation(double x) 
         {
-            double forceInConcrete = this.forceInConcrete(x);
-            double forceInAs1 = this.forceInAs1(x);
-            double forceInAs2 = this.forceInAs2(x);
-            double result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
+            var forceInConcrete = this.forceInConcrete(x);
+            var forceInAs1 = this.forceInAs1(x);
+            var forceInAs2 = this.forceInAs2(x);
+            var result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
             return result;
         }
         private double forceInAs1(double x) 
         {
-            double resultantForce = 0; 
-            double yNeutralAxis = this.section.MaxY - x; 
+            var resultantForce = 0d; 
+            var yNeutralAxis = this.section.MaxY - x; 
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y < yNeutralAxis)
@@ -201,8 +201,8 @@ namespace SectionsEC.Dimensioning
         }
         private double forceInAs2(double x) 
         {
-            double resultantForce = 0; 
-            double yNeutralAxis = this.section.MaxY - x; 
+            var resultantForce = 0d; 
+            var yNeutralAxis = this.section.MaxY - x; 
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y > yNeutralAxis)
@@ -262,14 +262,16 @@ namespace SectionsEC.Dimensioning
         {
             this.section = section;
             this.strainCalculations = new StrainCalculations(this.concrete, this.steel, section);
+
             if (this.concrete.N == 2d)
                 this.compressionZoneCalculations = new CompressionZoneCalculationsGreenFormula(this.concrete, this.strainCalculations);
             else
                 this.compressionZoneCalculations = new CompressionZoneCalculationsNumericalFormula(this.concrete, this.strainCalculations);
+
             createReinforcement(bars);
             this.section.D = this.calculateEffectiveDepthOfSectionAndBars();
             this.nEd = nEd;
-            CalculationResults result = new CalculationResults();
+            var result = new CalculationResults();
             result.D = this.section.D;
             result.X = this.solveEqulibriumEquation();
             if (double.IsNaN(result.X))

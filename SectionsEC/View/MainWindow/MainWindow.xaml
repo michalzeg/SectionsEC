@@ -6,7 +6,7 @@
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:SectionsEC.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800" Icon="/SectionsEC;component/Images/Buttons/ApplicationIcon.ico"
+        Title="MainWindow" Height="600" Width="600" Icon="/SectionsEC;component/Images/Buttons/ApplicationIcon.ico"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <xceed:BusyIndicator IsBusy="{Binding Busy}">
         <xceed:BusyIndicator.BusyContentTemplate>

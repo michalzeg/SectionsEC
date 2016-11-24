@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using SectionsEC.Commands;
 using GalaSoft.MvvmLight.Ioc;
 using SectionsEC.Dimensioning;
-using SectionsEC.Windows.WindowClasses;
 using System.Text;
 using Xceed.Wpf.Toolkit;
 using SectionsEC.WindowClasses;

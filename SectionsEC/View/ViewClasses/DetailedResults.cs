@@ -7,29 +7,33 @@ using SectionsEC.Helpers;
 using SectionsEC.StressCalculations;
 using SectionsEC.Extensions;
 
-namespace SectionsEC.Windows.WindowClasses
+namespace SectionsEC.Dimensioning
 {
     
-    public class DetailedResults
+    public class DetailedResult
     {
-        public static StringBuilder PrepareDetailedResults(CalculationResults result, double Ned, Steel steel, Concrete concrete)
+        public LoadCase LoadCase { get; set; }
+        public StringBuilder Text { get; set; }
+
+        public static DetailedResult PrepareDetailedResults(CalculationResults calculationResult, Steel steel, Concrete concrete)
         {
             //symbole lacinskie
- 
+
+            double Ned = calculationResult.LoadCase.NormalForce;
             string epsilonSymbol = "\u03B5";
             string sigmaSymbol = "\u03C3";
             //string nl = Environment.NewLine;
             string sumSymbol = "\u03A3";
 
 
-            double centreDistanceFromBottom = result.H - result.Cz;
+            double centreDistanceFromBottom = calculationResult.H - calculationResult.Cz;
             //List<string> text = new List<string>();
             StringBuilder text = new StringBuilder();
 
-            //nowa text to nowa linijka
+
             text.AppendLine("Section:");
             //text.AppendLine(nl);
-            text.AppendLine(string.Format("{0,-30}{1,-10}", "Section depth ", "H=" + result.H.ToFormatedString() + "m"));
+            text.AppendLine(string.Format("{0,-30}{1,-10}", "Section depth ", "H=" + calculationResult.H.ToFormatedString() + "m"));
             //text.AppendLine(nl);
             text.AppendLine("Centre of gravity from");
             //text.AppendLine(nl);
@@ -63,19 +67,19 @@ namespace SectionsEC.Windows.WindowClasses
             //text.AppendLine(nl);
             text.AppendLine("Results:");
             //text.AppendLine(nl);
-            text.AppendLine(string.Format("{0,-30}{1,-10}", "Section capacity", "Mrd=" + result.Mrd.ToFormatedString() + "kNm"));
+            text.AppendLine(string.Format("{0,-30}{1,-10}", "Section capacity", "Mrd=" + calculationResult.Mrd.ToFormatedString() + "kNm"));
             //text.AppendLine(nl);
-            text.AppendLine(string.Format("{0,-30}{1,-10}", "Depth of compression zone", "x=" + (result.X * 100).ToFormatedString() + "cm"));
+            text.AppendLine(string.Format("{0,-30}{1,-10}", "Depth of compression zone", "x=" + (calculationResult.X * 100).ToFormatedString() + "cm"));
             //text.AppendLine(nl);
             text.AppendLine("Resultant of compression ");
             //text.AppendLine(nl);
-            text.AppendLine(string.Format("{0,-30}{1,-10}", "zone", "FConcrete=" + result.ForceConcrete.ToFormatedString() + "kN"));
+            text.AppendLine(string.Format("{0,-30}{1,-10}", "zone", "FConcrete=" + calculationResult.ForceConcrete.ToFormatedString() + "kN"));
             //text.AppendLine(nl);
             text.AppendLine("(Moment is calculated about bottom fibre)");
             //text.AppendLine(nl);
             text.AppendLine("Moment of compression ");
             //text.AppendLine(nl);
-            text.AppendLine(string.Format("{0,-30}{1,-10}", "zone", "MrdConcrete=" + result.MrdConcrete.ToFormatedString() + "kNm"));
+            text.AppendLine(string.Format("{0,-30}{1,-10}", "zone", "MrdConcrete=" + calculationResult.MrdConcrete.ToFormatedString() + "kNm"));
             //text.AppendLine(nl);
             text.AppendLine(string.Empty);
             //text.AppendLine(nl);
@@ -89,7 +93,7 @@ namespace SectionsEC.Windows.WindowClasses
             double sumBarForce = 0;
             double sumBarMoment = 0;
 
-            var reinforcementData = convertReinforcementDataToString(result.Bars, steel, ref sumBarForce, ref sumBarMoment);
+            var reinforcementData = convertReinforcementDataToString(calculationResult.Bars, steel, ref sumBarForce, ref sumBarMoment);
             text.Append(reinforcementData.ToString());
             
 
@@ -100,22 +104,27 @@ namespace SectionsEC.Windows.WindowClasses
 
 
 
-            double resultForce = result.ForceConcrete + sumBarForce - Ned;
-            double resultMoment = result.MrdConcrete + sumBarMoment - Ned * centreDistanceFromBottom;
+            double resultForce = calculationResult.ForceConcrete + sumBarForce - Ned;
+            double resultMoment = calculationResult.MrdConcrete + sumBarMoment - Ned * centreDistanceFromBottom;
 
 
             text.AppendLine(string.Empty);
             //text.AppendLine(nl);
             text.AppendLine("Equilibrium in section:");
             //text.AppendLine(nl);
-            text.AppendLine("Fconcrete+" + sumSymbol + "F-Ned=" + result.ForceConcrete.ToFormatedString() + "kN+" + sumBarForce.ToFormatedString() + "kN-" + Ned.ToFormatedString() + "kN=" + resultForce.ToFormatedString() + "kN");
+            text.AppendLine("Fconcrete+" + sumSymbol + "F-Ned=" + calculationResult.ForceConcrete.ToFormatedString() + "kN+" + sumBarForce.ToFormatedString() + "kN-" + Ned.ToFormatedString() + "kN=" + resultForce.ToFormatedString() + "kN");
             //text.AppendLine(nl);
             text.AppendLine(string.Empty);
             text.AppendLine("Moment about bottom fibre:");
             //text.AppendLine(nl);
-            text.AppendLine("Mconcrete+" + sumSymbol + "M-Ned*Zb=" + result.MrdConcrete.ToFormatedString() + "kNm+" + sumBarMoment.ToFormatedString() + "kNm-" + Ned.ToFormatedString() + "kN*" + centreDistanceFromBottom.ToFormatedString() + "m=" + resultMoment.ToFormatedString() + "kNm");
+            text.AppendLine("Mconcrete+" + sumSymbol + "M-Ned*Zb=" + calculationResult.MrdConcrete.ToFormatedString() + "kNm+" + sumBarMoment.ToFormatedString() + "kNm-" + Ned.ToFormatedString() + "kN*" + centreDistanceFromBottom.ToFormatedString() + "m=" + resultMoment.ToFormatedString() + "kNm");
             //text.AppendLine(nl);
-            return text;
+            var result = new DetailedResult
+            {
+                LoadCase = calculationResult.LoadCase,
+                Text = text
+            };
+            return result;
         }
 
         private static StringBuilder convertReinforcementDataToString(IEnumerable<Reinforcement> reinforcement, Steel steel, ref double sumForce, ref double sumMoment)

@@ -42,7 +42,7 @@ namespace SectionsEC.Extensions
             }
             return col;
         }
-        public static bool isNull(this Object item)
+        public static bool IsNull(this Object item)
         {
             return item == null;
         }
