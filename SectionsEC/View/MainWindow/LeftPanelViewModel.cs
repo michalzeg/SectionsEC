@@ -127,8 +127,6 @@ namespace SectionsEC.ViewModel
                     RaisePropertyChanged(() => SelectedLoadCase);
                     if (sendResults != null)
                         sendResults(value);
-                    
-
                 }
             }
         }
