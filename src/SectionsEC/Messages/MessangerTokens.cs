@@ -10,10 +10,4 @@ namespace SectionsEC.WindowClasses
     {
         CompressionZoneDrawing
     }
-
-    public enum ResultViewModelMessage
-    {
-        InteractionCurveViewModel,
-        SectionCapacityViewModel
-    }
 }

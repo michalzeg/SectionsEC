@@ -117,6 +117,15 @@
     <Compile Include="Dimensioning\SectionCapacity.cs" />
     <Compile Include="Dimensioning\Slicing.cs" />
     <Compile Include="Dimensioning\StrainCalculations.cs" />
+    <Compile Include="DrawingCoordinates\CircularSectionCoordinates.cs" />
+    <Compile Include="DrawingCoordinates\TSectionCoordinates.cs" />
+    <Compile Include="Drawing\BarsDrawing.cs" />
+    <Compile Include="Drawing\Circle.cs" />
+    <Compile Include="Drawing\Hatch.cs" />
+    <Compile Include="Drawing\HatchDrawing.cs" />
+    <Compile Include="Drawing\PerimeterProperties.cs" />
+    <Compile Include="Drawing\SectionDrawing.cs" />
+    <Compile Include="Messages\ResultViewModelMessage.cs" />
     <Compile Include="Section\Bar.cs" />
     <Compile Include="Results\CalculationResults.cs" />
     <Compile Include="Materials\Concrete.cs" />
@@ -144,10 +153,10 @@
       <DependentUpon>TSectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Validator\Validator.cs" />
-    <Compile Include="View\ViewClasses\MessangerHelpers.cs" />
-    <Compile Include="View\ViewClasses\ProgressArgument.cs" />
-    <Compile Include="View\ViewClasses\SectionCoordinates.cs" />
-    <Compile Include="View\ViewClasses\DetailedResults.cs" />
+    <Compile Include="Messages\MessangerTokens.cs" />
+    <Compile Include="Progress\ProgressArgument.cs" />
+    <Compile Include="DrawingCoordinates\RectangularSectionCoordinates.cs" />
+    <Compile Include="Results\DetailedResults.cs" />
     <Page Include="View\CircularSectionWindow\CircularSectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,7 +217,7 @@
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Results\IntegrationCurveResult.cs" />
     <Compile Include="Materials\Materials.cs" />
-    <Compile Include="View\ViewClasses\Drawing.cs" />
+    <Compile Include="Drawing\DrawingBase.cs" />
     <Compile Include="View\DrawingPage\DrawingPage.xaml.cs">
       <DependentUpon>DrawingPage.xaml</DependentUpon>
     </Compile>
