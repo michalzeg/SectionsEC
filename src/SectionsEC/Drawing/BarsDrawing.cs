@@ -1,4 +1,4 @@
-﻿using SectionsEC.Common.Sections;
+﻿using SectionsEC.Calculations.Sections;
 using System;
 using System.Collections.Generic;
 using System.Windows.Controls;

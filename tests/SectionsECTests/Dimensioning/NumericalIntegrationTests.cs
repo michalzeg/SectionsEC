@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Interfaces;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Interfaces;
 using SectionsEC.Dimensioning.Integration;
 
 namespace SectionsECTests.Dimensioning

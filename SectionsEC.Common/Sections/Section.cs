@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Interfaces;
-using SectionsEC.Common.SectionProperties;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Interfaces;
+using SectionsEC.Calculations.SectionProperties;
 
-namespace SectionsEC.Common.Sections
+namespace SectionsEC.Calculations.Sections
 {
     public class Section : IIntegrable
     {

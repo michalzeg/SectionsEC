@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.StressFunctions;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.StressFunctions;
 
 namespace SectionsEC.ViewModel
 {

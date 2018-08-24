@@ -1,6 +1,6 @@
-﻿using SectionsEC.Common.Extensions;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.SectionProperties;
+﻿using SectionsEC.Calculations.Extensions;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.SectionProperties;
 using System;
 using System.Collections.Generic;
 using System.Linq;

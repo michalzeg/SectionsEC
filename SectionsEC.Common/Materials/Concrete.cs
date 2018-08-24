@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace SectionsEC.Common.Materials
+namespace SectionsEC.Calculations.Materials
 {
     public class Concrete
     {

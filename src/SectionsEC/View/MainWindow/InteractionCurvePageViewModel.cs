@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using LiveCharts;
-using SectionsEC.Common.Results;
+using SectionsEC.Calculations.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;

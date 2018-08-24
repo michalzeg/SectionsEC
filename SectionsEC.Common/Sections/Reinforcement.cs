@@ -1,4 +1,4 @@
-﻿namespace SectionsEC.Common.Sections
+﻿namespace SectionsEC.Calculations.Sections
 {
     public class Reinforcement
     {

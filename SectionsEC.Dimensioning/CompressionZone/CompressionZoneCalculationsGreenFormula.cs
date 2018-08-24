@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Interfaces;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Results;
-using SectionsEC.Common.Sections;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Interfaces;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Results;
+using SectionsEC.Calculations.Sections;
 
 namespace SectionsEC.Dimensioning.CompressionZone
 {

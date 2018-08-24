@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Sections;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Sections;
 using SectionsEC.Dimensioning;
 using SectionsEC.Dimensioning.Dimensioning;
 using System;

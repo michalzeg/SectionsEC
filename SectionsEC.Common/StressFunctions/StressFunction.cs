@@ -1,4 +1,4 @@
-﻿using SectionsEC.Common.Materials;
+﻿using SectionsEC.Calculations.Materials;
 
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.Common.StressFunctions
+namespace SectionsEC.Calculations.StressFunctions
 {
     public static class StressFunction
     {

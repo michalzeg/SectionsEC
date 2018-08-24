@@ -1,8 +1,8 @@
-﻿using SectionsEC.Common.Interfaces;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Sections;
+﻿using SectionsEC.Calculations.Interfaces;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Sections;
 
-namespace SectionsEC.Common.StressFunctions
+namespace SectionsEC.Calculations.StressFunctions
 {
     public class StrainCalculations : IStrainCalculations
     {

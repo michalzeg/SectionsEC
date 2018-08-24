@@ -1,7 +1,7 @@
-﻿using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.SectionProperties;
-using SectionsEC.Common.Sections;
+﻿using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.SectionProperties;
+using SectionsEC.Calculations.Sections;
 using System.Collections.Generic;
 
 using System.Linq;

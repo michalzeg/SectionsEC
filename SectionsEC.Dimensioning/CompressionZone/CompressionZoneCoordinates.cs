@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Extensions;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Extensions;
 
 namespace SectionsEC.Dimensioning.CompressionZone
 {

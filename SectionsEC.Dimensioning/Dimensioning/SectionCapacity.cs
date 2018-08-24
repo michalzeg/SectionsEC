@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using SectionsEC.Common.Sections;
-using SectionsEC.Common.Interfaces;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.StressFunctions;
-using SectionsEC.Common.Results;
+using SectionsEC.Calculations.Sections;
+using SectionsEC.Calculations.Interfaces;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.StressFunctions;
+using SectionsEC.Calculations.Results;
 using SectionsEC.Dimensioning.CompressionZone;
-using SectionsEC.Common.Extensions;
+using SectionsEC.Calculations.Extensions;
 
 namespace SectionsEC.Dimensioning.Dimensioning
 {

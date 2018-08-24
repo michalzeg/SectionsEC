@@ -14,8 +14,8 @@ using System.Windows.Shapes;
 using SectionsEC.Drawing;
 using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.ViewModel;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Sections;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Sections;
 
 namespace SectionsEC.Views
 {

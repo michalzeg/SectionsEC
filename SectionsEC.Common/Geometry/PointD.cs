@@ -1,7 +1,7 @@
-﻿using SectionsEC.Common.Extensions;
+﻿using SectionsEC.Calculations.Extensions;
 using System;
 
-namespace SectionsEC.Common.Geometry
+namespace SectionsEC.Calculations.Geometry
 {
     public class PointD : IEquatable<PointD>
     {

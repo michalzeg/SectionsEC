@@ -1,9 +1,9 @@
 ﻿using System;
-using SectionsEC.Common.Interfaces;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Results;
-using SectionsEC.Common.Sections;
-using SectionsEC.Common.StressFunctions;
+using SectionsEC.Calculations.Interfaces;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Results;
+using SectionsEC.Calculations.Sections;
+using SectionsEC.Calculations.StressFunctions;
 using SectionsEC.Dimensioning.Integration;
 
 namespace SectionsEC.Dimensioning.CompressionZone

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.Common.Progress
+namespace SectionsEC.Calculations.Progress
 {
     public class ProgressArgument
     {

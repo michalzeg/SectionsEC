@@ -1,9 +1,9 @@
-﻿using SectionsEC.Common.Geometry;
-using SectionsEC.Common.LoadCases;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Progress;
-using SectionsEC.Common.Results;
-using SectionsEC.Common.Sections;
+﻿using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.LoadCases;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Progress;
+using SectionsEC.Calculations.Results;
+using SectionsEC.Calculations.Sections;
 using SectionsEC.Dimensioning.Dimensioning;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
-﻿using SectionsEC.Common.Interfaces;
-using SectionsEC.Common.Results;
+﻿using SectionsEC.Calculations.Interfaces;
+using SectionsEC.Calculations.Results;
 using SectionsEC.Dimensioning.Slicing;
 using System;
 

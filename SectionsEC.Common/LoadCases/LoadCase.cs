@@ -1,7 +1,7 @@
-﻿using SectionsEC.Common.Extensions;
+﻿using SectionsEC.Calculations.Extensions;
 using System;
 
-namespace SectionsEC.Common.LoadCases
+namespace SectionsEC.Calculations.LoadCases
 {
     public class LoadCase : IEquatable<LoadCase>
     {

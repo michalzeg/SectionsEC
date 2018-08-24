@@ -1,9 +1,9 @@
-﻿using SectionsEC.Common.Geometry;
-using SectionsEC.Common.LoadCases;
-using SectionsEC.Common.Sections;
+﻿using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.LoadCases;
+using SectionsEC.Calculations.Sections;
 using System.Collections.Generic;
 
-namespace SectionsEC.Common.Results
+namespace SectionsEC.Calculations.Results
 {
     public class CalculationResults
     {

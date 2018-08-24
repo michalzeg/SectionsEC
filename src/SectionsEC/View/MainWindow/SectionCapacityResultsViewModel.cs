@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SectionsEC.Dimensioning;
-using SectionsEC.Common.Results;
-using SectionsEC.Common.Extensions;
+using SectionsEC.Calculations.Results;
+using SectionsEC.Calculations.Extensions;
 
 namespace SectionsEC.ViewModel
 {

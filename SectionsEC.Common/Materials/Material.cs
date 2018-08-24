@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SectionsEC.Common.Materials
+namespace SectionsEC.Calculations.Materials
 {
     public class Material
     {

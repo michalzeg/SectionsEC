@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Sections;
-using SectionsEC.Common.StressFunctions;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Sections;
+using SectionsEC.Calculations.StressFunctions;
 using SectionsEC.Dimensioning;
 using SectionsEC.Dimensioning.CompressionZone;
 using SectionsEC.Dimensioning.Dimensioning;

@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Sections;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Sections;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

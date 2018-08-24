@@ -1,7 +1,7 @@
-﻿using SectionsEC.Common.Results;
+﻿using SectionsEC.Calculations.Results;
 using System;
 
-namespace SectionsEC.Common.Interfaces
+namespace SectionsEC.Calculations.Interfaces
 {
     public interface IIntegration
     {

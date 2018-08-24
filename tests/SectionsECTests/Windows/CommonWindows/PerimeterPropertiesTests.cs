@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
-using SectionsEC.Common.Geometry;
+using SectionsEC.Calculations.Geometry;
 
 namespace SectionsECTests.Windows.CommonWindows
 {

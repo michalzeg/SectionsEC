@@ -1,4 +1,4 @@
-﻿using SectionsEC.Common.Geometry;
+﻿using SectionsEC.Calculations.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Linq;

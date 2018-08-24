@@ -8,12 +8,12 @@ using GalaSoft.MvvmLight.Messaging;
 using System.Collections.ObjectModel;
 using SectionsEC.WindowClasses;
 using SectionsEC.Dimensioning;
-using SectionsEC.Common.Sections;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Results;
-using SectionsEC.Common.LoadCases;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Extensions;
+using SectionsEC.Calculations.Sections;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Results;
+using SectionsEC.Calculations.LoadCases;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Extensions;
 using SectionsEC.Dimensioning.Dimensioning;
 
 namespace SectionsEC.ViewModel

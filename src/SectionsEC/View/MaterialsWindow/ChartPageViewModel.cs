@@ -1,8 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using LiveCharts;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.Extensions;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.Extensions;
 
 namespace SectionsEC.ViewModel
 {

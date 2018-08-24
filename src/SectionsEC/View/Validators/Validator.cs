@@ -1,8 +1,8 @@
-﻿using SectionsEC.Common.Extensions;
-using SectionsEC.Common.Geometry;
-using SectionsEC.Common.LoadCases;
-using SectionsEC.Common.Materials;
-using SectionsEC.Common.Sections;
+﻿using SectionsEC.Calculations.Extensions;
+using SectionsEC.Calculations.Geometry;
+using SectionsEC.Calculations.LoadCases;
+using SectionsEC.Calculations.Materials;
+using SectionsEC.Calculations.Sections;
 using SectionsEC.Dimensioning;
 using SectionsEC.Dimensioning.Dimensioning;
 using System;
