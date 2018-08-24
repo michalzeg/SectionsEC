@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Interfaces\ICompressionZoneCalculations.cs" />
     <Compile Include="Interfaces\IIntegrable.cs" />
     <Compile Include="Interfaces\IIntegration.cs" />

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
 namespace SectionsEC.Calculations.Extensions
 {
-    public static class ExtensionMethods
+    public static class DoubleExtensions
     {
         public const double MaximumDifferenceAllowed = 0.0000001;
 
         public static bool IsApproximatelyEqualTo(this double initialValue, double value)
         {
-            var result = ExtensionMethods.IsApproximatelyEqualTo(initialValue, value, MaximumDifferenceAllowed);
+            var result = DoubleExtensions.IsApproximatelyEqualTo(initialValue, value, MaximumDifferenceAllowed);
             return result;
         }
 
@@ -23,7 +21,7 @@ namespace SectionsEC.Calculations.Extensions
 
         public static double Round(this double initialValue)
         {
-            return ExtensionMethods.Round(initialValue, 2);
+            return DoubleExtensions.Round(initialValue, 2);
         }
 
         public static double Round(this double initialValue, int numberOfDigits)
@@ -39,21 +37,6 @@ namespace SectionsEC.Calculations.Extensions
         public static string ToFormatedString(this double initialValue)
         {
             return initialValue.Round().ToString("F");
-        }
-
-        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> enumerable)
-        {
-            var col = new ObservableCollection<T>();
-            foreach (var cur in enumerable)
-            {
-                col.Add(cur);
-            }
-            return col;
-        }
-
-        public static bool IsNull(this Object item)
-        {
-            return item == null;
         }
     }
 }
