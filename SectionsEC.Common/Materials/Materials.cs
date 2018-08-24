@@ -20,7 +20,7 @@ namespace SectionsEC.Materials
         {
             var location = Path.GetDirectoryName(typeof(Material).Assembly.Location);
 
-            var filePath = Path.Combine(location, "materials.xml");
+            var filePath = Path.Combine(location, "Resources", "materials.xml");
             Material material;
             XmlSerializer serializer = new XmlSerializer(typeof(Material));
             using (var reader = new StreamReader(filePath))
