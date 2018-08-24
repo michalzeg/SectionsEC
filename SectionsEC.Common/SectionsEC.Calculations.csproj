@@ -40,15 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ICompressionZoneCalculations.cs" />
-    <Compile Include="Contracts\IIntegrable.cs" />
-    <Compile Include="Contracts\IIntegration.cs" />
-    <Compile Include="Contracts\IStrainCalculations.cs" />
+    <Compile Include="Interfaces\ICompressionZoneCalculations.cs" />
+    <Compile Include="Interfaces\IIntegrable.cs" />
+    <Compile Include="Interfaces\IIntegration.cs" />
+    <Compile Include="Interfaces\IStrainCalculations.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Geometry\PointD.cs" />
     <Compile Include="LoadCases\LoadCase.cs" />
     <Compile Include="Materials\Concrete.cs" />
-    <Compile Include="Materials\Materials.cs" />
+    <Compile Include="Materials\Material.cs" />
+    <Compile Include="Materials\MaterialProvider.cs" />
     <Compile Include="Materials\Steel.cs" />
     <Compile Include="Progress\ProgressArgument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,13 +57,13 @@
     <Compile Include="Results\CompressionZoneResult.cs" />
     <Compile Include="Results\DetailedResults.cs" />
     <Compile Include="Results\IntegrationCurveResult.cs" />
-    <Compile Include="SectionProperties\SectionProperties.cs" />
-    <Compile Include="Section\Bar.cs" />
-    <Compile Include="Section\Reinforcement.cs" />
-    <Compile Include="Section\Section.cs" />
+    <Compile Include="SectionProperties\SectionPropertiesCalculator.cs" />
+    <Compile Include="Sections\Bar.cs" />
+    <Compile Include="Sections\Reinforcement.cs" />
+    <Compile Include="Sections\Section.cs" />
     <Compile Include="StressFunctions\StrainCalculations.cs" />
-    <Compile Include="StressFunctions\StrainFunctions.cs" />
-    <Compile Include="StressFunctions\StressFunctions.cs" />
+    <Compile Include="StressFunctions\StrainFunction.cs" />
+    <Compile Include="StressFunctions\StressFunction.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

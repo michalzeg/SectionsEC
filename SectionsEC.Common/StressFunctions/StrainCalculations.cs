@@ -22,24 +22,24 @@ namespace SectionsEC
             double ec2Y;
             if (x > this.section.D)
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.E37h(x, this.concrete.Ec2, this.concrete.Ecu2, this.section.H) > this.concrete.Ec2)
+                if (StrainFunction.AssumedMaxStrainInConcrete.E37h(x, this.concrete.Ec2, this.concrete.Ecu2, this.section.H) > this.concrete.Ec2)
                 {
-                    ec2Y = StrainFunctions.AssumedMaxStrainIn37H.Ec2Y(this.section.H, this.concrete.Ec2, this.concrete.Ecu2);
+                    ec2Y = StrainFunction.AssumedMaxStrainIn37H.Ec2Y(this.section.H, this.concrete.Ec2, this.concrete.Ecu2);
                 }
                 else
                 {
-                    ec2Y = StrainFunctions.AssumedMaxStrainInConcrete.Ec2Y(x, this.concrete.Ec2, this.concrete.Ecu2);
+                    ec2Y = StrainFunction.AssumedMaxStrainInConcrete.Ec2Y(x, this.concrete.Ec2, this.concrete.Ecu2);
                 }
             }
             else
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
+                if (StrainFunction.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
                 {
-                    ec2Y = StrainFunctions.AssumedMaxStrainInSteel.Ec2Y(this.section.D, x, this.steel.Eud, this.concrete.Ec2);
+                    ec2Y = StrainFunction.AssumedMaxStrainInSteel.Ec2Y(this.section.D, x, this.steel.Eud, this.concrete.Ec2);
                 }
                 else
                 {
-                    ec2Y = StrainFunctions.AssumedMaxStrainInConcrete.Ec2Y(x, this.concrete.Ec2, this.concrete.Ecu2);
+                    ec2Y = StrainFunction.AssumedMaxStrainInConcrete.Ec2Y(x, this.concrete.Ec2, this.concrete.Ecu2);
                 }
             }
             return ec2Y;
@@ -50,24 +50,24 @@ namespace SectionsEC
             double e;
             if (x > this.section.D)
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.E37h(x, this.concrete.Ec2, this.concrete.Ecu2, this.section.H) > this.concrete.Ec2)
+                if (StrainFunction.AssumedMaxStrainInConcrete.E37h(x, this.concrete.Ec2, this.concrete.Ecu2, this.section.H) > this.concrete.Ec2)
                 {
-                    e = StrainFunctions.AssumedMaxStrainIn37H.Es2i(x, di, this.concrete.Ec2, this.concrete.Ecu2, this.section.H);
+                    e = StrainFunction.AssumedMaxStrainIn37H.Es2i(x, di, this.concrete.Ec2, this.concrete.Ecu2, this.section.H);
                 }
                 else
                 {
-                    e = StrainFunctions.AssumedMaxStrainInConcrete.Es2i(di, x, this.concrete.Ecu2);
+                    e = StrainFunction.AssumedMaxStrainInConcrete.Es2i(di, x, this.concrete.Ecu2);
                 }
             }
             else
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
+                if (StrainFunction.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
                 {
-                    e = StrainFunctions.AssumedMaxStrainInSteel.Es2i(di, x, this.section.D, this.steel.Eud);
+                    e = StrainFunction.AssumedMaxStrainInSteel.Es2i(di, x, this.section.D, this.steel.Eud);
                 }
                 else
                 {
-                    e = StrainFunctions.AssumedMaxStrainInConcrete.Es2i(di, x, this.concrete.Ecu2);
+                    e = StrainFunction.AssumedMaxStrainInConcrete.Es2i(di, x, this.concrete.Ecu2);
                 }
             }
             return e;
@@ -82,13 +82,13 @@ namespace SectionsEC
             }
             else
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
+                if (StrainFunction.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
                 {
-                    e = StrainFunctions.AssumedMaxStrainInSteel.Esi(di, x, this.section.D, this.steel.Eud);
+                    e = StrainFunction.AssumedMaxStrainInSteel.Esi(di, x, this.section.D, this.steel.Eud);
                 }
                 else
                 {
-                    e = StrainFunctions.AssumedMaxStrainInConcrete.Esi(di, x, this.concrete.Ecu2);
+                    e = StrainFunction.AssumedMaxStrainInConcrete.Esi(di, x, this.concrete.Ecu2);
                 }
             }
             return e;
@@ -99,24 +99,24 @@ namespace SectionsEC
             double e;
             if (x > this.section.D)
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.E37h(x, this.concrete.Ec2, this.concrete.Ecu2, this.section.H) > this.concrete.Ec2)
+                if (StrainFunction.AssumedMaxStrainInConcrete.E37h(x, this.concrete.Ec2, this.concrete.Ecu2, this.section.H) > this.concrete.Ec2)
                 {
-                    e = StrainFunctions.AssumedMaxStrainIn37H.Ec(x, di, section.H, concrete.Ec2, concrete.Ecu2);
+                    e = StrainFunction.AssumedMaxStrainIn37H.Ec(x, di, section.H, concrete.Ec2, concrete.Ecu2);
                 }
                 else
                 {
-                    e = StrainFunctions.AssumedMaxStrainInConcrete.Ec(x, di, concrete.Ecu2);
+                    e = StrainFunction.AssumedMaxStrainInConcrete.Ec(x, di, concrete.Ecu2);
                 }
             }
             else
             {
-                if (StrainFunctions.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
+                if (StrainFunction.AssumedMaxStrainInConcrete.Esi(this.section.D, x, this.concrete.Ecu2) > this.steel.Eud)
                 {
-                    e = StrainFunctions.AssumedMaxStrainInSteel.Ec(section.D, x, di, steel.Eud);
+                    e = StrainFunction.AssumedMaxStrainInSteel.Ec(section.D, x, di, steel.Eud);
                 }
                 else
                 {
-                    e = StrainFunctions.AssumedMaxStrainInConcrete.Ec(x, di, concrete.Ecu2);
+                    e = StrainFunction.AssumedMaxStrainInConcrete.Ec(x, di, concrete.Ecu2);
                 }
             }
             return e;

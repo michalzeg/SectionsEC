@@ -23,7 +23,7 @@ namespace SectionsEC.Views
         public SteelPage()
         {
             InitializeComponent();
-            steelGradeComboBox.ItemsSource = Materials.MaterialOperations.GetSteel();
+            steelGradeComboBox.ItemsSource = Materials.MaterialProvider.GetSteel();
             steelGradeComboBox.SelectedIndex = 0;
         }
     }

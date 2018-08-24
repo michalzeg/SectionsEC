@@ -130,7 +130,7 @@
     <Compile Include="View\TSectionWindow\TSectionWindow.xaml.cs">
       <DependentUpon>TSectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Validator\Validator.cs" />
+    <Compile Include="View\Validators\Validator.cs" />
     <Compile Include="Messages\MessangerTokens.cs" />
     <Compile Include="DrawingCoordinates\RectangularSectionCoordinates.cs" />
     <Page Include="View\CircularSectionWindow\CircularSectionWindow.xaml">

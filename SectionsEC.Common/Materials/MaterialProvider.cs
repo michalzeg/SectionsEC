@@ -1,20 +1,11 @@
 ﻿using SectionsEC.Helpers;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace SectionsEC.Materials
 {
-    public class Material
-    {
-        public List<Concrete> Concrete { get; set; }
-        public List<Steel> Steel { get; set; }
-    }
-
-    public class MaterialOperations
+    public class MaterialProvider
     {
         public static Material GetMaterials()
         {

@@ -7,7 +7,7 @@ using SectionsEC.Helpers;
 
 namespace SectionsEC
 {
-    public static class SectionProperties
+    public static class SectionPropertiesCalculator
     {
         public static double CenterElevation(IList<PointD> coordinates) => CenterElevation(coordinates, new List<PointD>(), 0);
 

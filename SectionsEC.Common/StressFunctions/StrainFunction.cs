@@ -9,7 +9,7 @@ namespace SectionsEC
     /// <summary>
     /// All variables according to Eurocode 5
     /// </summary>
-    internal static class StrainFunctions
+    internal static class StrainFunction
     {
         static public class AssumedMaxStrainInSteel
         {

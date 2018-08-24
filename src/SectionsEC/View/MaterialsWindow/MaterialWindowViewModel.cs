@@ -35,10 +35,10 @@ namespace SectionsEC.ViewModel
         {
             this.concrete = concrete;
 
-            Func<double, double> characteristicFunction = (e) => StressFunctions.ConcreteStressCharacteristic(e, concrete);
+            Func<double, double> characteristicFunction = (e) => StressFunction.ConcreteStressCharacteristic(e, concrete);
             this.ConcreteChartVM.AddCharacteristicChart("fck", concrete.Ecu2, characteristicFunction);
 
-            Func<double, double> designFunction = (e) => StressFunctions.ConcreteStressDesign(e, concrete);
+            Func<double, double> designFunction = (e) => StressFunction.ConcreteStressDesign(e, concrete);
             this.ConcreteChartVM.AddDesignChart("fcd", concrete.Ecu2, designFunction);
         }
 
@@ -46,10 +46,10 @@ namespace SectionsEC.ViewModel
         {
             this.steel = steel;
 
-            Func<double, double> characteristicFunction = (e) => StressFunctions.SteelStressCharacteristic(e, steel);
+            Func<double, double> characteristicFunction = (e) => StressFunction.SteelStressCharacteristic(e, steel);
             this.SteelChartVM.AddCharacteristicChart("fyk", steel.Euk, characteristicFunction);
 
-            Func<double, double> designFunction = (e) => StressFunctions.SteelStressDesign(e, steel);
+            Func<double, double> designFunction = (e) => StressFunction.SteelStressDesign(e, steel);
             this.SteelChartVM.AddDesignChart("fyd", steel.Eud, designFunction);
         }
 

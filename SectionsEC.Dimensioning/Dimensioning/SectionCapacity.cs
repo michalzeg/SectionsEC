@@ -51,7 +51,7 @@ namespace SectionsEC.Dimensioning
                 {
                     var effectiveHeight = this.reinforcement[i].D;
                     var strain = this.strainCalculations.StrainInAs1(x, effectiveHeight);
-                    resultantForce = resultantForce + this.reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(strain, this.steel);
+                    resultantForce = resultantForce + this.reinforcement[i].Bar.Area * StressFunction.SteelStressDesign(strain, this.steel);
                     var barsTemp = this.reinforcement[i];
                     barsTemp.E = strain;
                     barsTemp.IsCompressed = false;
@@ -71,7 +71,7 @@ namespace SectionsEC.Dimensioning
                 {
                     var effectiveHeight = this.reinforcement[i].D;
                     var strain = this.strainCalculations.StrainInAs2(x, effectiveHeight);
-                    resultantForce = resultantForce + this.reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(strain, this.steel);
+                    resultantForce = resultantForce + this.reinforcement[i].Bar.Area * StressFunction.SteelStressDesign(strain, this.steel);
                     var barsTemp = this.reinforcement[i];
                     barsTemp.E = strain;
                     barsTemp.IsCompressed = true;
@@ -178,12 +178,12 @@ namespace SectionsEC.Dimensioning
                 barsTemp = this.reinforcement[i];
                 if (this.reinforcement[i].Bar.Y > elevationY)
                 {
-                    momentZ = reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
+                    momentZ = reinforcement[i].Bar.Area * StressFunction.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     moment = moment + momentZ;
                 }
                 else
                 {
-                    momentZ = reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
+                    momentZ = reinforcement[i].Bar.Area * StressFunction.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     moment = moment - momentZ;
                 }
                 barsTemp.My = momentZ;

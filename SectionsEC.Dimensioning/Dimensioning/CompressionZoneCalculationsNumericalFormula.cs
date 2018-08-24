@@ -23,7 +23,7 @@ namespace SectionsEC.Dimensioning
 
             Func<double, double> distance = y => section.MaxY - y;
             Func<double, double> strain = di => this.strainCalculations.StrainInConcrete(x, distance(di));
-            Func<double, double> stress = e => StressFunctions.ConcreteStressDesign(strain(e), this.concrete);
+            Func<double, double> stress = e => StressFunction.ConcreteStressDesign(strain(e), this.concrete);
 
             var integration = new Integration();
             var result = integration.Integrate(compressionZone, stress);

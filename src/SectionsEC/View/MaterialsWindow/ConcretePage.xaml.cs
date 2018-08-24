@@ -25,7 +25,7 @@ namespace SectionsEC.Views
         {
             InitializeComponent();
 
-            var concreteList = MaterialOperations.GetMaterials().Concrete;
+            var concreteList = MaterialProvider.GetMaterials().Concrete;
             this.concreteGradeComboBox.ItemsSource = concreteList;
             this.concreteGradeComboBox.SelectedIndex = 0;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SectionsEC
 {
-    public static class StressFunctions
+    public static class StressFunction
     {
         static public double ConcreteStressDesign(double ec, Concrete concrete)
         {
