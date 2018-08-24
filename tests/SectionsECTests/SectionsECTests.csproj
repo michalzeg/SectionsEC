@@ -80,9 +80,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SectionsEC\SectionsEC.csproj">
+    <ProjectReference Include="..\..\src\SectionsEC\SectionsEC.App.csproj">
       <Project>{CD95BA7D-520A-4AF6-BFB6-CF71532AAB58}</Project>
-      <Name>SectionsEC</Name>
+      <Name>SectionsEC.App</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
