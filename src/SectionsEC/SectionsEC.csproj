@@ -226,7 +226,6 @@
       <DependentUpon>CentralPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow\CentralPanelViewModel.cs" />
-    <Compile Include="View\ViewClasses\CommandService.cs" />
     <Compile Include="View\MainWindow\LeftPanel.xaml.cs">
       <DependentUpon>LeftPanel.xaml</DependentUpon>
     </Compile>

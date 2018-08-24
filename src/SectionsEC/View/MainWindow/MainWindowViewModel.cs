@@ -4,7 +4,6 @@ using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.Helpers;
 using SectionsEC.Views;
 using System.Collections.Generic;
-using SectionsEC.Commands;
 using GalaSoft.MvvmLight.Ioc;
 using SectionsEC.Dimensioning;
 using System.Text;
