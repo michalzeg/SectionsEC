@@ -12,25 +12,27 @@ namespace SectionsEC.Dimensioning
 
         public CompressionZoneResult Integrate(IIntegrable section, Func<double, double> distributionFunction)
         {
-            double resultantMoment = 0;
-            double resultantNormalForce = 0;
-            Slicing slicing = new Slicing();
-            double currentY = section.MinY;
-            double deltaY = (section.MaxY - section.MinY) / this.numberOfSlices;
+            var slicing = new Slicing();
+            var deltaY = (section.MaxY - section.MinY) / this.numberOfSlices;
+            var currentY = section.MinY;
+            var resultantMoment = 0d;
+            var resultantNormalForce = 0d;
             while (currentY <= section.MaxY)
             {
-                SectionSlice slice = slicing.GetSlice(section.Coordinates, currentY + deltaY, currentY);
+                var slice = slicing.GetSlice(section.Coordinates, currentY + deltaY, currentY);
                 currentY = currentY + deltaY;
-                double value = distributionFunction(slice.CentreOfGravityY);
-                double normalForce = value * slice.Area;
-                double leverArm = Math.Abs(section.IntegrationPointY - slice.CentreOfGravityY);
-                double moment = leverArm * value * slice.Area;
+                var value = distributionFunction(slice.CentreOfGravityY);
+                var normalForce = value * slice.Area;
+                var leverArm = Math.Abs(section.IntegrationPointY - slice.CentreOfGravityY);
+                var moment = leverArm * value * slice.Area;
                 resultantMoment = resultantMoment + moment;
                 resultantNormalForce = resultantNormalForce + normalForce;
             }
-            var result = new CompressionZoneResult();
-            result.NormalForce = resultantNormalForce;
-            result.Moment = resultantMoment;
+            var result = new CompressionZoneResult
+            {
+                NormalForce = resultantNormalForce,
+                Moment = resultantMoment
+            };
             return result;
         }
     }

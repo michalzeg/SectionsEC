@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using CommonMethods;
 using SectionsEC.Helpers;
+using System.Linq;
 
 namespace SectionsEC.Dimensioning
 {
@@ -10,15 +11,15 @@ namespace SectionsEC.Dimensioning
     {
         public SectionSlice GetSlice(IList<PointD> section, double upperY, double lowerY)
         {
-            IList<PointD> lowerCoordinates = this.lowerSection(section, lowerY);
-            IList<PointD> upperCoordinates = this.upperSection(lowerCoordinates, upperY);
+            var lowerCoordinates = this.lowerSection(section, lowerY);
+            var upperCoordinates = this.UpperSection(lowerCoordinates, upperY);
             var sectionSlice = this.calculateProperties(upperCoordinates);
             return sectionSlice;
         }
 
         private SectionSlice calculateProperties(IList<PointD> coordinates)
         {
-            SectionSlice slice = new SectionSlice();
+            var slice = new SectionSlice();
             slice.Area = SectionProperties.Area(coordinates);
             slice.CentreOfGravityY = SectionProperties.CenterElevation(coordinates);
             return slice;
@@ -26,150 +27,124 @@ namespace SectionsEC.Dimensioning
 
         private IList<PointD> lowerSection(IList<PointD> section, double a)
         {
-            IList<PointD> compressedSection = new System.Collections.Generic.List<PointD>();
-            PointD A;
-            PointD B;
-            PointD PP;
+            var compressedSection = new System.Collections.Generic.List<PointD>();
+
             for (int i = 0; i <= section.Count - 2; i++)
             {
-                A = section[i];
-                B = section[i + 1];
-                if ((A.Y - B.Y).IsApproximatelyEqualTo(0))
+                var pointA = section[i];
+                var pointB = section[i + 1];
+                if ((pointA.Y - pointB.Y).IsApproximatelyEqualTo(0))
                 {
-                    if ((A.Y >= a) && (B.Y >= a))
+                    if ((pointA.Y >= a) && (pointB.Y >= a))
                     {
-                        compressedSection.Add(A);
-                        compressedSection.Add(B);
+                        compressedSection.Add(pointA);
+                        compressedSection.Add(pointB);
                     }
                 }
                 else
                 {
-                    PP = this.intersectionPoint(A, B, a);
-                    if (this.isPointInsideSection(A, B, PP))
+                    var pointPP = this.IntersectionPoint(pointA, pointB, a);
+                    if (this.IsPointInsideSection(pointA, pointB, pointPP))
                     {
-                        if (A.Y > PP.Y)
+                        if (pointA.Y > pointPP.Y)
                         {
-                            compressedSection.Add(A);
-                            compressedSection.Add(PP);
+                            compressedSection.Add(pointA);
+                            compressedSection.Add(pointPP);
                         }
                         else
                         {
-                            compressedSection.Add(PP);
-                            compressedSection.Add(B);
+                            compressedSection.Add(pointPP);
+                            compressedSection.Add(pointB);
                         }
                     }
                     else
                     {
-                        if ((A.Y >= a) && (B.Y >= a))
+                        if ((pointA.Y >= a) && (pointB.Y >= a))
                         {
-                            compressedSection.Add(A);
-                            compressedSection.Add(B);
+                            compressedSection.Add(pointA);
+                            compressedSection.Add(pointB);
                         }
                     }
                 }
             }
-            if (!(((compressedSection[0].X).IsApproximatelyEqualTo(compressedSection[compressedSection.Count - 1].X)) && (compressedSection[0].Y.IsApproximatelyEqualTo(compressedSection[compressedSection.Count - 1].Y))))
-            {
-                PointD P = new PointD();
-                P.X = compressedSection[0].X;
-                P.Y = compressedSection[0].Y;
-                compressedSection.Add(P);
-            }
+            CheckSection(compressedSection);
+
             return compressedSection;
         }
 
-        private List<PointD> upperSection(IList<PointD> compressedSection, double a)
+        private static void CheckSection(IList<PointD> parabolicSection)
         {
-            List<PointD> parabolicSection = new System.Collections.Generic.List<PointD>();
-            PointD A;
-            PointD B;
-            PointD PP;
+            var firstPoint = parabolicSection.FirstOrDefault();
+            var lastPoint = parabolicSection.LastOrDefault();
+
+            if (parabolicSection.Count > 0
+                && !firstPoint.Equals(lastPoint))
+            {
+                parabolicSection.Add(firstPoint.Clone());
+            }
+        }
+
+        private List<PointD> UpperSection(IList<PointD> compressedSection, double a)
+        {
+            var parabolicSection = new System.Collections.Generic.List<PointD>();
+
             for (int i = 0; i <= compressedSection.Count - 2; i++)
             {
-                A = compressedSection[i];
-                B = compressedSection[i + 1];
-                if ((A.Y - B.Y).IsApproximatelyEqualTo(0))
+                var pointA = compressedSection[i];
+                var pointB = compressedSection[i + 1];
+                if ((pointA.Y - pointB.Y).IsApproximatelyEqualTo(0))
                 {
-                    if ((A.Y <= a) && (B.Y <= a))
+                    if ((pointA.Y <= a) && (pointB.Y <= a))
                     {
-                        parabolicSection.Add(A);
-                        parabolicSection.Add(B);
+                        parabolicSection.Add(pointA);
+                        parabolicSection.Add(pointB);
                     }
                 }
                 else
                 {
-                    PP = this.intersectionPoint(A, B, a);
-                    if (this.isPointInsideSection(A, B, PP))
+                    var pointPP = this.IntersectionPoint(pointA, pointB, a);
+                    if (this.IsPointInsideSection(pointA, pointB, pointPP))
                     {
-                        if (A.Y > PP.Y)
+                        if (pointA.Y > pointPP.Y)
                         {
-                            parabolicSection.Add(PP);
-                            parabolicSection.Add(B);
+                            parabolicSection.Add(pointPP);
+                            parabolicSection.Add(pointB);
                         }
                         else
                         {
-                            parabolicSection.Add(A);
-                            parabolicSection.Add(PP);
+                            parabolicSection.Add(pointA);
+                            parabolicSection.Add(pointPP);
                         }
                     }
                     else
                     {
-                        if ((A.Y <= a) && (B.Y <= a))
+                        if ((pointA.Y <= a) && (pointB.Y <= a))
                         {
-                            parabolicSection.Add(A);
-                            parabolicSection.Add(B);
+                            parabolicSection.Add(pointA);
+                            parabolicSection.Add(pointB);
                         }
                     }
                 }
             }
-            if (parabolicSection.Count > 0)
-            {
-                if (!((parabolicSection[0].X.IsApproximatelyEqualTo(parabolicSection[parabolicSection.Count - 1].X)) && (parabolicSection[0].Y.IsApproximatelyEqualTo(parabolicSection[parabolicSection.Count - 1].Y))))
-                {
-                    PointD P = new PointD();
-                    P.X = parabolicSection[0].X;
-                    P.Y = parabolicSection[0].Y;
-                    parabolicSection.Add(P);
-                }
-            }
+            CheckSection(parabolicSection);
             return parabolicSection;
         }
 
-        private PointD intersectionPoint(PointD a1, PointD a2, double a)
+        private PointD IntersectionPoint(PointD a1, PointD a2, double a)
         {
-            double xa, xb, ya, yb;
-            xa = a1.X;
-            xb = a2.X;
-            ya = a1.Y;
-            yb = a2.Y;
-            PointD P = new PointD();
-            P.Y = a;
-            P.X = ((a - ya) * (xb - xa)) / (yb - ya) + xa;
+            var xa = a1.X;
+            var xb = a2.X;
+            var ya = a1.Y;
+            var yb = a2.Y;
+            PointD P = new PointD
+            {
+                Y = a,
+                X = ((a - ya) * (xb - xa)) / (yb - ya) + xa
+            };
             return P;
         }
 
-        private bool isPointInsideSection(PointD A, PointD B, PointD P)
-        {
-            /*double AB, AP, PB;
-			AB = Math.Sqrt(Math.Pow(A.X - B.X, 2) + Math.Pow(A.Y - B.Y,2));
-			AP = Math.Sqrt(Math.Pow(A.X - P.X, 2) + Math.Pow(A.Y - P.Y, 2));
-			PB = Math.Sqrt(Math.Pow(P.X - B.X, 2) + Math.Pow(P.Y - B.Y, 2));
-			if (Math.Round(AB,6) == Math.Round(AP,6) + Math.Round(PB,6))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}*/
-            if (((Math.Min(A.X, B.X) <= P.X) && (P.X <= Math.Max(A.X, B.X)) && (Math.Min(A.Y, B.Y) <= P.Y)) && (P.Y <= Math.Max(A.Y, B.Y)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        private bool IsPointInsideSection(PointD A, PointD B, PointD P)
+        => ((Math.Min(A.X, B.X) <= P.X) && (P.X <= Math.Max(A.X, B.X)) && (Math.Min(A.Y, B.Y) <= P.Y)) && (P.Y <= Math.Max(A.Y, B.Y));
     }
 }
