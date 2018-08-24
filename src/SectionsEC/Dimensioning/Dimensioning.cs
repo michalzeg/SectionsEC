@@ -144,7 +144,7 @@ namespace SectionsEC.Dimensioning
             if (sectionCoordinates.Count == 0)
                 return 0;
             var section = new Section(sectionCoordinates);
-            double areaOfConcrete = SectionProperties.A(section.Coordinates);
+            double areaOfConcrete = SectionProperties.Area(section.Coordinates);
             return areaOfConcrete * concrete.Fcd;
         }
     }

@@ -223,7 +223,7 @@ namespace SectionsEC.Helpers
         {
             Coordinates = checkIfCoordinatesAreClockwise(coordinates);
             calculateExtrementsAndDepth();
-            Cz = SectionProperties.Cz(Coordinates, MaxY);
+            Cz = SectionProperties.CenterElevation(Coordinates, MaxY);
             IntegrationPointY = MinY;
         }
 

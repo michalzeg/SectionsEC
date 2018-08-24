@@ -9,193 +9,178 @@ namespace CommonMethods
 {
     internal static class SectionProperties
     {
-        public static double Cz(IList<PointD> coordinates)
+        public static double CenterElevation(IList<PointD> coordinates)
         {
-            double A = 0;
-            double S = 0;
-            double x1, x2, y1, y2;
+            double area = 0;
+            double firstMomentOfArea = 0;
+
             for (int i = 0; i <= coordinates.Count - 2; i++)
             {
-                x1 = coordinates[i].X;
-                x2 = coordinates[i + 1].X;
-                y1 = coordinates[i].Y;
-                y2 = coordinates[i + 1].Y;
-                A = A + (x1 - x2) * (y2 + y1);
-                S = S + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = coordinates[i].X;
+                var x2 = coordinates[i + 1].X;
+                var y1 = coordinates[i].Y;
+                var y2 = coordinates[i + 1].Y;
+                area = area + (x1 - x2) * (y2 + y1);
+                firstMomentOfArea = firstMomentOfArea + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            A = A / 2;
-            S = S / 6;
-            double zy = S / A;
-            return zy;
+            area = area / 2;
+            firstMomentOfArea = firstMomentOfArea / 6;
+            var result = firstMomentOfArea / area;
+            return result;
         }
 
-        public static double Cz(IList<PointD> OS, double maxy)
+        public static double CenterElevation(IList<PointD> outerCoordinates, double maxy)
         {
-            double z = 0;
-            double A = 0;
-            double S = 0;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
+            double area = 0;
+            double firstMomentOfArea = 0;
+
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                A = A + (x1 - x2) * (y2 + y1);
-                S = S + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                area = area + (x1 - x2) * (y2 + y1);
+                firstMomentOfArea = firstMomentOfArea + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            A = A / 2;
-            S = S / 6;
-            double zy = S / A;
-            z = maxy - zy;
-            return z;
+            area = area / 2;
+            firstMomentOfArea = firstMomentOfArea / 6;
+            double center = firstMomentOfArea / area;
+            var result = maxy - center;
+            return result;
         }
 
-        public static double Cz(List<PointD> OS, List<PointD> IS, double maxy)
+        public static double CenterElevation(IList<PointD> outerCoordinates, IList<PointD> innerCoordinates, double maxy)
         {
-            double z = 0;
-            double A = 0;
-            double S = 0;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
+            double area = 0;
+            double firstMomentOfArea = 0;
+
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                A = A + (x1 - x2) * (y2 + y1);
-                S = S + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                area = area + (x1 - x2) * (y2 + y1);
+                firstMomentOfArea = firstMomentOfArea + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            for (int i = 0; i <= IS.Count - 2; i++)
+            for (int i = 0; i <= innerCoordinates.Count - 2; i++)
             {
-                x1 = IS[i].X;
-                x2 = IS[i + 1].X;
-                y1 = IS[i].Y;
-                y2 = IS[i + 1].Y;
-                A = A - (x1 - x2) * (y2 + y1);
-                S = S - (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = innerCoordinates[i].X;
+                var x2 = innerCoordinates[i + 1].X;
+                var y1 = innerCoordinates[i].Y;
+                var y2 = innerCoordinates[i + 1].Y;
+                area = area - (x1 - x2) * (y2 + y1);
+                firstMomentOfArea = firstMomentOfArea - (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            A = A / 2;
-            S = S / 6;
-            double zy = S / A;
-            z = maxy - zy;
-            return z;
+            area = area / 2;
+            firstMomentOfArea = firstMomentOfArea / 6;
+            double center = firstMomentOfArea / area;
+            var result = maxy - center;
+            return result;
         }
 
-        public static double Ix(List<PointD> OS, List<PointD> IS)
+        public static double SecondMomentOfArea(IList<PointD> outerCoordinates, IList<PointD> innerCoordinates)
         {
-            double Ix = 0;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
+            double result = 0;
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                Ix = Ix + (x1 - x2) * (y1 * y1 * y1 + y1 * y1 * y2 + y1 * y2 * y2 + y2 * y2 * y2);
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                result = result + (x1 - x2) * (y1 * y1 * y1 + y1 * y1 * y2 + y1 * y2 * y2 + y2 * y2 * y2);
             }
-            for (int i = 0; i <= IS.Count - 2; i++)
+            for (int i = 0; i <= innerCoordinates.Count - 2; i++)
             {
-                x1 = IS[i].X;
-                x2 = IS[i + 1].X;
-                y1 = IS[i].Y;
-                y2 = IS[i + 1].Y;
-                Ix = Ix - (x1 - x2) * (y1 * y1 * y1 + y1 * y1 * y2 + y1 * y2 * y2 + y2 * y2 * y2);
+                var x1 = innerCoordinates[i].X;
+                var x2 = innerCoordinates[i + 1].X;
+                var y1 = innerCoordinates[i].Y;
+                var y2 = innerCoordinates[i + 1].Y;
+                result = result - (x1 - x2) * (y1 * y1 * y1 + y1 * y1 * y2 + y1 * y2 * y2 + y2 * y2 * y2);
             }
-            Ix = Ix / 12;
-            return Ix;
+            result = result / 12;
+            return result;
         }
 
-        public static double Sx(List<PointD> OS)
+        public static double FirstMomentOfArea(IList<PointD> outerCoordinates)
         {
-            double S = 0; ;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
+            double result = 0;
+
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                S = S + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                result = result + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            S = S / 6;
-            return S;
+            result = result / 6;
+            return result;
         }
 
-        public static double Sx(List<PointD> OS, List<PointD> IS)
+        public static double FirstMomentOfArea(IList<PointD> outerCoordinates, List<PointD> innerCoordinates)
         {
-            double S = 0; ;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
+            double result = 0;
+
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                S = S + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                result = result + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            for (int i = 0; i <= IS.Count - 2; i++)
+            for (int i = 0; i <= innerCoordinates.Count - 2; i++)
             {
-                x1 = IS[i].X;
-                x2 = IS[i + 1].X;
-                y1 = IS[i].Y;
-                y2 = IS[i + 1].Y;
-                S = S - (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
+                var x1 = innerCoordinates[i].X;
+                var x2 = innerCoordinates[i + 1].X;
+                var y1 = innerCoordinates[i].Y;
+                var y2 = innerCoordinates[i + 1].Y;
+                result = result - (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
             }
-            S = S / 6;
-            return S;
+            result = result / 6;
+            return result;
         }
 
-        public static double A(IList<PointD> OS)
+        public static double Area(IList<PointD> outerCoordinates)
         {
-            double A = 0;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
+            double result = 0;
+
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                A = A + (x1 - x2) * (y2 + y1);
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                result = result + (x1 - x2) * (y2 + y1);
             }
-            A = A / 2;
-            return A;
+            result = result / 2;
+            return result;
         }
 
-        public static double A(List<PointD> OS, List<PointD> IS)
+        public static double Area(IList<PointD> outerCoordinates, IList<PointD> innerCoordinates)
         {
-            double A = 0;
-            double x1, x2, y1, y2;
-            for (int i = 0; i <= OS.Count - 2; i++)
-            {
-                x1 = OS[i].X;
-                x2 = OS[i + 1].X;
-                y1 = OS[i].Y;
-                y2 = OS[i + 1].Y;
-                A = A + (x1 - x2) * (y2 + y1);
-            }
-            for (int i = 0; i <= IS.Count - 2; i++)
-            {
-                x1 = IS[i].X;
-                x2 = IS[i + 1].X;
-                y1 = IS[i].Y;
-                y2 = IS[i + 1].Y;
-                A = A - (x1 - x2) * (y2 + y1);
-            }
-            A = A / 2;
-            return A;
-        }
+            double result = 0;
 
-        public static void yMaxAndMin(List<PointD> OS, out double ymax, out double ymin)
-        {
-            int n = OS.Count;
-            double[] tab = new double[n];
-            for (int i = 0; i <= n - 1; i++)
+            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
             {
-                tab[i] = OS[i].Y;
+                var x1 = outerCoordinates[i].X;
+                var x2 = outerCoordinates[i + 1].X;
+                var y1 = outerCoordinates[i].Y;
+                var y2 = outerCoordinates[i + 1].Y;
+                result = result + (x1 - x2) * (y2 + y1);
             }
-            ymax = tab.Max();
-            ymin = tab.Min();
+            for (int i = 0; i <= innerCoordinates.Count - 2; i++)
+            {
+                var x1 = innerCoordinates[i].X;
+                var x2 = innerCoordinates[i + 1].X;
+                var y1 = innerCoordinates[i].Y;
+                var y2 = innerCoordinates[i + 1].Y;
+                result = result - (x1 - x2) * (y2 + y1);
+            }
+            result = result / 2;
+            return result;
         }
     }
 }

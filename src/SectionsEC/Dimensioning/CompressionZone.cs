@@ -732,8 +732,8 @@ namespace SectionsEC.Dimensioning
         private SectionSlice calculateProperties(IList<PointD> coordinates)
         {
             SectionSlice slice = new SectionSlice();
-            slice.Area = SectionProperties.A(coordinates);
-            slice.CentreOfGravityY = SectionProperties.Cz(coordinates);
+            slice.Area = SectionProperties.Area(coordinates);
+            slice.CentreOfGravityY = SectionProperties.CenterElevation(coordinates);
             return slice;
         }
 
