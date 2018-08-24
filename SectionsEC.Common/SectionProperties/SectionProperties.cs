@@ -5,9 +5,9 @@ using System.Drawing;
 using SectionsEC.Dimensioning;
 using SectionsEC.Helpers;
 
-namespace CommonMethods
+namespace SectionsEC
 {
-    internal static class SectionProperties
+    public static class SectionProperties
     {
         public static double CenterElevation(IList<PointD> coordinates) => CenterElevation(coordinates, new List<PointD>(), 0);
 

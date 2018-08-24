@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SectionsEC.Helpers;
-using SectionsEC.WindowClasses;
+using SectionsEC.Progress;
 
 namespace SectionsEC.Dimensioning
 {

@@ -18,9 +18,12 @@ namespace SectionsEC.Materials
     {
         public static Material GetMaterials()
         {
+            var location = Path.GetDirectoryName(typeof(Material).Assembly.Location);
+
+            var filePath = Path.Combine(location, "materials.xml");
             Material material;
             XmlSerializer serializer = new XmlSerializer(typeof(Material));
-            using (var reader = new StringReader(Properties.Resources.materials))
+            using (var reader = new StreamReader(filePath))
             {
                 material = serializer.Deserialize(reader) as Material;
             }

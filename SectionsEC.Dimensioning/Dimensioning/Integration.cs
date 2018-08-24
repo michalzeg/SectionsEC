@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SectionsEC.Contracts;
+using System;
 
 namespace SectionsEC.Dimensioning
 {

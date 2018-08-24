@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using SectionsEC.Helpers;
 using System;
-using SectionsEC.StressCalculations;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

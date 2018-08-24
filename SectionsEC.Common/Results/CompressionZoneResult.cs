@@ -1,4 +1,4 @@
-﻿namespace SectionsEC.Dimensioning
+﻿namespace SectionsEC
 {
     public class CompressionZoneResult
     {

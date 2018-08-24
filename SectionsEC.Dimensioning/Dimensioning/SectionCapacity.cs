@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 using SectionsEC.Helpers;
-using SectionsEC.StressCalculations;
+
 using SectionsEC.Extensions;
+using SectionsEC.Contracts;
 
 namespace SectionsEC.Dimensioning
 {

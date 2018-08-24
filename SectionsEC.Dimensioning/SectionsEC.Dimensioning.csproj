@@ -40,6 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dimensioning\AxialCapacity.cs" />
+    <Compile Include="Dimensioning\CapcityCalculator.cs" />
+    <Compile Include="Dimensioning\CompressionZoneCalculationsGreenFormula.cs" />
+    <Compile Include="Dimensioning\CompressionZoneCalculationsNumericalFormula.cs" />
+    <Compile Include="Dimensioning\CompressionZoneCoordinates.cs" />
+    <Compile Include="Dimensioning\Integration.cs" />
+    <Compile Include="Dimensioning\InteractionCurveCalculator.cs" />
+    <Compile Include="Dimensioning\SectionCapacity.cs" />
+    <Compile Include="Dimensioning\SectionSlice.cs" />
+    <Compile Include="Dimensioning\Slicing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

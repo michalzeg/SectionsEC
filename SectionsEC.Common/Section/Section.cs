@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SectionsEC.Contracts;
 using SectionsEC.Dimensioning;
-using CommonMethods;
 
 namespace SectionsEC.Helpers
 {

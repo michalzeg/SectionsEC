@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC
 {
     /// <summary>
     /// All variables according to Eurocode 5

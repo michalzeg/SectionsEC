@@ -1,8 +1,8 @@
 ﻿using SectionsEC.Helpers;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Contracts
 {
-    internal interface ICompressionZoneCalculations
+    public interface ICompressionZoneCalculations
     {
         CompressionZoneResult Calculate(double x, Section section);
     }

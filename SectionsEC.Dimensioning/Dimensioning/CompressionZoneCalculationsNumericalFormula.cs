@@ -1,6 +1,6 @@
 ﻿using System;
+using SectionsEC.Contracts;
 using SectionsEC.Helpers;
-using SectionsEC.StressCalculations;
 
 namespace SectionsEC.Dimensioning
 {

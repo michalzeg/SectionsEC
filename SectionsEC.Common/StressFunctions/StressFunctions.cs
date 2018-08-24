@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.StressCalculations
+namespace SectionsEC
 {
-    internal static class StressFunctions
+    public static class StressFunctions
     {
         static public double ConcreteStressDesign(double ec, Concrete concrete)
         {

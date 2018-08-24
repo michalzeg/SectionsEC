@@ -1,6 +1,8 @@
-﻿using SectionsEC.Helpers;
+﻿using SectionsEC.Contracts;
+using SectionsEC.Dimensioning;
+using SectionsEC.Helpers;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC
 {
     public class StrainCalculations : IStrainCalculations
     {

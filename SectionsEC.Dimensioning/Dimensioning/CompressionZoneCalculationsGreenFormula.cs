@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SectionsEC.Contracts;
 using SectionsEC.Helpers;
 
 namespace SectionsEC.Dimensioning

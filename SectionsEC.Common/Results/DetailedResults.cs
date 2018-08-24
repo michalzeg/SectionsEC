@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SectionsEC.Helpers;
-using SectionsEC.StressCalculations;
 using SectionsEC.Extensions;
 
 namespace SectionsEC.Dimensioning

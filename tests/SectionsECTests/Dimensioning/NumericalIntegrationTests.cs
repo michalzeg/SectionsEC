@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
 using SectionsEC.Helpers;
+using SectionsEC.Contracts;
 
 namespace SectionsEC.Dimensioning.Tests
 {

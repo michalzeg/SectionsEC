@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SectionsEC.Helpers;
 using System.Text;
 using SectionsEC.Dimensioning;
-using SectionsEC.WindowClasses;
+using SectionsEC.Progress;
 
 namespace SectionsEC.Dimensioning
 {

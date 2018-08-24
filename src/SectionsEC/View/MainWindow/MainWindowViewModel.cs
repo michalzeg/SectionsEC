@@ -12,6 +12,7 @@ using SectionsEC.WindowClasses;
 using SectionsEC.Windows.Validator;
 using System.Threading.Tasks;
 using System;
+using SectionsEC.Progress;
 
 namespace SectionsEC.ViewModel
 {
