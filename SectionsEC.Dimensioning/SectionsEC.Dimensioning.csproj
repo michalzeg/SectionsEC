@@ -42,14 +42,14 @@
   <ItemGroup>
     <Compile Include="Dimensioning\AxialCapacity.cs" />
     <Compile Include="Dimensioning\CapcityCalculator.cs" />
-    <Compile Include="Dimensioning\CompressionZoneCalculationsGreenFormula.cs" />
-    <Compile Include="Dimensioning\CompressionZoneCalculationsNumericalFormula.cs" />
-    <Compile Include="Dimensioning\CompressionZoneCoordinates.cs" />
-    <Compile Include="Dimensioning\Integration.cs" />
-    <Compile Include="Dimensioning\InteractionCurveCalculator.cs" />
+    <Compile Include="CompressionZone\CompressionZoneCalculationsGreenFormula.cs" />
+    <Compile Include="CompressionZone\CompressionZoneCalculationsNumericalFormula.cs" />
+    <Compile Include="CompressionZone\CompressionZoneCoordinates.cs" />
+    <Compile Include="Integration\Integration.cs" />
+    <Compile Include="Integration\InteractionCurveCalculator.cs" />
     <Compile Include="Dimensioning\SectionCapacity.cs" />
-    <Compile Include="Dimensioning\SectionSlice.cs" />
-    <Compile Include="Dimensioning\Slicing.cs" />
+    <Compile Include="Slicing\SectionSlice.cs" />
+    <Compile Include="Slicing\Slicing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
