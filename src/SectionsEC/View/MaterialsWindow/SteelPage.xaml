@@ -1,85 +1,83 @@
 ﻿<UserControl x:Class="SectionsEC.Views.SteelPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SectionsEC.Views"
              xmlns:converters="clr-namespace:SectionsEC.Converters"
-             mc:Ignorable="d" 
-             >
+             mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/View/Style/Styles.xaml"/>
-                <ResourceDictionary Source="/View/Style/CustomStyles.xaml"/>
-
+                <ResourceDictionary Source="/View/Style/Styles.xaml" />
+                <ResourceDictionary Source="/View/Style/CustomStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <converters:MultiplyValueConverter x:Key="MultiplyValueConverter"/>
+            <converters:MultiplyValueConverter x:Key="MultiplyValueConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <TextBlock Text="Steel Grade"
-                   Grid.Column="0" Grid.Row="0"/>
+                   Grid.Column="0" Grid.Row="0" />
         <ComboBox Name="steelGradeComboBox"
                   Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
                   SelectedItem="{Binding SelectedMaterial,Mode=OneWayToSource}"
-                  DisplayMemberPath="Grade"/>
-        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
+                  DisplayMemberPath="Grade" />
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
               DataContext="{Binding SteelVM}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <TextBlock Text="fyk [MPa]"
-                   Grid.Column="0" Grid.Row="1"/>
+                   Grid.Column="0" Grid.Row="1" />
             <TextBox Text="{Binding Fyk, Converter={StaticResource MultiplyValueConverter}, ConverterParameter=0.001,StringFormat={}{0:#.##}}"
-                 Grid.Column="1" Grid.Row="1"/>
+                 Grid.Column="1" Grid.Row="1" />
             <TextBlock Text="&#x03B3;m [-]"
-                   Grid.Column="0" Grid.Row="2"/>
-            <TextBox Text="{Binding GammaS}" 
-                 Grid.Column="1" Grid.Row="2"/>
+                   Grid.Column="0" Grid.Row="2" />
+            <TextBox Text="{Binding GammaS}"
+                 Grid.Column="1" Grid.Row="2" />
             <TextBlock Text="fyd [MPa]"
-                   Grid.Column="0" Grid.Row="3"/>
+                   Grid.Column="0" Grid.Row="3" />
             <TextBlock Text="{Binding Fyd, Converter={StaticResource MultiplyValueConverter},ConverterParameter=0.001,StringFormat={}{0:#.##}}"
-                 Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"/>
+                 Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" />
             <TextBlock Text="k [-]"
-                   Grid.Column="0" Grid.Row="4"/>
+                   Grid.Column="0" Grid.Row="4" />
             <TextBox Text="{Binding K}"
-                 Grid.Column="1" Grid.Row="4"/>
+                 Grid.Column="1" Grid.Row="4" />
             <TextBlock Text="&#x03B5;uk [%]"
-                   Grid.Column="2" Grid.Row="1"/>
+                   Grid.Column="2" Grid.Row="1" />
             <TextBox Text="{Binding Euk, Converter={StaticResource MultiplyValueConverter }, ConverterParameter=100,StringFormat={}{0:#.0}}"
-                 Grid.Column="3" Grid.Row="1"/>
+                 Grid.Column="3" Grid.Row="1" />
             <TextBlock Text="&#x03B5;ud [%]"
-                   Grid.Column="2" Grid.Row="2"/>
+                   Grid.Column="2" Grid.Row="2" />
             <TextBlock Text="{Binding Eud,Converter={StaticResource MultiplyValueConverter }, ConverterParameter=100,StringFormat={}{0:#.0}}"
-                 Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center"/>
+                 Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" />
             <TextBlock Text="&#x03B5;uk/&#x03B5;ud [%]"
-                   Grid.Column="2" Grid.Row="3"/>
+                   Grid.Column="2" Grid.Row="3" />
             <TextBox Text="{Binding EukToEud}"
-                 Grid.Column="3" Grid.Row="3"/>
+                 Grid.Column="3" Grid.Row="3" />
             <TextBlock Text="Es [GPa]"
-                   Grid.Column="2" Grid.Row="4"/>
+                   Grid.Column="2" Grid.Row="4" />
             <TextBox Text="{Binding Es, Converter={StaticResource MultiplyValueConverter }, ConverterParameter=0.000001,StringFormat={}{0:#.##}}"
-                 Grid.Column="3" Grid.Row="4"/>
+                 Grid.Column="3" Grid.Row="4" />
         </Grid>
     </Grid>
 </UserControl>

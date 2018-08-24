@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class DrawingPageViewModel :ViewModelBase
+    public class DrawingPageViewModel : ViewModelBase
     {
-        
         public DrawingPageViewModel()
         {
-
         }
-
     }
 }

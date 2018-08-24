@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.Helpers;
 using SectionsEC.ViewModel;
+
 namespace SectionsEC.Views
 {
     /// <summary>

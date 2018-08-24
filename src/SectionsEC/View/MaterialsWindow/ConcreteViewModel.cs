@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class ConcreteViewModel :ViewModelBase
+    public class ConcreteViewModel : ViewModelBase
     {
         public delegate void ConcreteUpdatedEventHandler();
+
         public event ConcreteUpdatedEventHandler ConcreteUpdated;
 
         public Concrete Concrete
@@ -45,12 +46,13 @@ namespace SectionsEC.ViewModel
         }
 
         private string grade;
+
         public string Grade
         {
             get { return grade; }
             set
             {
-                if (value!=grade)
+                if (value != grade)
                 {
                     grade = value;
                     RaisePropertyChanged(() => Grade);
@@ -61,6 +63,7 @@ namespace SectionsEC.ViewModel
         }
 
         private double fck;
+
         public double Fck
         {
             get { return fck; }
@@ -76,7 +79,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double gammaM;
+
         public double GammaM
         {
             get { return gammaM; }
@@ -92,7 +97,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double acc;
+
         public double Acc
         {
             get { return acc; }
@@ -108,7 +115,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double fcd;
+
         public double Fcd
         {
             get { return fcd; }
@@ -123,7 +132,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double n;
+
         public double N
         {
             get { return n; }
@@ -138,7 +149,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double ec2;
+
         public double Ec2
         {
             get { return ec2; }
@@ -149,11 +162,13 @@ namespace SectionsEC.ViewModel
                     ec2 = value;
                     RaisePropertyChanged(() => Ec2);
                     if (ConcreteUpdated != null)
-                        ConcreteUpdated(); 
+                        ConcreteUpdated();
                 }
             }
         }
+
         private double ecu2;
+
         public double Ecu2
         {
             get { return ecu2; }

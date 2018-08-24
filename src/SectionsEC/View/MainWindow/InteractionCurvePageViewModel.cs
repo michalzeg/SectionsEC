@@ -14,7 +14,6 @@ namespace SectionsEC.ViewModel
 {
     public class InteractionCurvePageViewModel : ViewModelBase
     {
-
         public InteractionCurvePageViewModel()
         {
             var config = new SeriesConfiguration<InteractionCurveResult>();
@@ -23,19 +22,15 @@ namespace SectionsEC.ViewModel
             Data = new SeriesCollection(config);
 
             interactionSerie = new LineSeries();
-            
 
             Data.Add(interactionSerie);
 
             Messenger.Default.Register<IEnumerable<InteractionCurveResult>>(this, addChart);
         }
 
-
-
         private LineSeries interactionSerie;
 
         public SeriesCollection Data { get; private set; }
-
 
         private void addChart(IEnumerable<InteractionCurveResult> interactionCurve)
         {
@@ -45,13 +40,10 @@ namespace SectionsEC.ViewModel
             interactionSerie.Foreground = Brushes.Red;
             interactionSerie.Values = new ChartValues<InteractionCurveResult>();
 
-
             foreach (var interactionPoint in interactionCurve)
             {
                 interactionSerie.Values.Add(new InteractionCurveResult() { Mx = interactionPoint.Mx, My = interactionPoint.My });
             }
-
-            
         }
     }
 }

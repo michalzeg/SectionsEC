@@ -19,7 +19,7 @@ namespace SectionsEC.Drawing.Tests
             double actualWidth = 100;
             double actualHeight = 100;
 
-            var perimeterProperties = new PerimeterProperties(()=> actualWidth,()=> actualHeight);
+            var perimeterProperties = new PerimeterProperties(() => actualWidth, () => actualHeight);
 
             var perimeter1 = new List<PointD>() { new PointD(0, 0), new PointD(1, 1) };
             perimeterProperties.AddPerimeter(perimeter1);
@@ -45,7 +45,6 @@ namespace SectionsEC.Drawing.Tests
             perimeterProperties.RemovePerimeter(perimeter3);
             Assert.AreEqual(200, perimeterProperties.Scale);
             Assert.AreEqual(new PointD(0.5, 0.5), perimeterProperties.Centre);
-
         }
     }
 }

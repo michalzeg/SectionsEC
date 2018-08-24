@@ -9,7 +9,6 @@ using SectionsEC.Extensions;
 
 namespace SectionsEC.Dimensioning
 {
-    
     public class DetailedResult
     {
         public LoadCase LoadCase { get; set; }
@@ -25,11 +24,9 @@ namespace SectionsEC.Dimensioning
             //string nl = Environment.NewLine;
             string sumSymbol = "\u03A3";
 
-
             double centreDistanceFromBottom = calculationResult.H - calculationResult.Cz;
             //List<string> text = new List<string>();
             StringBuilder text = new StringBuilder();
-
 
             text.AppendLine("Section:");
             //text.AppendLine(nl);
@@ -95,18 +92,14 @@ namespace SectionsEC.Dimensioning
 
             var reinforcementData = convertReinforcementDataToString(calculationResult.Bars, steel, ref sumBarForce, ref sumBarMoment);
             text.Append(reinforcementData.ToString());
-            
 
             text.AppendLine(string.Format("{0,-40}{1,-10}", "Sum of forces in reinforcement", sumSymbol + "F=" + sumBarForce.ToFormatedString() + "kN"));
             //text.AppendLine(nl);
             text.AppendLine(string.Format("{0,-40}{1,-10}", "Sum of moments due to reinforcement", sumSymbol + "M=" + sumBarMoment.ToFormatedString() + "kNm"));
             //text.AppendLine(nl);
 
-
-
             double resultForce = calculationResult.ForceConcrete + sumBarForce - Ned;
             double resultMoment = calculationResult.MrdConcrete + sumBarMoment - Ned * centreDistanceFromBottom;
-
 
             text.AppendLine(string.Empty);
             //text.AppendLine(nl);
@@ -129,7 +122,6 @@ namespace SectionsEC.Dimensioning
 
         private static StringBuilder convertReinforcementDataToString(IEnumerable<Reinforcement> reinforcement, Steel steel, ref double sumForce, ref double sumMoment)
         {
-
             int i = 0;
             var result = new StringBuilder();
             foreach (var bar in reinforcement)
@@ -144,7 +136,7 @@ namespace SectionsEC.Dimensioning
                 sumForce = sumForce + force;
                 sumMoment = sumMoment + moment;
 
-                string str = String.Format("{0,-6}{1,10}{2,10}{3,10}{4,10}{5,10}", (i + 1).ToString(), (barArea*10000).ToFormatedString(), force.ToFormatedString(), (strain*100).ToFormatedString(), (stress/1000).ToFormatedString(), moment.ToFormatedString());
+                string str = String.Format("{0,-6}{1,10}{2,10}{3,10}{4,10}{5,10}", (i + 1).ToString(), (barArea * 10000).ToFormatedString(), force.ToFormatedString(), (strain * 100).ToFormatedString(), (stress / 1000).ToFormatedString(), moment.ToFormatedString());
                 result.AppendLine(str);
                 i++;
             }
@@ -170,12 +162,11 @@ namespace SectionsEC.Dimensioning
         {
             Message = message;
         }
-        public DetailedResultLine(string message,FormatType format)
+
+        public DetailedResultLine(string message, FormatType format)
         {
             Message = message;
             Format = format;
         }
     }
-
-    
 }

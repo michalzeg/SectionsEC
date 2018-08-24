@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class CentralPanelViewModel :ViewModelBase
+    public class CentralPanelViewModel : ViewModelBase
     {
-
     }
 }

@@ -13,7 +13,7 @@ using SectionsEC.Dimensioning;
 
 namespace SectionsEC.ViewModel
 {
-    public class LeftPanelViewModel :ViewModelBase
+    public class LeftPanelViewModel : ViewModelBase
     {
         public ConcreteViewModel ConcreteVM { get; private set; }
         public SteelViewModel SteelVM { get; private set; }
@@ -51,43 +51,50 @@ namespace SectionsEC.ViewModel
             this.SelectedLoadCase = loadCaseList.FirstOrDefault();
             //RaisePropertyChanged(() => SelectedLoadCase);
             RaisePropertyChanged(() => LoadCaseList);
-
         }
+
         private void updateResults(IEnumerable<CalculationResults> results)
         {
             this.sectionCapacityResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
+
         private void updateDetailedResults(IEnumerable<DetailedResult> results)
         {
             this.detailedSectionCapacityResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
-        private void updateInteractionResults(IDictionary<LoadCase,IEnumerable<InteractionCurveResult>> results)
+
+        private void updateInteractionResults(IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> results)
         {
             this.interactionResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
+
         private void updateConcrete(Concrete concrete)
         {
             ConcreteVM.Concrete = concrete;
             calculateAxialCapacity();
         }
+
         private void updateSteel(Steel steel)
         {
             SteelVM.Steel = steel;
             calculateAxialCapacity();
         }
+
         private void updateBars(IList<Bar> bars)
         {
             this.bars = bars;
             calculateAxialCapacity();
         }
+
         private void updateSectionCoordinates(IList<PointD> sectionCoordinates)
         {
             this.sectionCoordinates = sectionCoordinates;
             calculateAxialCapacity();
         }
+
         private void updateResultsSender(ResultViewModelMessage message)
         {
             if (message == ResultViewModelMessage.InteractionCurveViewModel)
@@ -95,17 +102,16 @@ namespace SectionsEC.ViewModel
             else if (message == ResultViewModelMessage.SectionCapacityViewModel)
                 this.sendResults = this.sendSectionCapacityResults;
         }
-        
+
         private void calculateAxialCapacity()
         {
-            if (bars !=null && sectionCoordinates!=null && ConcreteVM.Concrete!= null && SteelVM.Steel !=null)
+            if (bars != null && sectionCoordinates != null && ConcreteVM.Concrete != null && SteelVM.Steel != null)
             {
                 this.TensionCapacity = AxialCapacity.TensionCapacity(bars, SteelVM.Steel);
                 this.CompressionCapacity = AxialCapacity.CompressionCapacity(sectionCoordinates, ConcreteVM.Concrete);
                 RaisePropertyChanged(() => TensionCapacity);
                 RaisePropertyChanged(() => CompressionCapacity);
             }
-
         }
 
         private IEnumerable<DetailedResult> detailedSectionCapacityResults;
@@ -115,6 +121,7 @@ namespace SectionsEC.ViewModel
         public ObservableCollection<LoadCase> LoadCaseList { get; set; }
 
         private LoadCase selectedLoadCase;
+
         public LoadCase SelectedLoadCase
         {
             get { return selectedLoadCase; }
@@ -131,17 +138,17 @@ namespace SectionsEC.ViewModel
             }
         }
 
-
         private Action<LoadCase> sendResults;
+
         private void sendInteractionCurveResults(LoadCase value)
         {
             IEnumerable<InteractionCurveResult> currentResult;
-            if (interactionResults.TryGetValue(value,out currentResult))
+            if (interactionResults.TryGetValue(value, out currentResult))
             {
                 Messenger.Default.Send(currentResult);
             }
-
         }
+
         private void sendSectionCapacityResults(LoadCase value)
         {
             CalculationResults currentResult = this.sectionCapacityResults.FirstOrDefault(e => e.LoadCase == value);
@@ -153,10 +160,10 @@ namespace SectionsEC.ViewModel
             var detailedResult = this.detailedSectionCapacityResults.FirstOrDefault(e => e.LoadCase == value);
             if (detailedResult != null)
                 Messenger.Default.Send(detailedResult);
-
         }
 
         private double normalForce;
+
         public double NormalForce
         {
             get { return normalForce; }
@@ -169,7 +176,5 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
-
-       
     }
 }

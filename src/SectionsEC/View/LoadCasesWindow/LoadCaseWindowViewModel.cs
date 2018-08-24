@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class LoadCaseWindowViewModel :ViewModelBase
+    public class LoadCaseWindowViewModel : ViewModelBase
     {
         public LoadCaseWindowViewModel()
         {

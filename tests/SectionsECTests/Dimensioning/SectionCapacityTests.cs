@@ -6,17 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SectionsEC.Helpers;
+
 namespace SectionsEC.Dimensioning.Tests
 {
     [TestFixture()]
     public class SectionCapacity
     {
-        [TestCase(0,1085)]
+        [TestCase(0, 1085)]
         [TestCase(1000, 1338)]
         [TestCase(-1000, 716)]
         [TestCase(5000, 951)]
         [TestCase(6000, 681)]
-        public void SectionCapacity_REctangularSectionWithOneBarNormalConcrete_Passed(double normalForce,double expectedCapacity)
+        public void SectionCapacity_REctangularSectionWithOneBarNormalConcrete_Passed(double normalForce, double expectedCapacity)
         {
             Concrete concrete = new Concrete();
             concrete.Acc = 1d;
@@ -29,7 +30,7 @@ namespace SectionsEC.Dimensioning.Tests
             steel.Fyk = 500000;
             steel.GammaS = 1.15;
             steel.K = 1.05;
-            steel.Euk = 2.5d/100d;
+            steel.Euk = 2.5d / 100d;
             steel.EukToEud = 0.9;
             steel.Es = 200000000;
             Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
@@ -50,6 +51,7 @@ namespace SectionsEC.Dimensioning.Tests
             var results = sc.CalculateCapacity(normalForce, section, reinf);
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
+
         [TestCase(0, 1278)]
         [TestCase(1000, 1688)]
         [TestCase(-1000, 828.7)]
@@ -89,6 +91,7 @@ namespace SectionsEC.Dimensioning.Tests
             var results = sc.CalculateCapacity(normalForce, section, reinf);
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
+
         [TestCase(0, 315.8)]
         [TestCase(1000, 28.97)]
         [TestCase(-1000, 482.4)]
@@ -112,12 +115,12 @@ namespace SectionsEC.Dimensioning.Tests
             steel.Es = 200000000;
             Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
             List<PointD> coordinates = new List<PointD>();
-            coordinates.Add(new PointD(0,0));
-            coordinates.Add(new PointD(0.1,0));
-            coordinates.Add(new PointD(0.2,0.5));
-            coordinates.Add(new PointD(0.3,0.6));
-            coordinates.Add(new PointD(-0.2,0.6));
-            coordinates.Add(new PointD(-0.1,0.5));
+            coordinates.Add(new PointD(0, 0));
+            coordinates.Add(new PointD(0.1, 0));
+            coordinates.Add(new PointD(0.2, 0.5));
+            coordinates.Add(new PointD(0.3, 0.6));
+            coordinates.Add(new PointD(-0.2, 0.6));
+            coordinates.Add(new PointD(-0.1, 0.5));
             coordinates.Add(new PointD(0, 0));
             Section section = new Section(coordinates);
             List<Reinforcement> reinforcement = new List<Reinforcement>();
@@ -139,6 +142,7 @@ namespace SectionsEC.Dimensioning.Tests
             var results = sc.CalculateCapacity(normalForce, section, reinf);
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
+
         [TestCase(0, 696)]
         [TestCase(1000, 833)]
         [TestCase(-1000, 554.1)]

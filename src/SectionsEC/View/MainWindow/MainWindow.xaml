@@ -13,20 +13,20 @@
             <DataTemplate>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Calculations are being performed..." FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="0" Text="Calculations are being performed..." FontWeight="Bold" HorizontalAlignment="Center" />
                     <TextBlock Grid.Row="1" HorizontalAlignment="Center">
-                        <Run Text="Current load case: "/>
-                        <Run Text="{Binding Path=DataContext.CurrentLoadCase,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" TextDecorations="Underline"/>
+                        <Run Text="Current load case: " />
+                        <Run Text="{Binding Path=DataContext.CurrentLoadCase,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" TextDecorations="Underline" />
                     </TextBlock>
                     <Grid Grid.Row="2">
-                        <ProgressBar Value="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" Height="20"/>
+                        <ProgressBar Value="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" Height="20" />
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Run Text="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}"/>
-                            <Run Text="%"/>
+                            <Run Text="{Binding Path=DataContext.Progress,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RibbonWindow}}" />
+                            <Run Text="%" />
                         </TextBlock>
                     </Grid>
                 </Grid>
@@ -34,66 +34,65 @@
         </xceed:BusyIndicator.BusyContentTemplate>
         <xceed:BusyIndicator.ProgressBarStyle>
             <Style TargetType="ProgressBar">
-                <Setter Property="Visibility" Value="Collapsed"/>
+                <Setter Property="Visibility" Value="Collapsed" />
             </Style>
         </xceed:BusyIndicator.ProgressBarStyle>
         <DockPanel>
             <Ribbon DockPanel.Dock="Top">
                 <Ribbon.ApplicationMenu>
                     <RibbonApplicationMenu>
-                        <RibbonApplicationMenuItem 
-                        Header="New" 
+                        <RibbonApplicationMenuItem
+                        Header="New"
                         Command="New"
-                        ImageSource="/SectionsEC;component/Images/Ribbon/NewIcon.png"/>
-                        <RibbonApplicationMenuItem 
-                        Header="Close" 
+                        ImageSource="/SectionsEC;component/Images/Ribbon/NewIcon.png" />
+                        <RibbonApplicationMenuItem
+                        Header="Close"
                         Command="Close"
-                        ImageSource="/SectionsEC;component/Images/Ribbon/CloseIcon.png"/>
+                        ImageSource="/SectionsEC;component/Images/Ribbon/CloseIcon.png" />
                     </RibbonApplicationMenu>
                 </Ribbon.ApplicationMenu>
                 <RibbonTab Header="Section">
                     <RibbonGroup Header="Properties">
                         <Grid>
-                            <RibbonButton 
-                            Label="Materials" 
-                            Command="{Binding ShowMaterials}" 
-                            LargeImageSource="/SectionsEC;component/Images/Ribbon/Materials.png"/>
+                            <RibbonButton
+                            Label="Materials"
+                            Command="{Binding ShowMaterials}"
+                            LargeImageSource="/SectionsEC;component/Images/Ribbon/Materials.png" />
                         </Grid>
                     </RibbonGroup>
                     <RibbonGroup Header="Section Type">
-                        <RibbonButton Label="Custom Section" 
-                                  Command="{Binding ShowCustomSection}" 
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/CustomSection.png"/>
-                        <RibbonButton Label="Circular Section" 
+                        <RibbonButton Label="Custom Section"
+                                  Command="{Binding ShowCustomSection}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/CustomSection.png" />
+                        <RibbonButton Label="Circular Section"
                                   Command="{Binding ShowCircularSection}"
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/CircularSection.png"/>
-                        <RibbonButton Label="Rectangular Section" 
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/CircularSection.png" />
+                        <RibbonButton Label="Rectangular Section"
                                   Command="{Binding ShowRectangularSection}"
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/RectangularSection.png"/>
-                        <RibbonButton Label="T Section" 
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/RectangularSection.png" />
+                        <RibbonButton Label="T Section"
                                   Command="{Binding ShowTSection}"
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/TSection.png"/>
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/TSection.png" />
                     </RibbonGroup>
                     <RibbonGroup Header="Loads">
                         <RibbonButton Label="Load Cases"
-                                  Command="{Binding ShowLoadCases}" 
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/LoadIcon.png"/>
+                                  Command="{Binding ShowLoadCases}"
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/LoadIcon.png" />
                     </RibbonGroup>
                 </RibbonTab>
                 <RibbonTab Header="Results">
                     <RibbonGroup Header="Results">
-                        <RibbonButton Label="Section Capacity" 
+                        <RibbonButton Label="Section Capacity"
                                   Command="{Binding Run}"
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/Run.png"/>
-                        <RibbonButton Label="InteractionCurve" 
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/Run.png" />
+                        <RibbonButton Label="InteractionCurve"
                                   Command="{Binding InteractionCurve}"
-                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/InteractionCurve.png"/>
-
+                                  LargeImageSource="/SectionsEC;component/Images/Ribbon/InteractionCurve.png" />
                     </RibbonGroup>
                 </RibbonTab>
             </Ribbon>
             <ContentControl ContentTemplate="{StaticResource mainPanel}"
-                        Content="{Binding MainPanelVM}"/>
+                        Content="{Binding MainPanelVM}" />
         </DockPanel>
     </xceed:BusyIndicator>
 </RibbonWindow>

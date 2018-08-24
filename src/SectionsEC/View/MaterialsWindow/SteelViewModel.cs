@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class SteelViewModel:ViewModelBase
+    public class SteelViewModel : ViewModelBase
     {
         public delegate void SteelUpdatedEventHandler();
+
         public event SteelUpdatedEventHandler SteelUpdated;
 
-        public SteelViewModel() { }
+        public SteelViewModel()
+        {
+        }
 
         public Steel Steel
         {
@@ -44,6 +47,7 @@ namespace SectionsEC.ViewModel
         }
 
         private string grade;
+
         public string Grade
         {
             get { return grade; }
@@ -58,7 +62,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double fyk;
+
         public double Fyk
         {
             get { return fyk; }
@@ -69,12 +75,14 @@ namespace SectionsEC.ViewModel
                     fyk = value;
                     Fyd = value / GammaS;
                     RaisePropertyChanged(() => Fyk);
-                    if (SteelUpdated!=null)
+                    if (SteelUpdated != null)
                         SteelUpdated();
                 }
             }
         }
+
         private double fyd;
+
         public double Fyd
         {
             get { return fyd; }
@@ -89,7 +97,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double gammaS;
+
         public double GammaS
         {
             get { return gammaS; }
@@ -105,7 +115,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double es;
+
         public double Es
         {
             get { return es; }
@@ -118,10 +130,11 @@ namespace SectionsEC.ViewModel
                     if (SteelUpdated != null)
                         SteelUpdated();
                 }
-
             }
         }
+
         private double euk;
+
         public double Euk
         {
             get { return euk; }
@@ -137,7 +150,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double eud;
+
         public double Eud
         {
             get { return eud; }
@@ -150,10 +165,11 @@ namespace SectionsEC.ViewModel
                     if (SteelUpdated != null)
                         SteelUpdated();
                 }
-
             }
         }
+
         private double eukToEud;
+
         public double EukToEud
         {
             get { return eukToEud; }
@@ -169,7 +185,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double k;
+
         public double K
         {
             get { return k; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SectionsEC.ViewModel
 {
-    public class SteelPageViewModel :ViewModelBase
+    public class SteelPageViewModel : ViewModelBase
     {
         public SteelViewModel SteelVM { get; private set; }
 
@@ -19,9 +19,11 @@ namespace SectionsEC.ViewModel
         }
 
         public delegate void UpdatingEventHandler(Steel steel);
+
         public event UpdatingEventHandler UpdateSteel;
 
         private Steel selectedMaterial;
+
         public Steel SelectedMaterial
         {
             get
@@ -55,7 +57,6 @@ namespace SectionsEC.ViewModel
                     //GammaS = selectedMaterial.GammaS;
                     UpdateSteel(SelectedMaterial);
                     //RaisePropertyChanged(() => SelectedMaterial);
-                    
                 }
             }
         }
@@ -116,7 +117,6 @@ namespace SectionsEC.ViewModel
                     RaisePropertyChanged(() => Es);
                     UpdateSteel(SelectedMaterial);
                 }
-
             }
         }
         private double euk;
@@ -146,7 +146,6 @@ namespace SectionsEC.ViewModel
                     RaisePropertyChanged(() => Eud);
                     UpdateSteel(SelectedMaterial);
                 }
-
             }
         }
         private double eukToEud;

@@ -11,7 +11,6 @@ using System.Windows.Media;
 
 namespace SectionsEC.Drawing
 {
-
     public class PerimeterProperties
     {
         public double Scale { get; private set; }
@@ -20,7 +19,6 @@ namespace SectionsEC.Drawing
         private IList<IList<PointD>> perimeters;
         private Func<double> actualWidth;
         private Func<double> actualHeight;
-  
 
         public PerimeterProperties(Func<double> actualWidth, Func<double> actualHeight)
         {
@@ -28,7 +26,6 @@ namespace SectionsEC.Drawing
             this.actualHeight = actualHeight;
             this.actualWidth = actualWidth;
         }
-
 
         public void AddPerimeter(IList<PointD> perimeter)
         {
@@ -39,6 +36,7 @@ namespace SectionsEC.Drawing
             perimeters.Add(perimeter);
             UpdateProperties();
         }
+
         public void RemovePerimeter(IList<PointD> perimeter)
         {
             if (!this.contains(perimeter))
@@ -46,6 +44,7 @@ namespace SectionsEC.Drawing
             perimeters.Remove(perimeter);
             UpdateProperties();
         }
+
         public void ChangePerimeter(IList<PointD> perimeter)
         {
             this.RemovePerimeter(perimeter);
@@ -70,7 +69,6 @@ namespace SectionsEC.Drawing
             var scaleY = this.actualHeight() / drawingHeight;
 
             this.Scale = Math.Min(scaleX, scaleY);
-
         }
 
         private bool contains(IList<PointD> perimeter)
@@ -82,16 +80,14 @@ namespace SectionsEC.Drawing
             }
             return false;
         }
-
     }
 
     public abstract class Drawing
     {
-
         protected PerimeterProperties perimeterProperties;
         protected Grid canvas;
 
-        public Drawing(Grid canvas,PerimeterProperties perimeterProperties)
+        public Drawing(Grid canvas, PerimeterProperties perimeterProperties)
         {
             this.canvas = canvas;
             this.perimeterProperties = perimeterProperties;
@@ -99,7 +95,6 @@ namespace SectionsEC.Drawing
 
         protected IList<PointD> transformCoordinatesToCentreOfGrid(IList<PointD> coordinates)
         {
-
             var pointList = new List<PointD>();
             foreach (var point in coordinates)
             {
@@ -111,6 +106,7 @@ namespace SectionsEC.Drawing
             }
             return pointList;
         }
+
         protected PointD transformCoordinatesToCentreOfGrid(PointD point)
         {
             var newPoint = new PointD();
@@ -118,21 +114,21 @@ namespace SectionsEC.Drawing
             newPoint.Y = (-(point.Y - this.perimeterProperties.Centre.Y) * perimeterProperties.Scale) + this.canvas.ActualHeight / 2;
             return newPoint;
         }
+
         protected PointD transformCoordinatesToCentreOfGrid(double x, double y)
         {
             return transformCoordinatesToCentreOfGrid(new PointD(x, y));
         }
+
         public abstract void Redraw();
-        
     }
 
-    public class SectionDrawing:Drawing
+    public class SectionDrawing : Drawing
     {
-
         protected IList<PointD> perimeter;
         protected Polygon polygon;
 
-        public SectionDrawing(Grid canvas,PerimeterProperties perimeterProperties):base(canvas,perimeterProperties)
+        public SectionDrawing(Grid canvas, PerimeterProperties perimeterProperties) : base(canvas, perimeterProperties)
         {
             this.polygon = new Polygon();
             this.canvas.Children.Add(polygon);
@@ -168,7 +164,6 @@ namespace SectionsEC.Drawing
             {
                 this.polygon.Points.Add(new Point(point.X, point.Y));
             }
-
         }
     }
 
@@ -188,15 +183,14 @@ namespace SectionsEC.Drawing
         }
     }
 
-    public class BarsDrawing:Drawing
+    public class BarsDrawing : Drawing
     {
         private IList<Bar> bars;
         private IList<Circle> circles;
 
-        public BarsDrawing(Grid canvas,PerimeterProperties perimeterProperties):base(canvas,perimeterProperties)
+        public BarsDrawing(Grid canvas, PerimeterProperties perimeterProperties) : base(canvas, perimeterProperties)
         {
             this.circles = new List<Circle>();
-            
         }
 
         public void Bars(IList<Bar> bars)
@@ -226,6 +220,7 @@ namespace SectionsEC.Drawing
         {
             return Math.Sqrt(4 * area / Math.PI) * this.perimeterProperties.Scale;
         }
+
         private void setCircleProperties(Circle circle)
         {
             circle.Stroke = Brushes.Blue;
@@ -265,12 +260,11 @@ namespace SectionsEC.Drawing
 
         private IEnumerable<PathFigure> createPolyline()
         {
-
             var basePoint = new Point(Diameter / 2, 0d);
             double deltaAngle = Math.PI / 4;
 
             var segments = new List<PathSegment>();
-            for (int i = 1;i<=8;i++)
+            for (int i = 1; i <= 8; i++)
             {
                 var point = rotatePoint(basePoint, i * deltaAngle);
                 point.X = point.X + X;
@@ -287,24 +281,23 @@ namespace SectionsEC.Drawing
             figures.Add(pathFigure);
             return figures;
         }
-        private Point rotatePoint(Point point,double angle)
+
+        private Point rotatePoint(Point point, double angle)
         {
             var result = new Point();
             result.X = point.X * Math.Cos(angle) - point.Y * Math.Sin(angle);
             result.Y = point.X * Math.Sin(angle) + point.Y * Math.Cos(angle);
-            return result; 
+            return result;
         }
 
         protected override Geometry DefiningGeometry
         {
             get
             {
-
                 return new PathGeometry(createPolyline());
             }
         }
     }
-
 
     public class Hatch
     {
@@ -323,31 +316,30 @@ namespace SectionsEC.Drawing
             //PathGeometry geometry1 = getLine(new Point(0, 0), new Point(15, 15);
             //Path path1 = new Path();
             //path1.Data = geometry1;
-            grid.Children.Add(new Path() { Data = getLine(new Point(0, 0), new Point(15, 15)),Stroke=Brushes.Red });
-            grid.Children.Add(new Path() { Data = getLine(new Point(0, 15), new Point(15, 0)),Stroke=Brushes.Red });
+            grid.Children.Add(new Path() { Data = getLine(new Point(0, 0), new Point(15, 15)), Stroke = Brushes.Red });
+            grid.Children.Add(new Path() { Data = getLine(new Point(0, 15), new Point(15, 0)), Stroke = Brushes.Red });
 
             visualBrush.Visual = grid;
             return visualBrush;
         }
 
-        private static PathGeometry getLine(Point point1,Point point2)
+        private static PathGeometry getLine(Point point1, Point point2)
         {
             var pathFigure = new PathFigure();
             pathFigure.StartPoint = point1;
             LineSegment lineSegment = new LineSegment();
             lineSegment.Point = point2;
-            
+
             PathSegmentCollection pathSegmentCollection = new PathSegmentCollection();
             pathSegmentCollection.Add(lineSegment);
             pathFigure.Segments = pathSegmentCollection;
-            
+
             PathFigureCollection pathFigureCollection = new PathFigureCollection();
             pathFigureCollection.Add(pathFigure);
 
-
             var geometry1 = new PathGeometry();
             geometry1.Figures = pathFigureCollection;
-            
+
             return geometry1;
         }
     }

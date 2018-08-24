@@ -9,23 +9,23 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SectionsEC;component/View/Style/Styles.xaml"/>
-                <ResourceDictionary Source="/SectionsEC;component/View/Style/CustomStyles.xaml"/>
+                <ResourceDictionary Source="/SectionsEC;component/View/Style/Styles.xaml" />
+                <ResourceDictionary Source="/SectionsEC;component/View/Style/CustomStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <GroupBox Header="Coordinates" Grid.Column="0" Grid.Row="0">
             <DockPanel>
-              
+
                 <DataGrid
                     Name="dataGridPoints"
                     AutoGenerateColumns="False"
@@ -33,15 +33,15 @@
                     ColumnWidth="*"
                     ItemsSource="{Binding Points,Mode=TwoWay}" TargetUpdated="DataGrid_TargetUpdated">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="X [m]" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
-                        <DataGridTextColumn Header="Y [m]" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="X [m]" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Y [m]" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>
         </GroupBox>
         <GroupBox Header="Reinforcement" Grid.Column="0" Grid.Row="1">
             <DockPanel>
-                
+
                 <DataGrid
                     Name="dataGridBars"
                     AutoGenerateColumns="False"
@@ -49,15 +49,15 @@
                     ColumnWidth="*"
                     ItemsSource="{Binding Bars,Mode=TwoWay}" TargetUpdated="DataGrid_TargetUpdated">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="X [m]" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
-                        <DataGridTextColumn Header="Y [m]" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
-                        <DataGridTextColumn Header="As [m2]" Binding="{Binding Path=As,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="X [m]" Binding="{Binding Path=X,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Y [m]" Binding="{Binding Path=Y,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
+                        <DataGridTextColumn Header="As [m2]" Binding="{Binding Path=As,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>
         </GroupBox>
         <ContentControl Grid.Column="1" Grid.Row="1"
-                        ContentTemplate="{StaticResource drawingPage}"/>
+                        ContentTemplate="{StaticResource drawingPage}" />
         <Image
             Grid.Column="1"
             Grid.Row="0"

@@ -10,46 +10,45 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SectionsEC;component/View/Style/CustomStyles.xaml"/>
-                <ResourceDictionary Source="/SectionsEC;component/View/Style/Styles.xaml"/>
-
+                <ResourceDictionary Source="/SectionsEC;component/View/Style/CustomStyles.xaml" />
+                <ResourceDictionary Source="/SectionsEC;component/View/Style/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <converter:MultiplyValueConverter x:Key="MultiplyValueConverter"/>
+            <converter:MultiplyValueConverter x:Key="MultiplyValueConverter" />
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <GroupBox Header="Section Data" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="D [mm]"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SectionDiameter,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=1000}"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Cover [mm]"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Cover,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=1000}"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Bar diameter [mm]"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding BarDiameter,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=1000}"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="Number of bars [-]"/>
-                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding NumberOfBars}"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="D [mm]" />
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SectionDiameter,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=1000}" />
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Cover [mm]" />
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Cover,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=1000}" />
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Bar diameter [mm]" />
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding BarDiameter,Converter={StaticResource MultiplyValueConverter}, ConverterParameter=1000}" />
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Number of bars [-]" />
+                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding NumberOfBars}" />
             </Grid>
         </GroupBox>
         <ContentControl Grid.Column="1" Grid.Row="1"
-                        ContentTemplate="{StaticResource drawingPage}"/>
+                        ContentTemplate="{StaticResource drawingPage}" />
         <Image
             Grid.Column="1"
             Grid.Row="0"

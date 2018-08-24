@@ -31,7 +31,6 @@ namespace SectionsEC.Dimensioning.Tests
             steel.EukToEud = 0.9;
             steel.Es = 200000000;
 
-
             Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
 
             List<PointD> coordinates = new List<PointD>();
@@ -52,7 +51,5 @@ namespace SectionsEC.Dimensioning.Tests
             Assert.AreEqual(5955.3, result.NormalForce, 0.1);
             Assert.AreEqual(3677.313, result.Moment, 0.1);
         }
-
-        
     }
 }

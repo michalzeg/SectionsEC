@@ -10,7 +10,7 @@ using SectionsEC.StressCalculations;
 namespace SectionsEC.ViewModel
 
 {
-    public class ConcretePageViewModel:ViewModelBase
+    public class ConcretePageViewModel : ViewModelBase
     {
         public ConcreteViewModel ConcreteVM { get; private set; }
 
@@ -21,9 +21,11 @@ namespace SectionsEC.ViewModel
         }
 
         public delegate void UpdatingConcreteEventHandler(Concrete concrete);
+
         public event UpdatingConcreteEventHandler UpdateConcrete;
 
         private Concrete selectedMaterial;
+
         public Concrete SelectedMaterial
         {
             get
@@ -40,7 +42,7 @@ namespace SectionsEC.ViewModel
             }
             set
             {
-                if (value !=selectedMaterial)
+                if (value != selectedMaterial)
                 {
                     selectedMaterial = value;
                     ConcreteVM.Concrete = value;
@@ -56,7 +58,7 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
-        
+
         /*
         private double fck;
         public double Fck

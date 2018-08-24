@@ -10,7 +10,7 @@ using SectionsEC.Helpers;
 
 namespace SectionsEC.ViewModel
 {
-    public class RectangularSectionViewModel:ViewModelBase
+    public class RectangularSectionViewModel : ViewModelBase
     {
         public RectangularSectionViewModel()
         {
@@ -21,7 +21,6 @@ namespace SectionsEC.ViewModel
             BottomBarDiameter = 0.016;
             TopBarsNumber = 10;
             BottomBarsNumber = 4;
-
         }
 
         private void updateCoordinates()
@@ -33,8 +32,8 @@ namespace SectionsEC.ViewModel
             Messenger.Default.Send<IList<Bar>>(bars);
         }
 
-        
         private double b;
+
         public double B
         {
             get { return b; }
@@ -48,8 +47,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
-        
+
         private double h;
+
         public double H
         {
             get { return h; }
@@ -63,7 +63,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double cover;
+
         public double Cover
         {
             get { return cover; }
@@ -77,7 +79,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double topBarDiameter;
+
         public double TopBarDiameter
         {
             get { return topBarDiameter; }
@@ -91,7 +95,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double bottomBarDiameter;
+
         public double BottomBarDiameter
         {
             get { return bottomBarDiameter; }
@@ -105,7 +111,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private long topBarsNumber;
+
         public long TopBarsNumber
         {
             get { return topBarsNumber; }
@@ -119,7 +127,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private long bottomBarsNumber;
+
         public long BottomBarsNumber
         {
             get { return bottomBarsNumber; }
@@ -133,6 +143,5 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
-
     }
 }

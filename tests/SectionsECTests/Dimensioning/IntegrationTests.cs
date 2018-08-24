@@ -13,8 +13,6 @@ namespace SectionsEC.Dimensioning.Tests
     [TestFixture()]
     public class IntegrationTests
     {
-        
-
         [Test()]
         public void IntegrateTest_RectangulerSection_Passed()
         {
@@ -33,9 +31,10 @@ namespace SectionsEC.Dimensioning.Tests
 
             IIntegration integration = new Integration();
             var result = integration.Integrate(section, (e) => 1);
-            Assert.AreEqual(1d, result.NormalForce,0.001);
-            Assert.AreEqual(0.5, result.Moment,0.001);
+            Assert.AreEqual(1d, result.NormalForce, 0.001);
+            Assert.AreEqual(0.5, result.Moment, 0.001);
         }
+
         [Test()]
         public void IntegrateTest_RectangulerSectionParabilicFunction_Passed()
         {
@@ -53,10 +52,9 @@ namespace SectionsEC.Dimensioning.Tests
             section.MinY.Returns(0);
 
             IIntegration integration = new Integration();
-            var result = integration.Integrate(section, y => (1-(1-y)*(1-y)));
+            var result = integration.Integrate(section, y => (1 - (1 - y) * (1 - y)));
             Assert.AreEqual(0.6666667, result.NormalForce, 0.001);
             Assert.AreEqual(0.416667, result.Moment, 0.001);
         }
-
     }
 }

@@ -10,7 +10,7 @@ using SectionsEC.Helpers;
 
 namespace SectionsEC.ViewModel
 {
-    public class CircularSectionViewModel:ViewModelBase
+    public class CircularSectionViewModel : ViewModelBase
     {
         public CircularSectionViewModel()
         {
@@ -30,6 +30,7 @@ namespace SectionsEC.ViewModel
         }
 
         private double sectionDiameter;
+
         public double SectionDiameter
         {
             get { return sectionDiameter; }
@@ -43,7 +44,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double cover;
+
         public double Cover
         {
             get { return cover; }
@@ -57,7 +60,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private double barDiameter;
+
         public double BarDiameter
         {
             get { return barDiameter; }
@@ -71,7 +76,9 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
+
         private long numberOfBars;
+
         public long NumberOfBars
         {
             get { return numberOfBars; }
@@ -85,6 +92,5 @@ namespace SectionsEC.ViewModel
                 }
             }
         }
-
     }
 }

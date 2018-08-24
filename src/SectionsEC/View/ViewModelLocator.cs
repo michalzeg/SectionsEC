@@ -4,7 +4,7 @@
       <vm:ViewModelLocator xmlns:vm="clr-namespace:SectionsEC"
                            x:Key="Locator" />
   </Application.Resources>
-  
+
   In the View:
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 
@@ -58,7 +58,7 @@ namespace SectionsEC.ViewModel
                 return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
             }
         }
-        
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

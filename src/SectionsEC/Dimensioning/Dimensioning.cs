@@ -7,6 +7,7 @@ using SectionsEC.StressCalculations;
 using System.Text;
 using SectionsEC.Dimensioning;
 using SectionsEC.WindowClasses;
+
 namespace SectionsEC.Dimensioning
 {
     public static class CapacityCalculator
@@ -16,7 +17,7 @@ namespace SectionsEC.Dimensioning
             var capacity = new SectionCapacity(concrete, steel);
             var section = new Section(sectionCoordinates);
             var results = new List<CalculationResults>();
-            for (int i = 0; i <= loadCases.Count - 1; i++) 
+            for (int i = 0; i <= loadCases.Count - 1; i++)
             {
                 var loadCase = loadCases[i];
                 progressIndicatior.Report(ProgressArgument.CalculateProgress(i, loadCases.Count, loadCase.Name));
@@ -26,6 +27,7 @@ namespace SectionsEC.Dimensioning
             }
             return results;
         }
+
         public static IEnumerable<DetailedResult> GetDetailedResults(Concrete concrete, Steel steel, IEnumerable<CalculationResults> calcualtionResults)
         {
             var resultList = new List<DetailedResult>();
@@ -37,6 +39,7 @@ namespace SectionsEC.Dimensioning
             return resultList;
         }
     }
+
     public class InteractionCurveCalculator
     {
         private readonly int deltaAngle = 5;
@@ -44,7 +47,8 @@ namespace SectionsEC.Dimensioning
         private IList<PointD> coordinates;
         private Concrete concrete;
         private Steel steel;
-        IList<LoadCase> loadCases;
+        private IList<LoadCase> loadCases;
+
         public InteractionCurveCalculator(Concrete concrete, Steel steel, IList<Bar> bars, IList<PointD> coordinates, IList<LoadCase> loadCases)
         {
             this.concrete = concrete;
@@ -55,11 +59,12 @@ namespace SectionsEC.Dimensioning
             this.bars = bars;
             this.coordinates = coordinates;
         }
+
         public IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> GetInteractionCurve(IProgress<ProgressArgument> progress)
         {
             var sectionCapacity = new SectionCapacity(concrete, steel);
             var result = new Dictionary<LoadCase, IEnumerable<InteractionCurveResult>>();
-            for (int i = 0; i <= loadCases.Count - 1; i++) 
+            for (int i = 0; i <= loadCases.Count - 1; i++)
             {
                 var loadCase = loadCases[i];
                 progress.Report(ProgressArgument.CalculateProgress(i, loadCases.Count, loadCase.Name));
@@ -87,6 +92,7 @@ namespace SectionsEC.Dimensioning
             }
             return result;
         }
+
         private IList<Bar> rotateBarCoordinates(double angle)
         {
             List<Bar> newBars = new List<Bar>();
@@ -99,6 +105,7 @@ namespace SectionsEC.Dimensioning
             }
             return newBars;
         }
+
         private IList<PointD> rotateSectionCoordinates(double angle)
         {
             List<PointD> coordinates = new List<PointD>();
@@ -110,15 +117,17 @@ namespace SectionsEC.Dimensioning
             }
             return coordinates;
         }
+
         private void calculatePrincipalMoments(double angle, double moment, out double mx, out double my)
         {
             my = moment * Math.Cos((90 - angle) * Math.PI / 180);
             mx = moment * Math.Sin((90 - angle) * Math.PI / 180);
         }
     }
+
     public class AxialCapacity
     {
-        public static double TensionCapacity(IList<Bar> bars,Steel steel)
+        public static double TensionCapacity(IList<Bar> bars, Steel steel)
         {
             if (bars.Count == 0)
                 return 0;
@@ -129,29 +138,33 @@ namespace SectionsEC.Dimensioning
             }
             return -capacity;
         }
-        public static double CompressionCapacity(IList<PointD> sectionCoordinates,Concrete concrete)
+
+        public static double CompressionCapacity(IList<PointD> sectionCoordinates, Concrete concrete)
         {
             if (sectionCoordinates.Count == 0)
                 return 0;
-            var section = new Section(sectionCoordinates); 
+            var section = new Section(sectionCoordinates);
             double areaOfConcrete = SectionProperties.A(section.Coordinates);
             return areaOfConcrete * concrete.Fcd;
         }
     }
+
     public class SectionCapacity
     {
         private ICompressionZoneCalculations compressionZoneCalculations;
         private IStrainCalculations strainCalculations;
         private IList<Reinforcement> reinforcement;
-        private Concrete concrete; 
-        private Steel steel; 
-        private Section section; 
+        private Concrete concrete;
+        private Steel steel;
+        private Section section;
         private double nEd;
+
         public SectionCapacity(Concrete concrete, Steel steel)
         {
             this.concrete = concrete;
             this.steel = steel;
         }
+
         private double calculateEffectiveDepthOfSectionAndBars()
         {
             /*Reinforcement barsTemp;
@@ -172,7 +185,8 @@ namespace SectionsEC.Dimensioning
             }
             return tempD.Max();
         }
-        private double equlibriumEquation(double x) 
+
+        private double equlibriumEquation(double x)
         {
             var forceInConcrete = this.forceInConcrete(x);
             var forceInAs1 = this.forceInAs1(x);
@@ -180,10 +194,11 @@ namespace SectionsEC.Dimensioning
             var result = forceInConcrete + forceInAs2 - forceInAs1 - this.nEd;
             return result;
         }
-        private double forceInAs1(double x) 
+
+        private double forceInAs1(double x)
         {
-            var resultantForce = 0d; 
-            var yNeutralAxis = this.section.MaxY - x; 
+            var resultantForce = 0d;
+            var yNeutralAxis = this.section.MaxY - x;
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y < yNeutralAxis)
@@ -199,10 +214,11 @@ namespace SectionsEC.Dimensioning
             }
             return resultantForce;
         }
-        private double forceInAs2(double x) 
+
+        private double forceInAs2(double x)
         {
-            var resultantForce = 0d; 
-            var yNeutralAxis = this.section.MaxY - x; 
+            var resultantForce = 0d;
+            var yNeutralAxis = this.section.MaxY - x;
             for (int i = 0; i <= this.reinforcement.Count - 1; i++)
             {
                 if (this.reinforcement[i].Bar.Y > yNeutralAxis)
@@ -218,17 +234,19 @@ namespace SectionsEC.Dimensioning
             }
             return resultantForce;
         }
-        private double forceInConcrete(double x) 
+
+        private double forceInConcrete(double x)
         {
             var result = this.compressionZoneCalculations.Calculate(x, this.section);
             return result.NormalForce;
         }
-        private double solveEqulibriumEquation() 
+
+        private double solveEqulibriumEquation()
         {
-            double EPS = 0.00000000001; 
-            double fL, fR, fM; 
-            double xL = 0.000001 * this.section.H; 
-            double xR = 10 * this.section.H; 
+            double EPS = 0.00000000001;
+            double fL, fR, fM;
+            double xL = 0.000001 * this.section.H;
+            double xR = 10 * this.section.H;
             double xM = (xL + xR) / 2;
             double x0;
             int k = 0;
@@ -258,7 +276,8 @@ namespace SectionsEC.Dimensioning
             }
             return x0;
         }
-        public CalculationResults CalculateCapacity(double nEd, Section section, IList<Bar> bars) 
+
+        public CalculationResults CalculateCapacity(double nEd, Section section, IList<Bar> bars)
         {
             this.section = section;
             this.strainCalculations = new StrainCalculations(this.concrete, this.steel, section);
@@ -276,10 +295,10 @@ namespace SectionsEC.Dimensioning
             result.X = this.solveEqulibriumEquation();
             if (double.IsNaN(result.X))
             {
-                return result; 
+                return result;
             }
             var forces = this.compressionZoneCalculations.Calculate(result.X, this.section);
-            result.MrdConcrete = forces.Moment; 
+            result.MrdConcrete = forces.Moment;
             result.ForceConcrete = forces.NormalForce;
             result.Mrd = mrdReinforcement(result.X) + result.MrdConcrete - this.nEd * (this.section.H - this.section.Cz);
             result.CompressionZone = CompressionZoneCoordinates.CoordinatesOfCompressionZone(this.section.Coordinates, this.section.MaxY - result.X);
@@ -289,6 +308,7 @@ namespace SectionsEC.Dimensioning
             result.Cz = section.Cz;
             return result;
         }
+
         private void createReinforcement(IList<Bar> bars)
         {
             this.reinforcement = new List<Reinforcement>();
@@ -297,7 +317,8 @@ namespace SectionsEC.Dimensioning
                 this.reinforcement.Add(new Reinforcement() { Bar = bar });
             }
         }
-        private double mrdReinforcement(double x) 
+
+        private double mrdReinforcement(double x)
         {
             double Mrd = 0;
             double yOsi = this.section.MaxY - x;

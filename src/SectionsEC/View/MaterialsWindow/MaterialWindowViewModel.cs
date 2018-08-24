@@ -10,7 +10,7 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace SectionsEC.ViewModel
 {
-    public class MaterialWindowViewModel:ViewModelBase
+    public class MaterialWindowViewModel : ViewModelBase
     {
         public MaterialWindowViewModel()
         {
@@ -35,12 +35,13 @@ namespace SectionsEC.ViewModel
         {
             this.concrete = concrete;
 
-            Func<double, double> characteristicFunction = (e)=> StressFunctions.ConcreteStressCharacteristic(e, concrete);
+            Func<double, double> characteristicFunction = (e) => StressFunctions.ConcreteStressCharacteristic(e, concrete);
             this.ConcreteChartVM.AddCharacteristicChart("fck", concrete.Ecu2, characteristicFunction);
 
             Func<double, double> designFunction = (e) => StressFunctions.ConcreteStressDesign(e, concrete);
             this.ConcreteChartVM.AddDesignChart("fcd", concrete.Ecu2, designFunction);
         }
+
         private void updateSteel(Steel steel)
         {
             this.steel = steel;

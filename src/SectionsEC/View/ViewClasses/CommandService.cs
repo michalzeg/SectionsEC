@@ -14,30 +14,50 @@ namespace SectionsEC.Commands
     [Obsolete]
     public static class RibbonCommands
     {
-        public static void New () {}
-        public static void Close () {}
+        public static void New()
+        {
+        }
 
-        public static void ShowMaterials ()
+        public static void Close()
+        {
+        }
+
+        public static void ShowMaterials()
         {
             var materialWindow = new MaterialWindow();
             materialWindow.ShowDialog();
             materialWindow.DataContext = SimpleIoc.Default.GetInstance<MaterialWindowViewModel>();
         }
-        public static void ShowCustomSection () {}
-        public static void ShowCircularSection () {}
-        public static void ShowTSection () {}
-        public static void ShowLoadCases ()
+
+        public static void ShowCustomSection()
+        {
+        }
+
+        public static void ShowCircularSection()
+        {
+        }
+
+        public static void ShowTSection()
+        {
+        }
+
+        public static void ShowLoadCases()
         {
             var loadCasesWindow = new LoadCasesWindow();
             loadCasesWindow.ShowDialog();
             loadCasesWindow.DataContext = SimpleIoc.Default.GetInstance<LoadCaseWindowViewModel>();
         }
 
-        public static void Run ()
+        public static void Run()
         {
         }
-        public static void InteractionCurve () {}
-        public static void Report () {}
 
+        public static void InteractionCurve()
+        {
+        }
+
+        public static void Report()
+        {
+        }
     }
 }

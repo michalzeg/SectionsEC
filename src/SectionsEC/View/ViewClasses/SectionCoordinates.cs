@@ -12,21 +12,21 @@ namespace SectionsEC.WindowClasses
         public static IList<PointD> CalculateSectionCoordinates(double diameter, double cover)
         {
             var coordinates = new List<PointD>();
-            for (int i = 0; i <= 360; i++) 
+            for (int i = 0; i <= 360; i++)
             {
                 double alfa;
                 PointD point = new PointD();
-                alfa = (i - 90) * Math.PI / 180; 
+                alfa = (i - 90) * Math.PI / 180;
                 point.X = diameter / 2 * Math.Sin(alfa);
                 point.Y = diameter / 2 * Math.Cos(alfa);
                 coordinates.Add(point);
             }
             return coordinates;
         }
+
         public static IList<Bar> CalculateReinforcementCoordinates(double diameter, double cover, double fi, double n)
         {
-            
-            double deltaAlfa = 360 / n; 
+            double deltaAlfa = 360 / n;
             var bars = new List<Bar>();
 
             for (int i = 1; i <= n; i++)
@@ -45,7 +45,7 @@ namespace SectionsEC.WindowClasses
 
     public class TSectionCoordinates
     {
-        public static IList<PointD> CalculateSectionCoordinates(double bf,double bw,double hf,double hw)
+        public static IList<PointD> CalculateSectionCoordinates(double bf, double bw, double hf, double hw)
         {
             List<PointD> coordinates = new List<PointD>();
 
@@ -61,9 +61,9 @@ namespace SectionsEC.WindowClasses
             coordinates.Add(new PointD(0, 0));
             return coordinates;
         }
-        public static IList<Bar> CalculateReinforcementCoordinates(double bf,double bw,double hf,double hw, double topBarsDiameter,double bottomBarsDiameter,long topBarsNumber,long bottomBarsNumber, double cover)
+
+        public static IList<Bar> CalculateReinforcementCoordinates(double bf, double bw, double hf, double hw, double topBarsDiameter, double bottomBarsDiameter, long topBarsNumber, long bottomBarsNumber, double cover)
         {
-            
             double distanceBetweenBars = (bf - 2 * cover - topBarsDiameter) / (topBarsNumber + 1);
             IList<Bar> bars = new List<Bar>();
             Reinforcement tempReinf = new Reinforcement();
@@ -110,9 +110,9 @@ namespace SectionsEC.WindowClasses
             coordinates.Add(new PointD(0, 0));
             return coordinates;
         }
+
         public static IList<Bar> CalculateReinforcementCoordinates(double b, double h, double topBarsDiameter, double bottomBarsDiameter, long topBarsNumber, long bottomBarsNumber, double cover)
         {
-
             double distanceBetweenBars = (b - 2 * cover - topBarsDiameter) / (topBarsNumber + 1);
             IList<Bar> bars = new List<Bar>();
             Reinforcement tempReinf = new Reinforcement();
@@ -133,7 +133,7 @@ namespace SectionsEC.WindowClasses
             for (int i = 1; i <= bottomBarsNumber; i++)
             {
                 double x = i * distanceBetweenBars - (b / 2 - cover - bottomBarsDiameter / 2);
-                double y = -h  + cover + bottomBarsDiameter / 2;
+                double y = -h + cover + bottomBarsDiameter / 2;
                 double As = Math.PI * bottomBarsDiameter * bottomBarsDiameter / 4;
                 var bar = new Bar();
                 bar.X = x;

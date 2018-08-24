@@ -9,16 +9,16 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/View/Style/Styles.xaml"/>
-                <ResourceDictionary Source="/View/Style/CustomStyles.xaml"/>
+                <ResourceDictionary Source="/View/Style/Styles.xaml" />
+                <ResourceDictionary Source="/View/Style/CustomStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel>
         <TextBlock DockPanel.Dock="Bottom"
-            Text="   + is compression" FontStyle="Italic"/>
+            Text="   + is compression" FontStyle="Italic" />
         <TextBlock DockPanel.Dock="Bottom"
-                   Text="   - is tension" FontStyle="Italic"/>
+                   Text="   - is tension" FontStyle="Italic" />
         <GroupBox Header="Load Cases">
             <DataGrid
                     Name="dataLoadCases"
@@ -27,8 +27,8 @@
                     ColumnWidth="*"
                     ItemsSource="{Binding LoadCases,Mode=TwoWay}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
-                    <DataGridTextColumn Header="Axial Force [kN]" Binding="{Binding Path=NormalForce,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Axial Force [kN]" Binding="{Binding Path=NormalForce,UpdateSourceTrigger=LostFocus,Mode=TwoWay}" />
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>

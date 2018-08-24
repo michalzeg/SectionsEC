@@ -27,10 +27,7 @@ namespace SectionsEC.Views
         {
             InitializeComponent();
             this.DataContext = new CustomSectionWindowViewModel();
-  
         }
-
-        
 
         private void DataGrid_TargetUpdated(object sender, DataTransferEventArgs e)
         {
@@ -39,9 +36,6 @@ namespace SectionsEC.Views
 
             var barData = ((IEnumerable<Bar>)this.dataGridBars.ItemsSource).ToList();
             Messenger.Default.Send<IList<Bar>>(barData);
-
         }
-
-        
     }
 }

@@ -22,6 +22,7 @@ namespace SectionsEC.Views
     public partial class MaterialWindow : Window
     {
         private MaterialWindowViewModel vm;
+
         public MaterialWindow()
         {
             InitializeComponent();

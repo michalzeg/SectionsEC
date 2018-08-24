@@ -24,7 +24,5 @@ namespace SectionsEC.Views
         {
             InitializeComponent();
         }
-
-        
     }
 }

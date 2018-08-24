@@ -8,7 +8,7 @@ namespace SectionsEC.WindowClasses
 {
     public class ProgressArgument
     {
-        public static ProgressArgument CalculateProgress(int currentIndex,int maxIndex,string name)
+        public static ProgressArgument CalculateProgress(int currentIndex, int maxIndex, string name)
         {
             var progress = new ProgressArgument();
             progress.Progress = (currentIndex) * 100 / maxIndex;
@@ -19,6 +19,4 @@ namespace SectionsEC.WindowClasses
         public int Progress;
         public string LoadCaseName;
     }
-
-    
 }

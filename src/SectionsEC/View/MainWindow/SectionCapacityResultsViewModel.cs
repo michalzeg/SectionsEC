@@ -11,11 +11,11 @@ using SectionsEC.Dimensioning;
 
 namespace SectionsEC.ViewModel
 {
-    public class SectionCapacityResultViewModel :ViewModelBase
+    public class SectionCapacityResultViewModel : ViewModelBase
     {
         public SectionCapacityResultViewModel()
         {
-            Messenger.Default.Register<CalculationResults>(this,updateResult);
+            Messenger.Default.Register<CalculationResults>(this, updateResult);
             Messenger.Default.Register<DetailedResult>(this, updateDetailedResult);
         }
 
@@ -28,11 +28,11 @@ namespace SectionsEC.ViewModel
             Capacity = result.Mrd.ToFormatedString();
             RaisePropertyChanged(() => Capacity);
         }
+
         private void updateDetailedResult(DetailedResult detailedResult)
         {
             this.DetailedResults = detailedResult.Text.ToString();
             RaisePropertyChanged(() => DetailedResults);
         }
-        
     }
 }

@@ -31,7 +31,6 @@ namespace SectionsEC.Dimensioning.Tests
             steel.EukToEud = 0.9;
             steel.Es = 200000000;
 
-
             Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
 
             List<PointD> coordinates = new List<PointD>();
@@ -45,7 +44,7 @@ namespace SectionsEC.Dimensioning.Tests
 
             var straincalcs = new StrainCalculations(concrete, steel, section);
 
-            var compresionZoneCalcs = new CompressionZoneCalculationsNumericalFormula(concrete,straincalcs);
+            var compresionZoneCalcs = new CompressionZoneCalculationsNumericalFormula(concrete, straincalcs);
 
             var result = compresionZoneCalcs.Calculate(0.919569645356183, section);
 

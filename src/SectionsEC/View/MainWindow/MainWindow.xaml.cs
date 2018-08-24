@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GalaSoft.MvvmLight.Command;
+
 namespace SectionsEC.Views
 {
     /// <summary>
@@ -25,11 +26,6 @@ namespace SectionsEC.Views
         public MainWindow()
         {
             InitializeComponent();
-            
-
-            
         }
-
-        
     }
 }

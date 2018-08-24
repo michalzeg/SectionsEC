@@ -5,6 +5,7 @@ using SectionsEC.Drawing;
 using SectionsEC.Helpers;
 using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.WindowClasses;
+
 namespace SectionsEC.Views
 {
     /// <summary>
@@ -25,6 +26,7 @@ namespace SectionsEC.Views
             Messenger.Default.Register<IList<PointD>>(this, MessangerTokens.CompressionZoneDrawing, updateCompressionZone);
             createCanvas();
         }
+
         private void createCanvas()
         {
             this.perimeterProperties = new PerimeterProperties(() => canvas.ActualWidth, () => canvas.ActualHeight);
@@ -37,15 +39,16 @@ namespace SectionsEC.Views
         {
             sectionDrawing.Perimeter(perimeter);
         }
+
         private void updateBars(IList<Bar> bars)
         {
             barsDrawing.Bars(bars);
         }
+
         private void updateCompressionZone(IList<PointD> compressionZone)
         {
             compressionZoneDrawing.Perimeter(compressionZone);
         }
-
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {

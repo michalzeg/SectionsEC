@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using SectionsEC.Extensions;
 using SectionsEC.Dimensioning;
 using CommonMethods;
+
 namespace SectionsEC.Helpers
 {
     public class PointD : IEquatable<PointD>
@@ -16,15 +17,21 @@ namespace SectionsEC.Helpers
             X = x;
             Y = y;
         }
-        public PointD() { }
+
+        public PointD()
+        {
+        }
+
         public double X { get; set; }
         public double Y { get; set; }
+
         public bool Equals(PointD other)
         {
             if (Object.ReferenceEquals(other, null)) return false;
             if (Object.ReferenceEquals(this, other)) return true;
             return X.IsApproximatelyEqualTo(other.X) && Y.IsApproximatelyEqualTo(other.Y);
         }
+
         public override int GetHashCode()
         {
             int hashY = X.GetHashCode();
@@ -32,22 +39,30 @@ namespace SectionsEC.Helpers
             return hashY ^ hashValue;
         }
     }
+
     public class Concrete
     {
         [XmlElement]
         public string Grade { get; set; }
+
         [XmlElement]
         public double Fck { get; set; }
+
         [XmlElement]
         public double Acc { get; set; }
+
         [XmlElement]
         public double GammaM { get; set; }
+
         [XmlElement]
         public double N { get; set; }
+
         [XmlElement]
         public double Ec2 { get; set; }
+
         [XmlElement]
         public double Ecu2 { get; set; }
+
         public double Fcd
         {
             get
@@ -56,22 +71,30 @@ namespace SectionsEC.Helpers
             }
         }
     }
+
     public class Steel
     {
         [XmlElement]
         public string Grade { get; set; }
+
         [XmlElement]
         public double Fyk { get; set; }
+
         [XmlElement]
         public double GammaS { get; set; }
+
         [XmlElement]
         public double K { get; set; }
+
         [XmlElement]
         public double Es { get; set; }
+
         [XmlElement]
         public double Euk { get; set; }
+
         [XmlElement]
         public double EukToEud { get; set; }
+
         public double Fyd
         {
             get
@@ -79,6 +102,7 @@ namespace SectionsEC.Helpers
                 return Fyk / GammaS;
             }
         }
+
         public double Eud
         {
             get
@@ -87,17 +111,20 @@ namespace SectionsEC.Helpers
             }
         }
     }
+
     public class Bar : IEquatable<Bar>
     {
         public double X { get; set; }
         public double Y { get; set; }
         public double As { get; set; }
+
         public bool Equals(Bar other)
         {
             if (Object.ReferenceEquals(other, null)) return false;
             if (Object.ReferenceEquals(this, other)) return true;
             return X.IsApproximatelyEqualTo(other.X) && Y.IsApproximatelyEqualTo(other.Y) && As.IsApproximatelyEqualTo(other.As);
         }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -108,8 +135,8 @@ namespace SectionsEC.Helpers
                 return false;
             else
                 return this.Equals(bar);
-
         }
+
         public override int GetHashCode()
         {
             int hashX = X.GetHashCode();
@@ -118,6 +145,7 @@ namespace SectionsEC.Helpers
             return hashX ^ hashY ^ hashAs;
         }
     }
+
     public class LoadCase : IEquatable<LoadCase>
     {
         private static int ID;
@@ -125,6 +153,7 @@ namespace SectionsEC.Helpers
         public string Name { get; set; }
         public double NormalForce { get; set; }
         public int Id { get; private set; }
+
         public LoadCase()
         {
             ID++;
@@ -132,6 +161,7 @@ namespace SectionsEC.Helpers
             this.Name = string.Empty;
             this.NormalForce = 0d;
         }
+
         public bool Equals(LoadCase other)
         {
             if (other == null)
@@ -152,6 +182,7 @@ namespace SectionsEC.Helpers
             return hashName ^ hashNormalForce;
         }
     }
+
     public class CalculationResults
     {
         public IEnumerable<Reinforcement> Bars { get; set; } //reinforcement
@@ -167,6 +198,7 @@ namespace SectionsEC.Helpers
         public double MrdConcrete { get; set; } //moment due to compression zone
         public double X { get; set; }   //depth of compression zone
     }
+
     public class Reinforcement
     {
         public double E { get; set; }
@@ -175,6 +207,7 @@ namespace SectionsEC.Helpers
         public double My { get; set; }
         public bool IsCompressed { get; set; }
     }
+
     public class Section : IIntegrable
     {
         public IList<PointD> Coordinates { get; private set; }
@@ -185,6 +218,7 @@ namespace SectionsEC.Helpers
         public double B { get; private set; }
         public double Cz { get; private set; }
         public double IntegrationPointY { get; set; }
+
         public Section(IList<PointD> coordinates)
         {
             Coordinates = checkIfCoordinatesAreClockwise(coordinates);
@@ -192,6 +226,7 @@ namespace SectionsEC.Helpers
             Cz = SectionProperties.Cz(Coordinates, MaxY);
             IntegrationPointY = MinY;
         }
+
         private IList<PointD> checkIfCoordinatesAreClockwise(IList<PointD> coordinates)
         {
             double iw;
@@ -214,6 +249,7 @@ namespace SectionsEC.Helpers
             }
             return result;
         }
+
         private double crossProduct(PointD p0, PointD p1, PointD p2)
         {
             var vector1 = new double[2];
@@ -226,20 +262,18 @@ namespace SectionsEC.Helpers
             wynik = vector1[0] * vector2[1] - vector1[1] * vector2[0];
             return wynik;
         }
+
         private void calculateExtrementsAndDepth()
         {
-
             MinY = this.Coordinates.Min(p => p.Y);
             MaxY = this.Coordinates.Max(p => p.Y);
             H = MaxY - MinY;
         }
     }
+
     public class InteractionCurveResult
     {
         public double Mx { get; set; }
         public double My { get; set; }
     }
-    
-
-
 }

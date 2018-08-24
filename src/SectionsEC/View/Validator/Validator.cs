@@ -11,7 +11,7 @@ namespace SectionsEC.Windows.Validator
 {
     public class Validators
     {
-        public static string Validate(Concrete concrete,Steel steel, IList<LoadCase> loadCases,IList<Bar> bars,IList<PointD> sectionCoordinates)
+        public static string Validate(Concrete concrete, Steel steel, IList<LoadCase> loadCases, IList<Bar> bars, IList<PointD> sectionCoordinates)
         {
             StringBuilder result = new StringBuilder();
 
@@ -68,6 +68,4 @@ namespace SectionsEC.Windows.Validator
             return result.ToString();
         }
     }
-
-
 }

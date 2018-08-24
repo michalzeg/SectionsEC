@@ -9,45 +9,45 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/View/Style/Styles.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/View/Style/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/View/Style/Styles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/View/Style/CustomStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <GroupBox Header="Concrete"
                   Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ContentControl Grid.Column="0" 
+                <ContentControl Grid.Column="0"
                                 ContentTemplate="{StaticResource concretePage}"
-                                Content="{Binding ConcretePageVM}"/>
-                <ContentControl Grid.Column="1" 
+                                Content="{Binding ConcretePageVM}" />
+                <ContentControl Grid.Column="1"
                                 ContentTemplate="{StaticResource chartPage}"
-                                Content="{Binding ConcreteChartVM}"/>
+                                Content="{Binding ConcreteChartVM}" />
             </Grid>
         </GroupBox>
         <GroupBox Header="Steel"
                   Grid.Row="1">
         <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ContentControl Grid.Column="0" 
+                <ContentControl Grid.Column="0"
                                 ContentTemplate="{StaticResource steelPage}"
-                                Content="{Binding SteelPageVM}"/>
-                <ContentControl Grid.Column="1" 
+                                Content="{Binding SteelPageVM}" />
+                <ContentControl Grid.Column="1"
                                 ContentTemplate="{StaticResource chartPage}"
-                                Content="{Binding SteelChartVM}"/>
+                                Content="{Binding SteelChartVM}" />
             </Grid>
         </GroupBox>
     </Grid>
