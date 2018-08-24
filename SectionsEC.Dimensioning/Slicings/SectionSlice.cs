@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.Slicing
 {
     public class SectionSlice
     {

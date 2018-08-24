@@ -45,11 +45,11 @@
     <Compile Include="CompressionZone\CompressionZoneCalculationsGreenFormula.cs" />
     <Compile Include="CompressionZone\CompressionZoneCalculationsNumericalFormula.cs" />
     <Compile Include="CompressionZone\CompressionZoneCoordinates.cs" />
-    <Compile Include="Integration\Integration.cs" />
-    <Compile Include="Integration\InteractionCurveCalculator.cs" />
+    <Compile Include="Integrations\IntegrationCalculator.cs" />
+    <Compile Include="Integrations\InteractionCurveCalculator.cs" />
     <Compile Include="Dimensioning\SectionCapacity.cs" />
-    <Compile Include="Slicing\SectionSlice.cs" />
-    <Compile Include="Slicing\Slicing.cs" />
+    <Compile Include="Slicings\SectionSlice.cs" />
+    <Compile Include="Slicings\SlicingCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

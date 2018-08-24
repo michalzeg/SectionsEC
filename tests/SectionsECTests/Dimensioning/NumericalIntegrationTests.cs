@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
-using SectionsEC.Helpers;
-using SectionsEC.Contracts;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Interfaces;
+using SectionsEC.Dimensioning.Integration;
 
-namespace SectionsEC.Dimensioning.Tests
+namespace SectionsECTests.Dimensioning
 {
     [TestFixture]
     public class NumericalIntegrationTests
@@ -32,7 +33,7 @@ namespace SectionsEC.Dimensioning.Tests
             section.MaxY.Returns(1);
             section.MinY.Returns(0);
 
-            var integration = new Integration();
+            var integration = new IntegrationCalculator();
             var result = integration.Integrate(section, (e) => 1);
 
             Assert.AreEqual(1d, result.NormalForce, 0.001);
@@ -57,7 +58,7 @@ namespace SectionsEC.Dimensioning.Tests
             section.MaxY.Returns(1);
             section.MinY.Returns(0);
 
-            var integration = new Integration();
+            var integration = new IntegrationCalculator();
             var result = integration.Integrate(section, y => (1 - (1 - y) * (1 - y)));
 
             Assert.AreEqual(0.6666667, result.NormalForce, 0.001);

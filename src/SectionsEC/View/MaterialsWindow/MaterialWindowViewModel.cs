@@ -1,12 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
-using SectionsEC.Helpers;
 using System;
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Messaging;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.StressFunctions;
 
 namespace SectionsEC.ViewModel
 {

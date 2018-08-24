@@ -1,13 +1,18 @@
 ﻿using NUnit.Framework;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Sections;
+using SectionsEC.Common.StressFunctions;
 using SectionsEC.Dimensioning;
-using SectionsEC.Helpers;
+using SectionsEC.Dimensioning.CompressionZone;
+using SectionsEC.Dimensioning.Dimensioning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.Dimensioning.Tests
+namespace SectionsECTests.Dimensioning
 {
     [TestFixture]
     public class CompressionZoneCalculationsGreenFormulaTests

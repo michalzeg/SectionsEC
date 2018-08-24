@@ -1,13 +1,13 @@
-﻿using SectionsEC.Extensions;
+﻿using SectionsEC.Common.Extensions;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.SectionProperties;
 using System;
 using System.Collections.Generic;
-
-using SectionsEC.Helpers;
 using System.Linq;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.Slicing
 {
-    internal class Slicing
+    internal class SlicingCalculator
     {
         public SectionSlice GetSlice(IList<PointD> section, double upperY, double lowerY)
         {

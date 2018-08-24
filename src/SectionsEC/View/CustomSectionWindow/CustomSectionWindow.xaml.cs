@@ -12,9 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SectionsEC.Drawing;
-using SectionsEC.Helpers;
 using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.ViewModel;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Sections;
 
 namespace SectionsEC.Views
 {

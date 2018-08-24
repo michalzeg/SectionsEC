@@ -1,8 +1,7 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
-using SectionsEC.Extensions;
 
-namespace SectionsEC.Helpers
+namespace SectionsEC.Common.Results
 {
     public class InteractionCurveResult
     {

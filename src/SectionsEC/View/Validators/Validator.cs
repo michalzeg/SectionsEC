@@ -1,13 +1,17 @@
-﻿using SectionsEC.Dimensioning;
-using SectionsEC.Extensions;
-using SectionsEC.Helpers;
+﻿using SectionsEC.Common.Extensions;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.LoadCases;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Sections;
+using SectionsEC.Dimensioning;
+using SectionsEC.Dimensioning.Dimensioning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC.Windows.Validator
+namespace SectionsEC.View.Validators
 {
     public class Validators
     {

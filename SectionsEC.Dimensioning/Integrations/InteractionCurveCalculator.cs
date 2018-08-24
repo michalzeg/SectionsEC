@@ -1,9 +1,14 @@
-﻿using System;
+﻿using SectionsEC.Common.Geometry;
+using SectionsEC.Common.LoadCases;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Progress;
+using SectionsEC.Common.Results;
+using SectionsEC.Common.Sections;
+using SectionsEC.Dimensioning.Dimensioning;
+using System;
 using System.Collections.Generic;
-using SectionsEC.Helpers;
-using SectionsEC.Progress;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.Integration
 {
     public class InteractionCurveCalculator
     {

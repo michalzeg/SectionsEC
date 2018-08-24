@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC
+namespace SectionsEC.Common.StressFunctions
 {
     /// <summary>
     /// All variables according to Eurocode 5

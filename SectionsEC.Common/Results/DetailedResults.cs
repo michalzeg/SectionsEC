@@ -1,12 +1,15 @@
-﻿using System;
+﻿using SectionsEC.Common.Extensions;
+using SectionsEC.Common.LoadCases;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Sections;
+using SectionsEC.Common.StressFunctions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SectionsEC.Helpers;
-using SectionsEC.Extensions;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Common.Results
 {
     public class DetailedResult
     {

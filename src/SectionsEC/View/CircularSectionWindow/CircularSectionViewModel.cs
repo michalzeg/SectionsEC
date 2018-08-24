@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using SectionsEC.WindowClasses;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Helpers;
 
 namespace SectionsEC.ViewModel
 {

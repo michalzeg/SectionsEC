@@ -1,6 +1,7 @@
-﻿using System;
+﻿using SectionsEC.Common.Results;
+using System;
 
-namespace SectionsEC.Contracts
+namespace SectionsEC.Common.Interfaces
 {
     public interface IIntegration
     {

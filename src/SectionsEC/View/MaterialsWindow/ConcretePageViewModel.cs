@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;

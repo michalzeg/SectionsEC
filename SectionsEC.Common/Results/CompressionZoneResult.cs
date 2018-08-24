@@ -1,4 +1,4 @@
-﻿namespace SectionsEC
+﻿namespace SectionsEC.Common.Results
 {
     public class CompressionZoneResult
     {

@@ -1,6 +1,7 @@
-﻿using SectionsEC.Helpers;
+﻿using SectionsEC.Common.Results;
+using SectionsEC.Common.Sections;
 
-namespace SectionsEC.Contracts
+namespace SectionsEC.Common.Interfaces
 {
     public interface ICompressionZoneCalculations
     {

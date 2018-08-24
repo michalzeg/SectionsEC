@@ -1,7 +1,7 @@
-﻿using SectionsEC.Extensions;
+﻿using SectionsEC.Common.Extensions;
 using System;
 
-namespace SectionsEC.Helpers
+namespace SectionsEC.Common.Sections
 {
     public class Bar : IEquatable<Bar>
     {

@@ -1,13 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SectionsEC.Extensions;
 using SectionsEC.Dimensioning;
+using SectionsEC.Common.Results;
+using SectionsEC.Common.Extensions;
 
 namespace SectionsEC.ViewModel
 {

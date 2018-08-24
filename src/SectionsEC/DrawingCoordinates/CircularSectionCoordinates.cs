@@ -1,4 +1,5 @@
-﻿using SectionsEC.Helpers;
+﻿using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Sections;
 using System;
 using System.Collections.Generic;
 

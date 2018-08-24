@@ -1,20 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using SectionsEC.Common.Geometry;
+using SectionsEC.Common.LoadCases;
+using SectionsEC.Common.Sections;
+using System.Collections.Generic;
 
-namespace SectionsEC.Helpers
+namespace SectionsEC.Common.Results
 {
     public class CalculationResults
     {
-        public IEnumerable<Reinforcement> Bars { get; set; } //reinforcement
-        public IList<PointD> CompressionZone { get; set; } //coordinates of compression zone
-        public double Cz { get; set; }//position of centre of gravity
-        public double D { get; set; } //efective depth of section
-        public double Ec { get; set; }  //max strain in concrete
-        public double Es { get; set; }  //max strain in steel
-        public double ForceConcrete { get; set; } //force in compression zone
-        public double H { get; set; }//height of section
-        public LoadCase LoadCase { get; set; } //load case
-        public double Mrd { get; set; } //section capacity
-        public double MrdConcrete { get; set; } //moment due to compression zone
-        public double X { get; set; }   //depth of compression zone
+        public IEnumerable<Reinforcement> Bars { get; set; }
+        public IList<PointD> CompressionZone { get; set; }
+        public double Cz { get; set; }
+        public double D { get; set; }
+        public double Ec { get; set; }
+        public double Es { get; set; }
+        public double ForceConcrete { get; set; }
+        public double H { get; set; }
+        public LoadCase LoadCase { get; set; }
+        public double Mrd { get; set; }
+        public double MrdConcrete { get; set; }
+        public double X { get; set; }
     }
 }

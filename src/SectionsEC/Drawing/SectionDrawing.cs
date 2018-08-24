@@ -1,9 +1,9 @@
-﻿using SectionsEC.Helpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows;
 using System.Windows.Media;
+using SectionsEC.Common.Geometry;
 
 namespace SectionsEC.Drawing
 {

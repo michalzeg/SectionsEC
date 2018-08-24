@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
-using SectionsEC.Dimensioning;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Geometry;
 
-namespace SectionsEC
+namespace SectionsEC.Common.SectionProperties
 {
     public static class SectionPropertiesCalculator
     {

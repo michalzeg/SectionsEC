@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Geometry;
 
-namespace SectionsEC.Contracts
+namespace SectionsEC.Common.Interfaces
 {
     public interface IIntegrable
     {

@@ -2,9 +2,10 @@
 using System.Windows;
 using System.Windows.Controls;
 using SectionsEC.Drawing;
-using SectionsEC.Helpers;
 using GalaSoft.MvvmLight.Messaging;
 using SectionsEC.WindowClasses;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Sections;
 
 namespace SectionsEC.Views
 {

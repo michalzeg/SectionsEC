@@ -5,11 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Helpers;
 using System.Collections.ObjectModel;
-using SectionsEC.Extensions;
 using SectionsEC.WindowClasses;
 using SectionsEC.Dimensioning;
+using SectionsEC.Common.Sections;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Results;
+using SectionsEC.Common.LoadCases;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Extensions;
+using SectionsEC.Dimensioning.Dimensioning;
 
 namespace SectionsEC.ViewModel
 {

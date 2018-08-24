@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SectionsEC.Common.Materials;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace SectionsEC.Views
         public SteelPage()
         {
             InitializeComponent();
-            steelGradeComboBox.ItemsSource = Materials.MaterialProvider.GetSteel();
+            steelGradeComboBox.ItemsSource = MaterialProvider.GetSteel();
             steelGradeComboBox.SelectedIndex = 0;
         }
     }

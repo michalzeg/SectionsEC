@@ -1,7 +1,6 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Helpers;
 using SectionsEC.Views;
 using System.Collections.Generic;
 using GalaSoft.MvvmLight.Ioc;
@@ -9,10 +8,16 @@ using SectionsEC.Dimensioning;
 using System.Text;
 using Xceed.Wpf.Toolkit;
 using SectionsEC.WindowClasses;
-using SectionsEC.Windows.Validator;
 using System.Threading.Tasks;
 using System;
-using SectionsEC.Progress;
+using SectionsEC.Common.Progress;
+using SectionsEC.Common.LoadCases;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Sections;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Dimensioning.Dimensioning;
+using SectionsEC.Dimensioning.Integration;
+using SectionsEC.View.Validators;
 
 namespace SectionsEC.ViewModel
 {

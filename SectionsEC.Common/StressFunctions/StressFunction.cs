@@ -1,11 +1,12 @@
-﻿using SectionsEC.Helpers;
+﻿using SectionsEC.Common.Materials;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SectionsEC
+namespace SectionsEC.Common.StressFunctions
 {
     public static class StressFunction
     {

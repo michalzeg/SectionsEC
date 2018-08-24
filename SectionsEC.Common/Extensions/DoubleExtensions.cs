@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
-namespace SectionsEC.Extensions
+namespace SectionsEC.Common.Extensions
 {
     public static class ExtensionMethods
     {

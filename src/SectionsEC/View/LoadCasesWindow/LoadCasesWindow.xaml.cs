@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Helpers;
+using SectionsEC.Common.LoadCases;
 using SectionsEC.ViewModel;
 
 namespace SectionsEC.Views

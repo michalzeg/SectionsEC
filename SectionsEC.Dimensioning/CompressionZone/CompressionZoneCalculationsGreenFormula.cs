@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using SectionsEC.Contracts;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Interfaces;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Results;
+using SectionsEC.Common.Sections;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.CompressionZone
 {
     public class CompressionZoneCalculationsGreenFormula : ICompressionZoneCalculations
     {

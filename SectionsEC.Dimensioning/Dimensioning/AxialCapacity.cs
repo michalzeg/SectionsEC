@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.SectionProperties;
+using SectionsEC.Common.Sections;
+using System.Collections.Generic;
 
-using SectionsEC.Helpers;
 using System.Linq;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.Dimensioning
 {
     public class AxialCapacity
     {

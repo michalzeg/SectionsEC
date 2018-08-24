@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Sections;
+using SectionsEC.Common.Interfaces;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.StressFunctions;
+using SectionsEC.Common.Results;
+using SectionsEC.Dimensioning.CompressionZone;
+using SectionsEC.Common.Extensions;
 
-using SectionsEC.Extensions;
-using SectionsEC.Contracts;
-
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.Dimensioning
 {
     public class SectionCapacity
     {

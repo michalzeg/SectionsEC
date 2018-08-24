@@ -1,4 +1,4 @@
-﻿namespace SectionsEC.Contracts
+﻿namespace SectionsEC.Common.Interfaces
 {
     public interface IStrainCalculations
     {

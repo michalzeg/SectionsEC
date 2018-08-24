@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SectionsEC.WindowClasses;
 using GalaSoft.MvvmLight.Messaging;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Sections;
 
 namespace SectionsEC.ViewModel
 {

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Geometry;
 
-namespace SectionsEC.Drawing.Tests
+namespace SectionsECTests.Windows.CommonWindows
 {
     [TestFixture()]
     public class PerimeterPropertiesTests

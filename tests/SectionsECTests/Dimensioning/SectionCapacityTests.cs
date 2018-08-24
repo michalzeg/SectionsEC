@@ -1,13 +1,16 @@
 ﻿using NUnit.Framework;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Sections;
 using SectionsEC.Dimensioning;
+using SectionsEC.Dimensioning.Dimensioning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SectionsEC.Helpers;
 
-namespace SectionsEC.Dimensioning.Tests
+namespace SectionsECTests.Dimensioning
 {
     [TestFixture()]
     public class SectionCapacityTests

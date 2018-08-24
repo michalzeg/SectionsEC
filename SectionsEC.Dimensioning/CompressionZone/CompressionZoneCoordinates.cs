@@ -1,10 +1,10 @@
-﻿using SectionsEC.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using SectionsEC.Helpers;
 using System.Linq;
+using SectionsEC.Common.Geometry;
+using SectionsEC.Common.Extensions;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.CompressionZone
 {
     internal class CompressionZoneCoordinates
     {

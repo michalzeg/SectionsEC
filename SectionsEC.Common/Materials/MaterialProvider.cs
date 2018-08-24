@@ -1,9 +1,8 @@
-﻿using SectionsEC.Helpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace SectionsEC.Materials
+namespace SectionsEC.Common.Materials
 {
     public class MaterialProvider
     {

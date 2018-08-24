@@ -1,8 +1,12 @@
 ﻿using System;
-using SectionsEC.Contracts;
-using SectionsEC.Helpers;
+using SectionsEC.Common.Interfaces;
+using SectionsEC.Common.Materials;
+using SectionsEC.Common.Results;
+using SectionsEC.Common.Sections;
+using SectionsEC.Common.StressFunctions;
+using SectionsEC.Dimensioning.Integration;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.CompressionZone
 {
     public class CompressionZoneCalculationsNumericalFormula : ICompressionZoneCalculations
     {
@@ -25,7 +29,7 @@ namespace SectionsEC.Dimensioning
             Func<double, double> strain = di => this.strainCalculations.StrainInConcrete(x, distance(di));
             Func<double, double> stress = e => StressFunction.ConcreteStressDesign(strain(e), this.concrete);
 
-            var integration = new Integration();
+            var integration = new IntegrationCalculator();
             var result = integration.Integrate(compressionZone, stress);
             return result;
         }

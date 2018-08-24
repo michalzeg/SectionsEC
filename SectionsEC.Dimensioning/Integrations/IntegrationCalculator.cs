@@ -1,19 +1,21 @@
-﻿using SectionsEC.Contracts;
+﻿using SectionsEC.Common.Interfaces;
+using SectionsEC.Common.Results;
+using SectionsEC.Dimensioning.Slicing;
 using System;
 
-namespace SectionsEC.Dimensioning
+namespace SectionsEC.Dimensioning.Integration
 {
-    public class Integration : IIntegration
+    public class IntegrationCalculator : IIntegration
     {
         private readonly int numberOfSlices = 1000;
 
-        public Integration()
+        public IntegrationCalculator()
         {
         }
 
         public CompressionZoneResult Integrate(IIntegrable section, Func<double, double> distributionFunction)
         {
-            var slicing = new Slicing();
+            var slicing = new SlicingCalculator();
             var deltaY = (section.MaxY - section.MinY) / this.numberOfSlices;
             var currentY = section.MinY;
             var resultantMoment = 0d;
