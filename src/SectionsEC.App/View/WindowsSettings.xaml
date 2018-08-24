@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SectionsEC"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    d1p1:Ignorable="d"
+                    xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:views="clr-namespace:SectionsEC.Views"
+                    xmlns:vm="clr-namespace:SectionsEC.ViewModel">
+
+    <DataTemplate x:Key="concretePage" DataType="{x:Type vm:ConcretePageViewModel}">
+        <views:ConcretePage />
+    </DataTemplate>
+
+    <DataTemplate x:Key="steelPage" DataType="{x:Type vm:SteelPageViewModel}">
+        <views:SteelPage />
+    </DataTemplate>
+
+    <DataTemplate x:Key="chartPage" DataType="{x:Type vm:ChartPageViewModel}">
+        <views:ChartPage />
+    </DataTemplate>
+
+    <DataTemplate x:Key="drawingPage" DataType="{x:Type vm:DrawingPageViewModel}">
+        <views:DrawingPage />
+    </DataTemplate>
+
+    <DataTemplate x:Key="interactionChart" DataType="{x:Type vm:InteractionCurvePageViewModel}">
+        <views:InteractionCurvePage />
+    </DataTemplate>
+
+    <!--Main window-->
+    <DataTemplate x:Key="mainPanel" DataType="{x:Type vm:MainPanelViewModel}">
+        <views:MainPanel />
+    </DataTemplate>
+    <DataTemplate x:Key="leftPanel" DataType="{x:Type vm:LeftPanelViewModel}">
+        <views:LeftPanel />
+    </DataTemplate>
+    <DataTemplate x:Key="centralPanel" DataType="{x:Type vm:CentralPanelViewModel}">
+        <views:CentralPanel />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SectionCapacityResultViewModel}">
+        <views:SectionCapacityResultPanel />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:InteractionCurvePageViewModel}">
+        <views:InteractionCurvePage />
+    </DataTemplate>
+</ResourceDictionary>
