@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="Dimensioning\CompressionZoneCalculationsGreenFormulaTests.cs" />
     <Compile Include="Dimensioning\CompressionZoneCalculationsNumericalFormulaTests.cs" />
-    <Compile Include="Dimensioning\IntegrationTests.cs" />
+    <Compile Include="Dimensioning\NumericalIntegrationTests.cs" />
     <Compile Include="Dimensioning\SectionCapacityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Windows\CommonWindows\PerimeterPropertiesTests.cs" />
