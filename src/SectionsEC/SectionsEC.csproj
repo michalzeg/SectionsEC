@@ -103,6 +103,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dimensioning\CompressionZoneCalculationsGreenFormula.cs" />
+    <Compile Include="Dimensioning\CompressionZoneCalculationsNumericalFormula.cs" />
+    <Compile Include="Dimensioning\CompressionZoneCoordinates.cs" />
+    <Compile Include="Dimensioning\CompressionZoneResult.cs" />
+    <Compile Include="Dimensioning\ICompressionZoneCalculations.cs" />
+    <Compile Include="Dimensioning\IIntegrable.cs" />
+    <Compile Include="Dimensioning\IIntegration.cs" />
+    <Compile Include="Dimensioning\Integration.cs" />
+    <Compile Include="Dimensioning\Slicing.cs" />
     <Compile Include="Section\Bar.cs" />
     <Compile Include="Helpers\CalculationResults.cs" />
     <Compile Include="Materials\Concrete.cs" />
@@ -187,7 +196,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dimensioning\SectionProperties.cs" />
-    <Compile Include="Dimensioning\CompressionZone.cs" />
+    <Compile Include="Dimensioning\SectionSlice.cs" />
     <Compile Include="Dimensioning\Dimensioning.cs" />
     <Compile Include="Dimensioning\StrainFunctions.cs" />
     <Compile Include="Dimensioning\StressFunctions.cs" />
