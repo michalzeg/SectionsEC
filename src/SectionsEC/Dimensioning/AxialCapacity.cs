@@ -11,7 +11,7 @@ namespace SectionsEC.Dimensioning
         {
             var result = -bars.Sum(bar => bar.Area * steel.Fyd * steel.K);
 
-            return -result;
+            return result;
         }
 
         public static double CompressionCapacity(IList<PointD> sectionCoordinates, Concrete concrete)

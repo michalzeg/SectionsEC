@@ -26,9 +26,9 @@ namespace SectionsEC.WindowClasses
 
         public static IList<Bar> CalculateReinforcementCoordinates(double bf, double bw, double hf, double hw, double topBarsDiameter, double bottomBarsDiameter, long topBarsNumber, long bottomBarsNumber, double cover)
         {
-            double distanceBetweenBars = (bf - 2 * cover - topBarsDiameter) / (topBarsNumber + 1);
-            IList<Bar> bars = new List<Bar>();
-            Reinforcement tempReinf = new Reinforcement();
+            var distanceBetweenBars = (bf - 2 * cover - topBarsDiameter) / (topBarsNumber + 1);
+            var bars = new List<Bar>();
+
             for (int i = 1; i <= topBarsNumber; i++)
             {
                 var x = i * distanceBetweenBars - (bf / 2 - cover - topBarsDiameter / 2);
