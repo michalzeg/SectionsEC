@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SectionsEC.Views"
         xmlns:converter="clr-namespace:SectionsEC.Converters"
         mc:Ignorable="d"
-        Title="CircularSectionWindow" Height="500" Width="500" Icon="/SectionsEC;component/Images/Ribbon/TSection.PNG">
+        Title="CircularSectionWindow" WindowStartupLocation="CenterScreen"  Height="500" Width="500" Icon="/SectionsEC;component/Images/Ribbon/TSection.PNG">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
