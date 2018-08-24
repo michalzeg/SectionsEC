@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionsEC", "src\SectionsEC\SectionsEC.csproj", "{CD95BA7D-520A-4AF6-BFB6-CF71532AAB58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionsECTests", "tests\SectionsECTests\SectionsECTests.csproj", "{C7ECF363-41CB-441E-BB7D-B4D97A315B1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F12916F5-1716-4228-A89A-770260B615C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E6455B35-EBB4-48A8-92F6-F0B01FECB173}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +28,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CD95BA7D-520A-4AF6-BFB6-CF71532AAB58} = {F12916F5-1716-4228-A89A-770260B615C3}
+		{C7ECF363-41CB-441E-BB7D-B4D97A315B1A} = {E6455B35-EBB4-48A8-92F6-F0B01FECB173}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D609C8AC-E5E9-414A-AC32-566E3B97FB29}
 	EndGlobalSection
 EndGlobal

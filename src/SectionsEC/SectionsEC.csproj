@@ -103,6 +103,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Section\Bar.cs" />
+    <Compile Include="Helpers\CalculationResults.cs" />
+    <Compile Include="Materials\Concrete.cs" />
+    <Compile Include="LoadCases\LoadCase.cs" />
+    <Compile Include="Helpers\PointD.cs" />
+    <Compile Include="Section\Reinforcement.cs" />
+    <Compile Include="Section\Section.cs" />
+    <Compile Include="Materials\Steel.cs" />
     <Compile Include="View\CircularSectionWindow\CircularSectionViewModel.cs" />
     <Compile Include="View\CircularSectionWindow\CircularSectionWindow.xaml.cs">
       <DependentUpon>CircularSectionWindow.xaml</DependentUpon>
@@ -183,9 +191,9 @@
     <Compile Include="Dimensioning\Dimensioning.cs" />
     <Compile Include="Dimensioning\StrainFunctions.cs" />
     <Compile Include="Dimensioning\StressFunctions.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Helpers\BaseClasses.cs" />
-    <Compile Include="Helpers\Materials.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Helpers\IntegrationCurveResult.cs" />
+    <Compile Include="Materials\Materials.cs" />
     <Compile Include="View\ViewClasses\Drawing.cs" />
     <Compile Include="View\DrawingPage\DrawingPage.xaml.cs">
       <DependentUpon>DrawingPage.xaml</DependentUpon>

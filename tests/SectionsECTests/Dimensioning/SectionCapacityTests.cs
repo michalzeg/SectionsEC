@@ -44,7 +44,7 @@ namespace SectionsEC.Dimensioning.Tests
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             List<Bar> reinf = new List<Bar>();
             Bar bar = new Bar();
-            bar.As = 30d / 10000d;
+            bar.Area = 30d / 10000d;
             bar.X = 0.5;
             bar.Y = 0.1;
             reinf.Add(bar);
@@ -84,7 +84,7 @@ namespace SectionsEC.Dimensioning.Tests
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             List<Bar> reinf = new List<Bar>();
             Bar bar = new Bar();
-            bar.As = 30d / 10000d;
+            bar.Area = 30d / 10000d;
             bar.X = 0.5;
             bar.Y = 0.1;
             reinf.Add(bar);
@@ -126,7 +126,7 @@ namespace SectionsEC.Dimensioning.Tests
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             List<Bar> reinf = new List<Bar>();
             Bar bar = new Bar();
-            bar.As = 30d / 10000d;
+            bar.Area = 30d / 10000d;
             bar.X = 0.05;
             bar.Y = 0.05;
             reinf.Add(bar);
@@ -177,7 +177,7 @@ namespace SectionsEC.Dimensioning.Tests
             List<Reinforcement> reinforcement = new List<Reinforcement>();
             List<Bar> reinf = new List<Bar>();
             Bar bar = new Bar();
-            bar.As = 30d / 10000d;
+            bar.Area = 30d / 10000d;
             bar.X = 0.05;
             bar.Y = 0.05;
             reinf.Add(bar);

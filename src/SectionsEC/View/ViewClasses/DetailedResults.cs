@@ -128,7 +128,7 @@ namespace SectionsEC.Dimensioning
             {
                 var multiplier = bar.IsCompressed ? 1 : -1;
                 var strain = bar.E;
-                var barArea = bar.Bar.As;
+                var barArea = bar.Bar.Area;
                 var stress = multiplier * StressFunctions.SteelStressDesign(strain, steel);
                 strain = strain * multiplier;
                 var force = stress * barArea;

@@ -100,7 +100,7 @@ namespace SectionsEC.Dimensioning
             {
                 double x = bar.X * Math.Cos(angle * Math.PI / 180) - bar.Y * Math.Sin(angle * Math.PI / 180);
                 double y = bar.X * Math.Sin(angle * Math.PI / 180) + bar.Y * Math.Cos(angle * Math.PI / 180);
-                var newBar = new Bar() { X = x, Y = y, As = bar.As };
+                var newBar = new Bar() { X = x, Y = y, Area = bar.Area };
                 newBars.Add(newBar);
             }
             return newBars;
@@ -134,7 +134,7 @@ namespace SectionsEC.Dimensioning
             double capacity = 0;
             foreach (var bar in bars)
             {
-                capacity += bar.As * steel.Fyd * steel.K;
+                capacity += bar.Area * steel.Fyd * steel.K;
             }
             return -capacity;
         }
@@ -205,7 +205,7 @@ namespace SectionsEC.Dimensioning
                 {
                     var di = this.reinforcement[i].D;
                     var e = this.strainCalculations.StrainInAs1(x, di);
-                    resultantForce = resultantForce + this.reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(e, this.steel);
+                    resultantForce = resultantForce + this.reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(e, this.steel);
                     var barsTemp = this.reinforcement[i];
                     barsTemp.E = e;
                     barsTemp.IsCompressed = false;
@@ -225,7 +225,7 @@ namespace SectionsEC.Dimensioning
                 {
                     var di = this.reinforcement[i].D;
                     var e = this.strainCalculations.StrainInAs2(x, di);
-                    resultantForce = resultantForce + this.reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(e, this.steel);
+                    resultantForce = resultantForce + this.reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(e, this.steel);
                     var barsTemp = this.reinforcement[i];
                     barsTemp.E = e;
                     barsTemp.IsCompressed = true;
@@ -329,12 +329,12 @@ namespace SectionsEC.Dimensioning
                 barsTemp = this.reinforcement[i];
                 if (this.reinforcement[i].Bar.Y > yOsi)
                 {
-                    Mz = reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
+                    Mz = reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd + Mz;
                 }
                 else
                 {
-                    Mz = reinforcement[i].Bar.As * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
+                    Mz = reinforcement[i].Bar.Area * StressFunctions.SteelStressDesign(reinforcement[i].E, this.steel) * (reinforcement[i].Bar.Y - this.section.MinY);
                     Mrd = Mrd - Mz;
                 }
                 barsTemp.My = Mz;

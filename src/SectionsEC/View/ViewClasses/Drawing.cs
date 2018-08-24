@@ -208,7 +208,7 @@ namespace SectionsEC.Drawing
                 var circle = new Circle();
                 var point = transformCoordinatesToCentreOfGrid(bar.X, bar.Y);
                 setCircleProperties(circle);
-                circle.Diameter = getDiameter(bar.As);
+                circle.Diameter = getDiameter(bar.Area);
                 circle.X = point.X;
                 circle.Y = point.Y;
                 this.circles.Add(circle);

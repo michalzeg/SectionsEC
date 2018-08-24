@@ -36,7 +36,7 @@ namespace SectionsEC.WindowClasses
                 Bar bar = new Bar();
                 bar.X = (diameter / 2 - cover - fi / 2) * Math.Sin(alfa);
                 bar.Y = (diameter / 2 - cover - fi / 2) * Math.Cos(alfa);
-                bar.As = Math.PI * fi * fi / 4;//pole przekroju zbrojenia
+                bar.Area = Math.PI * fi * fi / 4;//pole przekroju zbrojenia
                 bars.Add(bar);
             }
             return bars;
@@ -75,7 +75,7 @@ namespace SectionsEC.WindowClasses
                 var bar = new Bar();
                 bar.X = x;
                 bar.Y = y;
-                bar.As = As;
+                bar.Area = As;
                 bars.Add(bar);
             }
 
@@ -89,7 +89,7 @@ namespace SectionsEC.WindowClasses
                 var bar = new Bar();
                 bar.X = x;
                 bar.Y = y;
-                bar.As = As;
+                bar.Area = As;
                 bars.Add(bar);
             }
             return bars;
@@ -124,7 +124,7 @@ namespace SectionsEC.WindowClasses
                 var bar = new Bar();
                 bar.X = x;
                 bar.Y = y;
-                bar.As = As;
+                bar.Area = As;
                 bars.Add(bar);
             }
 
@@ -138,7 +138,7 @@ namespace SectionsEC.WindowClasses
                 var bar = new Bar();
                 bar.X = x;
                 bar.Y = y;
-                bar.As = As;
+                bar.Area = As;
                 bars.Add(bar);
             }
             return bars;
