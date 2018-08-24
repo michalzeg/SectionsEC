@@ -26,18 +26,18 @@ namespace SectionsEC.ViewModel
 
             this.progressIndicator = new Progress<ProgressArgument>(updateProgress);
 
-            New = new RelayCommand(this.@new);
-            Close = new RelayCommand(close);
+            New = new RelayCommand(this.NewCommand);
+            Close = new RelayCommand(CloseCommand);
 
-            ShowMaterials = new RelayCommand(showMaterials);
-            ShowCustomSection = new RelayCommand(showCustomSection);
-            ShowCircularSection = new RelayCommand(showCircularSection);
-            ShowRectangularSection = new RelayCommand(showRectangularSection);
-            ShowTSection = new RelayCommand(showTSection);
-            ShowLoadCases = new RelayCommand(showLoadCases);
+            ShowMaterials = new RelayCommand(ShowMaterialsCommand);
+            ShowCustomSection = new RelayCommand(ShowCustomSectionCommand);
+            ShowCircularSection = new RelayCommand(ShowCircularSectionCommand);
+            ShowRectangularSection = new RelayCommand(ShowRectangularSectionCommand);
+            ShowTSection = new RelayCommand(ShowTSectionCommand);
+            ShowLoadCases = new RelayCommand(ShowLoadCasesCommand);
 
-            Run = new RelayCommand(run);
-            InteractionCurve = new RelayCommand(interactionCurve);
+            Run = new RelayCommand(RunCommand);
+            InteractionCurve = new RelayCommand(InteractionCurveCommand);
 
             Messenger.Default.Register<Concrete>(this, c => concrete = c);
             Messenger.Default.Register<Steel>(this, s => steel = s);
@@ -59,59 +59,59 @@ namespace SectionsEC.ViewModel
         public RelayCommand Run { get; private set; }
         public RelayCommand InteractionCurve { get; private set; }
 
-        private void @new()
+        private void NewCommand()
         {
         }
 
-        private void close()
+        private void CloseCommand()
         {
         }
 
-        private void showMaterials()
+        private void ShowMaterialsCommand()
         {
             var materialWindow = new MaterialWindow();
             materialWindow.ShowDialog();
             materialWindow.DataContext = SimpleIoc.Default.GetInstance<MaterialWindowViewModel>();
         }
 
-        private void showCustomSection()
+        private void ShowCustomSectionCommand()
         {
             var customSectionWindow = new CustomWindow();
             customSectionWindow.DataContext = SimpleIoc.Default.GetInstance<CustomSectionWindowViewModel>();
             customSectionWindow.Show();
         }
 
-        private void showCircularSection()
+        private void ShowCircularSectionCommand()
         {
             var circularSectionWindow = new CircularSectionWindow();
             circularSectionWindow.Show();
             circularSectionWindow.DataContext = SimpleIoc.Default.GetInstance<CircularSectionViewModel>();
         }
 
-        private void showRectangularSection()
+        private void ShowRectangularSectionCommand()
         {
             var rectangularSectionWindow = new RectangularSectionWindow();
             rectangularSectionWindow.Show();
             rectangularSectionWindow.DataContext = SimpleIoc.Default.GetInstance<RectangularSectionViewModel>();
         }
 
-        private void showTSection()
+        private void ShowTSectionCommand()
         {
             var tSectionWindow = new TSectionWindow();
             tSectionWindow.Show();
             tSectionWindow.DataContext = SimpleIoc.Default.GetInstance<TSectionViewModel>();
         }
 
-        private void showLoadCases()
+        private void ShowLoadCasesCommand()
         {
             var loadCasesWindow = new LoadCasesWindow();
             loadCasesWindow.ShowDialog();
             loadCasesWindow.DataContext = SimpleIoc.Default.GetInstance<LoadCaseWindowViewModel>();
         }
 
-        private async void run()
+        private async void RunCommand()
         {
-            if (validateData())
+            if (ValidateData())
             {
                 Busy = true;
                 var capacityResults = await Task.Run(() => CapacityCalculator.GetSectionCapacity(concrete, steel, sectionCoordinates, bars, loadCases, progressIndicator));
@@ -124,9 +124,9 @@ namespace SectionsEC.ViewModel
             }
         }
 
-        private async void interactionCurve()
+        private async void InteractionCurveCommand()
         {
-            if (validateData())
+            if (ValidateData())
             {
                 Busy = true;
                 var curve = new InteractionCurveCalculator(concrete, steel, bars, this.sectionCoordinates, loadCases);
@@ -137,7 +137,7 @@ namespace SectionsEC.ViewModel
             }
         }
 
-        private bool validateData()
+        private bool ValidateData()
         {
             var validationErrors = Validators.Validate(concrete, steel, loadCases, bars, sectionCoordinates);
             if (validationErrors == string.Empty)
@@ -201,8 +201,6 @@ namespace SectionsEC.ViewModel
             CurrentLoadCase = argument.LoadCaseName;
         }
 
-        //private IDictionary<LoadCase, StringBuilder> detailedResults;
-        //private IDictionary<LoadCase,CalculationResults> capacityResults;
         private Concrete concrete;
 
         private Steel steel;

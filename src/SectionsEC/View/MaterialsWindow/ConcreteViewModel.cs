@@ -18,12 +18,14 @@ namespace SectionsEC.ViewModel
         {
             get
             {
-                Concrete concrete = new Concrete();
-                concrete.Grade = Grade;
-                concrete.Acc = Acc;
-                concrete.Ec2 = Ec2;
-                concrete.Ecu2 = Ecu2;
-                concrete.Fck = Fck;
+                Concrete concrete = new Concrete
+                {
+                    Grade = Grade,
+                    Acc = Acc,
+                    Ec2 = Ec2,
+                    Ecu2 = Ecu2,
+                    Fck = Fck
+                };
                 concrete.Grade = Grade;
                 concrete.N = N;
                 concrete.GammaM = GammaM;
@@ -40,8 +42,7 @@ namespace SectionsEC.ViewModel
                 GammaM = value.GammaM;
                 Fcd = value.Fcd;
                 Grade = value.Grade;
-                if (ConcreteUpdated != null)
-                    ConcreteUpdated();
+                ConcreteUpdated?.Invoke();
             }
         }
 
@@ -56,8 +57,7 @@ namespace SectionsEC.ViewModel
                 {
                     grade = value;
                     RaisePropertyChanged(() => Grade);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -74,8 +74,7 @@ namespace SectionsEC.ViewModel
                     fck = value;
                     Fcd = Acc * value / GammaM;
                     RaisePropertyChanged(() => Fck);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -92,8 +91,7 @@ namespace SectionsEC.ViewModel
                     gammaM = value;
                     Fcd = Acc * Fck / value;
                     RaisePropertyChanged(() => GammaM);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -110,8 +108,7 @@ namespace SectionsEC.ViewModel
                     acc = value;
                     Fcd = value * Fck / GammaM;
                     RaisePropertyChanged(() => Acc);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -127,8 +124,7 @@ namespace SectionsEC.ViewModel
                 {
                     fcd = value;
                     RaisePropertyChanged(() => Fcd);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -144,8 +140,7 @@ namespace SectionsEC.ViewModel
                 {
                     n = value;
                     RaisePropertyChanged(() => N);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -161,8 +156,7 @@ namespace SectionsEC.ViewModel
                 {
                     ec2 = value;
                     RaisePropertyChanged(() => Ec2);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }
@@ -178,8 +172,7 @@ namespace SectionsEC.ViewModel
                 {
                     ecu2 = value;
                     RaisePropertyChanged(() => Ecu2);
-                    if (ConcreteUpdated != null)
-                        ConcreteUpdated();
+                    ConcreteUpdated?.Invoke();
                 }
             }
         }

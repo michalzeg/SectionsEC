@@ -32,70 +32,69 @@ namespace SectionsEC.ViewModel
             this.detailedSectionCapacityResults = new List<DetailedResult>();
             this.LoadCaseList = new ObservableCollection<LoadCase>();
 
-            Messenger.Default.Register<IList<LoadCase>>(this, updateLoadCaseList);
-            Messenger.Default.Register<IEnumerable<CalculationResults>>(this, updateResults);
-            Messenger.Default.Register<IEnumerable<DetailedResult>>(this, updateDetailedResults);
-            Messenger.Default.Register<Concrete>(this, updateConcrete);
-            Messenger.Default.Register<Steel>(this, updateSteel);
-            Messenger.Default.Register<ResultViewModelMessage>(this, updateResultsSender);
-            Messenger.Default.Register<IDictionary<LoadCase, IEnumerable<InteractionCurveResult>>>(this, updateInteractionResults);
-            Messenger.Default.Register<IList<PointD>>(this, updateSectionCoordinates);
-            Messenger.Default.Register<IList<Bar>>(this, updateBars);
+            Messenger.Default.Register<IList<LoadCase>>(this, UpdateLoadCaseList);
+            Messenger.Default.Register<IEnumerable<CalculationResults>>(this, UpdateResults);
+            Messenger.Default.Register<IEnumerable<DetailedResult>>(this, UpdateDetailedResults);
+            Messenger.Default.Register<Concrete>(this, UpdateConcrete);
+            Messenger.Default.Register<Steel>(this, UpdateSteel);
+            Messenger.Default.Register<ResultViewModelMessage>(this, UpdateResultsSender);
+            Messenger.Default.Register<IDictionary<LoadCase, IEnumerable<InteractionCurveResult>>>(this, UpdateInteractionResults);
+            Messenger.Default.Register<IList<PointD>>(this, UpdateSectionCoordinates);
+            Messenger.Default.Register<IList<Bar>>(this, UpdateBars);
         }
 
-        private void updateLoadCaseList(IEnumerable<LoadCase> loadCaseList)
+        private void UpdateLoadCaseList(IEnumerable<LoadCase> loadCaseList)
         {
             this.LoadCaseList = loadCaseList.ToObservableCollection();
-            //
 
             this.SelectedLoadCase = loadCaseList.FirstOrDefault();
-            //RaisePropertyChanged(() => SelectedLoadCase);
+
             RaisePropertyChanged(() => LoadCaseList);
         }
 
-        private void updateResults(IEnumerable<CalculationResults> results)
+        private void UpdateResults(IEnumerable<CalculationResults> results)
         {
             this.sectionCapacityResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
 
-        private void updateDetailedResults(IEnumerable<DetailedResult> results)
+        private void UpdateDetailedResults(IEnumerable<DetailedResult> results)
         {
             this.detailedSectionCapacityResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
 
-        private void updateInteractionResults(IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> results)
+        private void UpdateInteractionResults(IDictionary<LoadCase, IEnumerable<InteractionCurveResult>> results)
         {
             this.interactionResults = results;
             this.sendResults(this.SelectedLoadCase);
         }
 
-        private void updateConcrete(Concrete concrete)
+        private void UpdateConcrete(Concrete concrete)
         {
             ConcreteVM.Concrete = concrete;
-            calculateAxialCapacity();
+            CalculateAxialCapacity();
         }
 
-        private void updateSteel(Steel steel)
+        private void UpdateSteel(Steel steel)
         {
             SteelVM.Steel = steel;
-            calculateAxialCapacity();
+            CalculateAxialCapacity();
         }
 
-        private void updateBars(IList<Bar> bars)
+        private void UpdateBars(IList<Bar> bars)
         {
             this.bars = bars;
-            calculateAxialCapacity();
+            CalculateAxialCapacity();
         }
 
-        private void updateSectionCoordinates(IList<PointD> sectionCoordinates)
+        private void UpdateSectionCoordinates(IList<PointD> sectionCoordinates)
         {
             this.sectionCoordinates = sectionCoordinates;
-            calculateAxialCapacity();
+            CalculateAxialCapacity();
         }
 
-        private void updateResultsSender(ResultViewModelMessage message)
+        private void UpdateResultsSender(ResultViewModelMessage message)
         {
             if (message == ResultViewModelMessage.InteractionCurveViewModel)
                 this.sendResults = this.sendInteractionCurveResults;
@@ -103,7 +102,7 @@ namespace SectionsEC.ViewModel
                 this.sendResults = this.sendSectionCapacityResults;
         }
 
-        private void calculateAxialCapacity()
+        private void CalculateAxialCapacity()
         {
             if (bars != null && sectionCoordinates != null && ConcreteVM.Concrete != null && SteelVM.Steel != null)
             {

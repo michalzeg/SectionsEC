@@ -22,14 +22,16 @@ namespace SectionsEC.ViewModel
         {
             get
             {
-                Steel steel = new Steel();
-                steel.Es = Es;
-                steel.Euk = Euk;
-                steel.EukToEud = EukToEud;
-                steel.Fyk = Fyk;
-                steel.GammaS = GammaS;
-                steel.Grade = Grade;
-                steel.K = K;
+                Steel steel = new Steel
+                {
+                    Es = Es,
+                    Euk = Euk,
+                    EukToEud = EukToEud,
+                    Fyk = Fyk,
+                    GammaS = GammaS,
+                    Grade = Grade,
+                    K = K
+                };
                 return steel;
             }
             set

@@ -28,18 +28,18 @@ namespace SectionsEC.Windows.Validator
 
             if (result.ToString() == string.Empty)
             {
-                var loadCasesValidation = validateLoadCases(concrete, steel, loadCases, bars, sectionCoordinates);
+                var loadCasesValidation = ValidateLoadCases(concrete, steel, loadCases, bars, sectionCoordinates);
                 if (loadCasesValidation != string.Empty)
                     result.AppendLine(loadCasesValidation);
 
-                var loadCasesDuplication = checkDuplicatedLoadCases(loadCases);
+                var loadCasesDuplication = CheckDuplicatedLoadCases(loadCases);
                 if (loadCasesDuplication != string.Empty)
                     result.AppendLine(loadCasesDuplication);
             }
             return result.ToString();
         }
 
-        private static string validateLoadCases(Concrete concrete, Steel steel, IList<LoadCase> loadCases, IList<Bar> bars, IList<PointD> sectionCoordinates)
+        private static string ValidateLoadCases(Concrete concrete, Steel steel, IList<LoadCase> loadCases, IList<Bar> bars, IList<PointD> sectionCoordinates)
         {
             StringBuilder result = new StringBuilder();
 
@@ -56,7 +56,7 @@ namespace SectionsEC.Windows.Validator
             return result.ToString();
         }
 
-        private static string checkDuplicatedLoadCases(IList<LoadCase> loadCases)
+        private static string CheckDuplicatedLoadCases(IList<LoadCase> loadCases)
         {
             var result = new StringBuilder();
             var duplicatedLoadCases = loadCases.GroupBy(e => e.Name).Where(e => e.Count() > 1).Select(e => e.Key);

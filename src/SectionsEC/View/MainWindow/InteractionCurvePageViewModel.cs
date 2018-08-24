@@ -25,14 +25,14 @@ namespace SectionsEC.ViewModel
 
             Data.Add(interactionSerie);
 
-            Messenger.Default.Register<IEnumerable<InteractionCurveResult>>(this, addChart);
+            Messenger.Default.Register<IEnumerable<InteractionCurveResult>>(this, AddChart);
         }
 
         private LineSeries interactionSerie;
 
         public SeriesCollection Data { get; private set; }
 
-        private void addChart(IEnumerable<InteractionCurveResult> interactionCurve)
+        private void AddChart(IEnumerable<InteractionCurveResult> interactionCurve)
         {
             interactionSerie.Title = "Interaction Curve";
             interactionSerie.PointRadius = 0;

@@ -30,28 +30,31 @@ namespace SectionsEC.ViewModel
 
         public void AddCharacteristicChart(string title, double maxX, Func<double, double> function)
         {
-            this.addChart(title, maxX, function, characteristicSerie);
+            this.AddChart(title, maxX, function, characteristicSerie);
         }
 
         public void AddDesignChart(string title, double maxX, Func<double, double> function)
         {
-            this.addChart(title, maxX, function, designSerie);
+            this.AddChart(title, maxX, function, designSerie);
         }
 
-        private void addChart(string title, double maxX, Func<double, double> function, LineSeries serie)
+        private void AddChart(string title, double maxX, Func<double, double> function, LineSeries serie)
         {
-            if (maxX.IsApproximatelyEqualTo(0)) return;
+            if (maxX.IsApproximatelyEqualTo(0))
+                return;
+
+            var scale = 1000;
 
             serie.Title = title;
             serie.PointRadius = 0;
             serie.Values = new ChartValues<PointD>();
 
             var x = 0d;
-            var delta = maxX / 100d;
+            var delta = maxX / (scale / 10);
             while (x <= maxX)
             {
                 var y = function(x);
-                serie.Values.Add(new PointD((x * 1000).Round(), (y / 1000).Round()));
+                serie.Values.Add(new PointD((x * scale).Round(), (y / scale).Round()));
                 x += delta;
             }
         }

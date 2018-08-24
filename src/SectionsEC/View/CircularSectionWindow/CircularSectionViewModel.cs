@@ -25,8 +25,8 @@ namespace SectionsEC.ViewModel
             var coordinates = CircularSectionCoordinates.CalculateSectionCoordinates(SectionDiameter, Cover);
             var bars = CircularSectionCoordinates.CalculateReinforcementCoordinates(SectionDiameter, Cover, BarDiameter, NumberOfBars);
 
-            Messenger.Default.Send<IList<PointD>>(coordinates);
-            Messenger.Default.Send<IList<Bar>>(bars);
+            Messenger.Default.Send(coordinates);
+            Messenger.Default.Send(bars);
         }
 
         private double sectionDiameter;

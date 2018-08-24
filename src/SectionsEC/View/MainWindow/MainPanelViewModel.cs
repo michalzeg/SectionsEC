@@ -28,13 +28,12 @@ namespace SectionsEC.ViewModel
             this.SectionCapacityResultVM = new SectionCapacityResultViewModel();
             this.InteractionCurveResultVM = new InteractionCurvePageViewModel();
 
-            Messenger.Default.Register<ResultViewModelMessage>(this, changeResultViewModel);
+            Messenger.Default.Register<ResultViewModelMessage>(this, ChangeResultViewModel);
         }
 
-        private void changeResultViewModel(ResultViewModelMessage message)
+        private void ChangeResultViewModel(ResultViewModelMessage message)
         {
             if (message == ResultViewModelMessage.InteractionCurveViewModel)
-
                 this.ResultViewModel = InteractionCurveResultVM;
             else if (message == ResultViewModelMessage.SectionCapacityViewModel)
                 this.ResultViewModel = SectionCapacityResultVM;
