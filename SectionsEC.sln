@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E6455B35
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionsEC.Dimensioning", "SectionsEC.Dimensioning\SectionsEC.Dimensioning.csproj", "{20F2BC31-9290-459E-91E8-1838286B8FCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionsEC.Common", "SectionsEC.Common\SectionsEC.Common.csproj", "{3251B423-DB99-41D4-9E15-7D30839855C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionsEC.Calculations", "SectionsEC.Common\SectionsEC.Calculations.csproj", "{3251B423-DB99-41D4-9E15-7D30839855C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

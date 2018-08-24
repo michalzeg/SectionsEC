@@ -53,9 +53,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SectionsEC.Common\SectionsEC.Common.csproj">
+    <ProjectReference Include="..\SectionsEC.Common\SectionsEC.Calculations.csproj">
       <Project>{3251b423-db99-41d4-9e15-7d30839855c4}</Project>
-      <Name>SectionsEC.Common</Name>
+      <Name>SectionsEC.Calculations</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

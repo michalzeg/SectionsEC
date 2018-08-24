@@ -337,9 +337,9 @@
     <Resource Include="Images\Windows\TSectionWindow.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SectionsEC.Common\SectionsEC.Common.csproj">
+    <ProjectReference Include="..\..\SectionsEC.Common\SectionsEC.Calculations.csproj">
       <Project>{3251b423-db99-41d4-9e15-7d30839855c4}</Project>
-      <Name>SectionsEC.Common</Name>
+      <Name>SectionsEC.Calculations</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SectionsEC.Dimensioning\SectionsEC.Dimensioning.csproj">
       <Project>{20f2bc31-9290-459e-91e8-1838286b8fcc}</Project>
