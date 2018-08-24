@@ -80,17 +80,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SectionsEC.Common\SectionsEC.Calculations.csproj">
+    <ProjectReference Include="..\..\src\SectionsEC.App\SectionsEC.App.csproj">
+      <Project>{cd95ba7d-520a-4af6-bfb6-cf71532aab58}</Project>
+      <Name>SectionsEC.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\SectionsEC.Calculations\SectionsEC.Calculations.csproj">
       <Project>{3251b423-db99-41d4-9e15-7d30839855c4}</Project>
       <Name>SectionsEC.Calculations</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SectionsEC.Dimensioning\SectionsEC.Dimensioning.csproj">
+    <ProjectReference Include="..\..\src\SectionsEC.Dimensioning\SectionsEC.Dimensioning.csproj">
       <Project>{20f2bc31-9290-459e-91e8-1838286b8fcc}</Project>
       <Name>SectionsEC.Dimensioning</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\SectionsEC\SectionsEC.App.csproj">
-      <Project>{CD95BA7D-520A-4AF6-BFB6-CF71532AAB58}</Project>
-      <Name>SectionsEC.App</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
