@@ -18,7 +18,7 @@ namespace SectionsEC.Calculations.Progress
             return progress;
         }
 
-        public int Progress;
-        public string LoadCaseName;
+        public int Progress { get; private set; }
+        public string LoadCaseName { get; private set; }
     }
 }
