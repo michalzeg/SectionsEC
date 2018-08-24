@@ -40,7 +40,6 @@ namespace SectionsEC.Drawing.Tests
             perimeterProperties.AddPerimeter(perimeter3);
             Assert.AreEqual(20, perimeterProperties.Scale);
             Assert.AreEqual(new PointD(5, 2.5), perimeterProperties.Centre);
-            //Assert.Fail();
 
             perimeterProperties.RemovePerimeter(perimeter3);
             Assert.AreEqual(200, perimeterProperties.Scale);

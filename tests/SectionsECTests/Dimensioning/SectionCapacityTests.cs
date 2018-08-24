@@ -10,45 +10,54 @@ using SectionsEC.Helpers;
 namespace SectionsEC.Dimensioning.Tests
 {
     [TestFixture()]
-    public class SectionCapacity
+    public class SectionCapacityTests
     {
         [TestCase(0, 1085)]
         [TestCase(1000, 1338)]
         [TestCase(-1000, 716)]
         [TestCase(5000, 951)]
         [TestCase(6000, 681)]
-        public void SectionCapacity_REctangularSectionWithOneBarNormalConcrete_Passed(double normalForce, double expectedCapacity)
+        public void CalculateCapacity_RectangularSectionWithOneBarNormalConcrete_Passed(double normalForce, double expectedCapacity)
         {
-            Concrete concrete = new Concrete();
-            concrete.Acc = 1d;
-            concrete.Ec2 = 2d / 1000d;
-            concrete.Ecu2 = 3.5d / 1000d;
-            concrete.GammaM = 1.5d;
-            concrete.N = 2;
-            concrete.Fck = 12000;
-            Steel steel = new Steel();
-            steel.Fyk = 500000;
-            steel.GammaS = 1.15;
-            steel.K = 1.05;
-            steel.Euk = 2.5d / 100d;
-            steel.EukToEud = 0.9;
-            steel.Es = 200000000;
-            Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
-            List<PointD> coordinates = new List<PointD>();
-            coordinates.Add(new PointD(0, 0));
-            coordinates.Add(new PointD(1, 0));
-            coordinates.Add(new PointD(1, 1));
-            coordinates.Add(new PointD(0, 1));
-            coordinates.Add(new PointD(0, 0));
-            Section section = new Section(coordinates);
-            List<Reinforcement> reinforcement = new List<Reinforcement>();
-            List<Bar> reinf = new List<Bar>();
-            Bar bar = new Bar();
-            bar.Area = 30d / 10000d;
-            bar.X = 0.5;
-            bar.Y = 0.1;
-            reinf.Add(bar);
-            var results = sc.CalculateCapacity(normalForce, section, reinf);
+            var concrete = new Concrete
+            {
+                Acc = 1d,
+                Ec2 = 2d / 1000d,
+                Ecu2 = 3.5d / 1000d,
+                GammaM = 1.5d,
+                N = 2,
+                Fck = 12000
+            };
+            var steel = new Steel
+            {
+                Fyk = 500000,
+                GammaS = 1.15,
+                K = 1.05,
+                Euk = 2.5d / 100d,
+                EukToEud = 0.9,
+                Es = 200000000
+            };
+            var sectionCapacity = new SectionCapacity(concrete, steel);
+            var coordinates = new List<PointD>
+            {
+                new PointD(0, 0),
+                new PointD(1, 0),
+                new PointD(1, 1),
+                new PointD(0, 1),
+                new PointD(0, 0)
+            };
+            var section = new Section(coordinates);
+
+            var bar = new Bar
+            {
+                Area = 30d / 10000d,
+                X = 0.5,
+                Y = 0.1
+            };
+            var bars = new[] { bar };
+
+            var results = sectionCapacity.CalculateCapacity(normalForce, section, bars);
+
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
 
@@ -57,38 +66,47 @@ namespace SectionsEC.Dimensioning.Tests
         [TestCase(-1000, 828.7)]
         [TestCase(10000, 4889)]
         [TestCase(25000, 6345)]
-        public void SectionCapacity_REctangularSectionWithOneBarHighStrengthConcrete_Passed(double normalForce, double expectedCapacity)
+        public void CalculateCapacity_RectangularSectionWithOneBarHighStrengthConcrete_Passed(double normalForce, double expectedCapacity)
         {
-            Concrete concrete = new Concrete();
-            concrete.Acc = 1d;
-            concrete.Ec2 = 2.6d / 1000d;
-            concrete.Ecu2 = 2.6d / 1000d;
-            concrete.GammaM = 1.5d;
-            concrete.N = 1.4;
-            concrete.Fck = 90000;
-            Steel steel = new Steel();
-            steel.Fyk = 500000;
-            steel.GammaS = 1.15;
-            steel.K = 1.15;
-            steel.Euk = 7.5d / 100d;
-            steel.EukToEud = 0.9;
-            steel.Es = 200000000;
-            Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
-            List<PointD> coordinates = new List<PointD>();
-            coordinates.Add(new PointD(0, 0));
-            coordinates.Add(new PointD(1, 0));
-            coordinates.Add(new PointD(1, 1));
-            coordinates.Add(new PointD(0, 1));
-            coordinates.Add(new PointD(0, 0));
-            Section section = new Section(coordinates);
-            List<Reinforcement> reinforcement = new List<Reinforcement>();
-            List<Bar> reinf = new List<Bar>();
-            Bar bar = new Bar();
-            bar.Area = 30d / 10000d;
-            bar.X = 0.5;
-            bar.Y = 0.1;
-            reinf.Add(bar);
-            var results = sc.CalculateCapacity(normalForce, section, reinf);
+            var concrete = new Concrete
+            {
+                Acc = 1d,
+                Ec2 = 2.6d / 1000d,
+                Ecu2 = 2.6d / 1000d,
+                GammaM = 1.5d,
+                N = 1.4,
+                Fck = 90000
+            };
+            var steel = new Steel
+            {
+                Fyk = 500000,
+                GammaS = 1.15,
+                K = 1.15,
+                Euk = 7.5d / 100d,
+                EukToEud = 0.9,
+                Es = 200000000
+            };
+            var sectionCapcity = new SectionCapacity(concrete, steel);
+            var coordinates = new List<PointD>
+            {
+                new PointD(0, 0),
+                new PointD(1, 0),
+                new PointD(1, 1),
+                new PointD(0, 1),
+                new PointD(0, 0)
+            };
+            var section = new Section(coordinates);
+
+            Bar bar = new Bar
+            {
+                Area = 30d / 10000d,
+                X = 0.5,
+                Y = 0.1
+            };
+            var bars = new[] { bar };
+
+            var results = sectionCapcity.CalculateCapacity(normalForce, section, bars);
+
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
 
@@ -97,49 +115,48 @@ namespace SectionsEC.Dimensioning.Tests
         [TestCase(-1000, 482.4)]
         [TestCase(500, 174.1)]
         [TestCase(-600, 484.7)]
-        public void SectionCapacity_CustomSectionWithOneBarNormalConcrete_Passed(double normalForce, double expectedCapacity)
+        public void CalculateCapacity_CustomSectionWithOneBarNormalConcrete_Passed(double normalForce, double expectedCapacity)
         {
-            Concrete concrete = new Concrete();
-            concrete.Acc = 1d;
-            concrete.Ec2 = 2d / 1000d;
-            concrete.Ecu2 = 3.5d / 1000d;
-            concrete.GammaM = 1.5d;
-            concrete.N = 2;
-            concrete.Fck = 12000;
-            Steel steel = new Steel();
-            steel.Fyk = 500000;
-            steel.GammaS = 1.15;
-            steel.K = 1.05;
-            steel.Euk = 2.5d / 100d;
-            steel.EukToEud = 0.9;
-            steel.Es = 200000000;
-            Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
-            List<PointD> coordinates = new List<PointD>();
-            coordinates.Add(new PointD(0, 0));
-            coordinates.Add(new PointD(0.1, 0));
-            coordinates.Add(new PointD(0.2, 0.5));
-            coordinates.Add(new PointD(0.3, 0.6));
-            coordinates.Add(new PointD(-0.2, 0.6));
-            coordinates.Add(new PointD(-0.1, 0.5));
-            coordinates.Add(new PointD(0, 0));
-            Section section = new Section(coordinates);
-            List<Reinforcement> reinforcement = new List<Reinforcement>();
-            List<Bar> reinf = new List<Bar>();
-            Bar bar = new Bar();
-            bar.Area = 30d / 10000d;
-            bar.X = 0.05;
-            bar.Y = 0.05;
-            reinf.Add(bar);
-            /*var results = sc.CalculateCapacity(normalForce, section, reinf);
-            List<Reinforcement> reinforcement = new List<Reinforcement>();
-            Reinforcement reinf = new Reinforcement();
-            Bar bar = new Bar();
-            bar.As = 30d / 10000d;
-            bar.X = 0.05;
-            bar.Y = 0.05;
-            reinf.Bar = bar;
-            reinforcement.Add(reinf);*/
-            var results = sc.CalculateCapacity(normalForce, section, reinf);
+            Concrete concrete = new Concrete
+            {
+                Acc = 1d,
+                Ec2 = 2d / 1000d,
+                Ecu2 = 3.5d / 1000d,
+                GammaM = 1.5d,
+                N = 2,
+                Fck = 12000
+            };
+            Steel steel = new Steel
+            {
+                Fyk = 500000,
+                GammaS = 1.15,
+                K = 1.05,
+                Euk = 2.5d / 100d,
+                EukToEud = 0.9,
+                Es = 200000000
+            };
+            var sectionCapacity = new SectionCapacity(concrete, steel);
+            List<PointD> coordinates = new List<PointD>
+            {
+                new PointD(0, 0),
+                new PointD(0.1, 0),
+                new PointD(0.2, 0.5),
+                new PointD(0.3, 0.6),
+                new PointD(-0.2, 0.6),
+                new PointD(-0.1, 0.5),
+                new PointD(0, 0)
+            };
+            var section = new Section(coordinates);
+
+            Bar bar = new Bar
+            {
+                Area = 30d / 10000d,
+                X = 0.05,
+                Y = 0.05
+            };
+            var bars = new[] { bar };
+
+            var results = sectionCapacity.CalculateCapacity(normalForce, section, bars);
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
 
@@ -148,49 +165,48 @@ namespace SectionsEC.Dimensioning.Tests
         [TestCase(-1000, 554.1)]
         [TestCase(500, 770.2)]
         [TestCase(700, 796.9)]
-        public void SectionCapacity_CustomSectionWithOneBarHighStrengthConcrete_Passed(double normalForce, double expectedCapacity)
+        public void CalculateCapacity_CustomSectionWithOneBarHighStrengthConcrete_Passed(double normalForce, double expectedCapacity)
         {
-            Concrete concrete = new Concrete();
-            concrete.Acc = 1d;
-            concrete.Ec2 = 2.6d / 1000d;
-            concrete.Ecu2 = 2.6d / 1000d;
-            concrete.GammaM = 1.5d;
-            concrete.N = 1.4;
-            concrete.Fck = 90000;
-            Steel steel = new Steel();
-            steel.Fyk = 500000;
-            steel.GammaS = 1.15;
-            steel.K = 1.15;
-            steel.Euk = 7.5d / 100d;
-            steel.EukToEud = 0.9;
-            steel.Es = 200000000;
-            Dimensioning.SectionCapacity sc = new Dimensioning.SectionCapacity(concrete, steel);
-            List<PointD> coordinates = new List<PointD>();
-            coordinates.Add(new PointD(0, 0));
-            coordinates.Add(new PointD(0.1, 0));
-            coordinates.Add(new PointD(0.2, 0.5));
-            coordinates.Add(new PointD(0.3, 0.6));
-            coordinates.Add(new PointD(-0.2, 0.6));
-            coordinates.Add(new PointD(-0.1, 0.5));
-            coordinates.Add(new PointD(0, 0));
+            var concrete = new Concrete
+            {
+                Acc = 1d,
+                Ec2 = 2.6d / 1000d,
+                Ecu2 = 2.6d / 1000d,
+                GammaM = 1.5d,
+                N = 1.4,
+                Fck = 90000
+            };
+            var steel = new Steel
+            {
+                Fyk = 500000,
+                GammaS = 1.15,
+                K = 1.15,
+                Euk = 7.5d / 100d,
+                EukToEud = 0.9,
+                Es = 200000000
+            };
+            var sectionCapcity = new SectionCapacity(concrete, steel);
+            List<PointD> coordinates = new List<PointD>
+            {
+                new PointD(0, 0),
+                new PointD(0.1, 0),
+                new PointD(0.2, 0.5),
+                new PointD(0.3, 0.6),
+                new PointD(-0.2, 0.6),
+                new PointD(-0.1, 0.5),
+                new PointD(0, 0)
+            };
             Section section = new Section(coordinates);
-            List<Reinforcement> reinforcement = new List<Reinforcement>();
-            List<Bar> reinf = new List<Bar>();
-            Bar bar = new Bar();
-            bar.Area = 30d / 10000d;
-            bar.X = 0.05;
-            bar.Y = 0.05;
-            reinf.Add(bar);
-            /*var results = sc.CalculateCapacity(normalForce, section, reinf);
-            List<Reinforcement> reinforcement = new List<Reinforcement>();
-            Reinforcement reinf = new Reinforcement();
-            Bar bar = new Bar();
-            bar.As = 30d / 10000d;
-            bar.X = 0.05;
-            bar.Y = 0.05;
-            reinf.Bar = bar;
-            reinforcement.Add(reinf);*/
-            var results = sc.CalculateCapacity(normalForce, section, reinf);
+
+            Bar bar = new Bar
+            {
+                Area = 30d / 10000d,
+                X = 0.05,
+                Y = 0.05
+            };
+            var reinf = new[] { bar };
+
+            var results = sectionCapcity.CalculateCapacity(normalForce, section, reinf);
             Assert.AreEqual(expectedCapacity, results.Mrd, 1);
         }
     }
