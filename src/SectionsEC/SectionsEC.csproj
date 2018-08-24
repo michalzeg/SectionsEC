@@ -178,7 +178,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dimensioning\CommonMethods.cs" />
+    <Compile Include="Dimensioning\SectionProperties.cs" />
     <Compile Include="Dimensioning\CompressionZone.cs" />
     <Compile Include="Dimensioning\Dimensioning.cs" />
     <Compile Include="Dimensioning\StrainFunctions.cs" />

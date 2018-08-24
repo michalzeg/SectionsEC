@@ -9,46 +9,9 @@ namespace CommonMethods
 {
     internal static class SectionProperties
     {
-        public static double CenterElevation(IList<PointD> coordinates)
-        {
-            double area = 0;
-            double firstMomentOfArea = 0;
+        public static double CenterElevation(IList<PointD> coordinates) => CenterElevation(coordinates, new List<PointD>(), 0);
 
-            for (int i = 0; i <= coordinates.Count - 2; i++)
-            {
-                var x1 = coordinates[i].X;
-                var x2 = coordinates[i + 1].X;
-                var y1 = coordinates[i].Y;
-                var y2 = coordinates[i + 1].Y;
-                area = area + (x1 - x2) * (y2 + y1);
-                firstMomentOfArea = firstMomentOfArea + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
-            }
-            area = area / 2;
-            firstMomentOfArea = firstMomentOfArea / 6;
-            var result = firstMomentOfArea / area;
-            return result;
-        }
-
-        public static double CenterElevation(IList<PointD> outerCoordinates, double maxy)
-        {
-            double area = 0;
-            double firstMomentOfArea = 0;
-
-            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
-            {
-                var x1 = outerCoordinates[i].X;
-                var x2 = outerCoordinates[i + 1].X;
-                var y1 = outerCoordinates[i].Y;
-                var y2 = outerCoordinates[i + 1].Y;
-                area = area + (x1 - x2) * (y2 + y1);
-                firstMomentOfArea = firstMomentOfArea + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
-            }
-            area = area / 2;
-            firstMomentOfArea = firstMomentOfArea / 6;
-            double center = firstMomentOfArea / area;
-            var result = maxy - center;
-            return result;
-        }
+        public static double CenterElevation(IList<PointD> outerCoordinates, double maxy) => CenterElevation(outerCoordinates, new List<PointD>(), maxy);
 
         public static double CenterElevation(IList<PointD> outerCoordinates, IList<PointD> innerCoordinates, double maxy)
         {
@@ -76,7 +39,7 @@ namespace CommonMethods
             area = area / 2;
             firstMomentOfArea = firstMomentOfArea / 6;
             double center = firstMomentOfArea / area;
-            var result = maxy - center;
+            var result = Math.Abs(maxy - center);
             return result;
         }
 
@@ -103,21 +66,7 @@ namespace CommonMethods
             return result;
         }
 
-        public static double FirstMomentOfArea(IList<PointD> outerCoordinates)
-        {
-            double result = 0;
-
-            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
-            {
-                var x1 = outerCoordinates[i].X;
-                var x2 = outerCoordinates[i + 1].X;
-                var y1 = outerCoordinates[i].Y;
-                var y2 = outerCoordinates[i + 1].Y;
-                result = result + (x1 - x2) * (y1 * y1 + y1 * y2 + y2 * y2);
-            }
-            result = result / 6;
-            return result;
-        }
+        public static double FirstMomentOfArea(IList<PointD> outerCoordinates) => FirstMomentOfArea(outerCoordinates, new List<PointD>());
 
         public static double FirstMomentOfArea(IList<PointD> outerCoordinates, List<PointD> innerCoordinates)
         {
@@ -143,21 +92,7 @@ namespace CommonMethods
             return result;
         }
 
-        public static double Area(IList<PointD> outerCoordinates)
-        {
-            double result = 0;
-
-            for (int i = 0; i <= outerCoordinates.Count - 2; i++)
-            {
-                var x1 = outerCoordinates[i].X;
-                var x2 = outerCoordinates[i + 1].X;
-                var y1 = outerCoordinates[i].Y;
-                var y2 = outerCoordinates[i + 1].Y;
-                result = result + (x1 - x2) * (y2 + y1);
-            }
-            result = result / 2;
-            return result;
-        }
+        public static double Area(IList<PointD> outerCoordinates) => Area(outerCoordinates, new List<PointD>());
 
         public static double Area(IList<PointD> outerCoordinates, IList<PointD> innerCoordinates)
         {
