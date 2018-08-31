@@ -14,7 +14,7 @@ namespace SectionsEC.Calculations.Materials
         public double Acc { get; set; }
 
         [XmlElement]
-        public double GammaM { get; set; }
+        public double GammaC { get; set; }
 
         [XmlElement]
         public double N { get; set; }
@@ -29,7 +29,7 @@ namespace SectionsEC.Calculations.Materials
         {
             get
             {
-                return Acc * Fck / GammaM;
+                return Acc * Fck / GammaC;
             }
         }
     }

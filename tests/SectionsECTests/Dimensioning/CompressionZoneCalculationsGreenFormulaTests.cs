@@ -25,7 +25,7 @@ namespace SectionsECTests.Dimensioning
                 Acc = 1d,
                 Ec2 = 2d / 1000d,
                 Ecu2 = 3.5d / 1000d,
-                GammaM = 1.5d,
+                GammaC = 1.5d,
                 N = 2,
                 Fck = 12000
             };

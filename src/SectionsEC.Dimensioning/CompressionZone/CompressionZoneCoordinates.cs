@@ -50,13 +50,7 @@ namespace SectionsEC.Dimensioning.CompressionZone
                     }
                 }
             }
-            if (!((compressedSection[0].X.IsApproximatelyEqualTo(compressedSection[compressedSection.Count - 1].X)) && (compressedSection[0].Y.IsApproximatelyEqualTo(compressedSection[compressedSection.Count - 1].Y))))
-            {
-                PointD P = new PointD();
-                P.X = compressedSection[0].X;
-                P.Y = compressedSection[0].Y;
-                compressedSection.Add(P);
-            }
+            CheckSection(compressedSection);
             return compressedSection;
         }
 
@@ -158,7 +152,7 @@ namespace SectionsEC.Dimensioning.CompressionZone
             var firstPoint = parabolicSection.FirstOrDefault();
             var lastPoint = parabolicSection.LastOrDefault();
 
-            if (parabolicSection.Count > 0
+            if (parabolicSection?.Count > 0
                 && !firstPoint.Equals(lastPoint))
             {
                 parabolicSection.Add(firstPoint.Clone());

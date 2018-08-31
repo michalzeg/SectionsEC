@@ -28,7 +28,7 @@ namespace SectionsEC.ViewModel
                 };
                 concrete.Grade = Grade;
                 concrete.N = N;
-                concrete.GammaM = GammaM;
+                concrete.GammaC = GammaM;
                 return concrete;
             }
             set
@@ -39,7 +39,7 @@ namespace SectionsEC.ViewModel
                 Fck = value.Fck;
                 Grade = value.Grade;
                 N = value.N;
-                GammaM = value.GammaM;
+                GammaM = value.GammaC;
                 Fcd = value.Fcd;
                 Grade = value.Grade;
                 ConcreteUpdated?.Invoke();
