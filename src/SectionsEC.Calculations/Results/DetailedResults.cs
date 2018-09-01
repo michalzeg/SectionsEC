@@ -125,12 +125,12 @@ namespace SectionsEC.Calculations.Results
             foreach (var bar in reinforcement)
             {
                 var multiplier = bar.IsCompressed ? 1 : -1;
-                var strain = bar.E;
+                var strain = bar.Epsilon;
                 var barArea = bar.Bar.Area;
                 var stress = multiplier * StressFunction.SteelStressDesign(strain, steel);
                 strain = strain * multiplier;
                 var force = stress * barArea;
-                var moment = multiplier * bar.My;
+                var moment = multiplier * bar.Moment;
                 sumForce = sumForce + force;
                 sumMoment = sumMoment + moment;
 

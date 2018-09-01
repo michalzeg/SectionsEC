@@ -2,10 +2,12 @@
 {
     public class Reinforcement
     {
-        public double E { get; set; }
+        public double Epsilon { get; set; }
+        public double Sigma { get; set; }
         public Bar Bar { get; set; }
         public double D { get; set; }
-        public double My { get; set; }
+        public double Moment { get; set; }
+        public double Force { get; set; }
         public bool IsCompressed { get; set; }
     }
 }
