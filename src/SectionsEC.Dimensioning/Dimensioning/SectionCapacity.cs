@@ -150,6 +150,8 @@ namespace SectionsEC.Dimensioning.Dimensioning
             result.Ec = this.strainCalculations.StrainInConcrete(resultX, 0);
             result.H = section.H;
             result.Cz = section.Cz;
+            result.ForceReinforcement = this.reinforcement.Sum(e => e.Force);
+            result.MomentReinforcement = this.reinforcement.Sum(e => e.Moment);
             return result;
         }
 

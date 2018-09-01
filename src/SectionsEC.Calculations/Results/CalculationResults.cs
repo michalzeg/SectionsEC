@@ -19,5 +19,7 @@ namespace SectionsEC.Calculations.Results
         public double Mrd { get; set; }
         public double MrdConcrete { get; set; }
         public double X { get; set; }
+        public double ForceReinforcement { get; set; }
+        public double MomentReinforcement { get; set; }
     }
 }
