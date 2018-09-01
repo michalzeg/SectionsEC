@@ -26,7 +26,7 @@ namespace SectionsEC.ViewModel
                 {
                     Es = Es,
                     Euk = Euk,
-                    EukToEud = EukToEud,
+                    EudToEuk = EukToEud,
                     Fyk = Fyk,
                     GammaS = GammaS,
                     Grade = Grade,
@@ -39,7 +39,7 @@ namespace SectionsEC.ViewModel
                 Es = value.Es;
                 Eud = value.Eud;
                 Euk = value.Euk;
-                EukToEud = value.EukToEud;
+                EukToEud = value.EudToEuk;
                 Fyd = value.Fyd;
                 Fyk = value.Fyk;
                 GammaS = value.GammaS;

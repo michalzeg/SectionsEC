@@ -23,7 +23,7 @@ namespace SectionsEC.Calculations.Materials
         public double Euk { get; set; }
 
         [XmlElement]
-        public double EukToEud { get; set; }
+        public double EudToEuk { get; set; }
 
         public double Fyd
         {
@@ -37,7 +37,7 @@ namespace SectionsEC.Calculations.Materials
         {
             get
             {
-                return Euk * EukToEud;
+                return Euk * EudToEuk;
             }
         }
     }

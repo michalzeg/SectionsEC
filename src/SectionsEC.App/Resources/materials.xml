@@ -136,7 +136,7 @@
       <K>1.05</K>
       <Es>200000000</Es>
       <Euk>0.025</Euk>
-      <EukToEud>0.9</EukToEud>
+      <EudToEuk>0.9</EudToEuk>
     </Steel>
     <Steel>
       <Grade>Class B</Grade>
@@ -145,7 +145,7 @@
       <K>1.08</K>
       <Es>200000000</Es>
       <Euk>0.05</Euk>
-      <EukToEud>0.9</EukToEud>
+      <EudToEuk>0.9</EudToEuk>
     </Steel>
     <Steel>
       <Grade>Class C</Grade>
@@ -154,7 +154,7 @@
       <K>1.15</K>
       <Es>200000000</Es>
       <Euk>0.075</Euk>
-      <EukToEud>0.9</EukToEud>
+      <EudToEuk>0.9</EudToEuk>
     </Steel>
   </Steel>
 </Material>

@@ -37,7 +37,7 @@ namespace SectionsECTests.Dimensioning
                 GammaS = 1.15,
                 K = 1.05,
                 Euk = 2.5d / 100d,
-                EukToEud = 0.9,
+                EudToEuk = 0.9,
                 Es = 200000000
             };
             var sectionCapacity = new SectionCapacity(concrete, steel);
@@ -86,7 +86,7 @@ namespace SectionsECTests.Dimensioning
                 GammaS = 1.15,
                 K = 1.15,
                 Euk = 7.5d / 100d,
-                EukToEud = 0.9,
+                EudToEuk = 0.9,
                 Es = 200000000
             };
             var sectionCapcity = new SectionCapacity(concrete, steel);
@@ -135,7 +135,7 @@ namespace SectionsECTests.Dimensioning
                 GammaS = 1.15,
                 K = 1.05,
                 Euk = 2.5d / 100d,
-                EukToEud = 0.9,
+                EudToEuk = 0.9,
                 Es = 200000000
             };
             var sectionCapacity = new SectionCapacity(concrete, steel);
@@ -185,7 +185,7 @@ namespace SectionsECTests.Dimensioning
                 GammaS = 1.15,
                 K = 1.15,
                 Euk = 7.5d / 100d,
-                EukToEud = 0.9,
+                EudToEuk = 0.9,
                 Es = 200000000
             };
             var sectionCapcity = new SectionCapacity(concrete, steel);

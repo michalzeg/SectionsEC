@@ -36,7 +36,7 @@ namespace SectionsECTests.Dimensioning
                 GammaS = 1.15,
                 K = 1.05,
                 Euk = 2.5d / 100d,
-                EukToEud = 0.9,
+                EudToEuk = 0.9,
                 Es = 200000000
             };
 
