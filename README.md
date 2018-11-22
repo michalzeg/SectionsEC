@@ -1,4 +1,7 @@
 # SectionsEC
+
+[![Build Status](https://dev.azure.com/michalzeg/GitHub/_apis/build/status/SectionsEC)](https://dev.azure.com/michalzeg/GitHub/_build/latest?definitionId=9)
+
 - program calculates the capacity of a reinforced concrete section according to EC
 - unrestricted geometry of a section and rebar arrangement
 - detailed report
