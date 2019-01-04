@@ -1,7 +1,13 @@
 # SectionsEC
 
-[![Build Status](https://dev.azure.com/michalzeg/GitHub/_apis/build/status/SectionsEC)](https://dev.azure.com/michalzeg/GitHub/_build/latest?definitionId=9)
+| Branch  | Build Status |
+| ------------- | ------------- |
+| master  |[![Build Status](https://dev.azure.com/michalzeg/GitHub/_apis/build/status/SectionsEC)](https://dev.azure.com/michalzeg/GitHub/_build/latest?definitionId=9) |
 
+### Description
+Reinforced concrete sections calculator
+
+### Other information
 - Developed in C#
 - Program calculates the capacity of a reinforced concrete section according to EC
 - Unrestricted geometry of a section and rebar arrangement
