@@ -19,7 +19,7 @@ namespace SectionsEC.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -66,20 +66,20 @@ namespace SectionsEC.Properties {
         ///  &lt;Concrete&gt;
         ///    &lt;Concrete&gt;
         ///      &lt;Grade&gt;C12/15&lt;/Grade&gt;
-        ///      &lt;Fck&gt;12&lt;/Fck&gt;
+        ///      &lt;Fck&gt;12000&lt;/Fck&gt;
         ///      &lt;Acc&gt;1&lt;/Acc&gt;
-        ///      &lt;GammaM&gt;1.5&lt;/GammaM&gt;
+        ///      &lt;GammaC&gt;1.5&lt;/GammaC&gt;
         ///      &lt;N&gt;2&lt;/N&gt;
         ///      &lt;Ec2&gt;0.002&lt;/Ec2&gt;
         ///      &lt;Ecu2&gt;0.0035&lt;/Ecu2&gt;
         ///    &lt;/Concrete&gt;
         ///    &lt;Concrete&gt;
         ///      &lt;Grade&gt;C16/20&lt;/Grade&gt;
-        ///      &lt;Fck&gt;16&lt;/Fck&gt;
+        ///      &lt;Fck&gt;16000&lt;/Fck&gt;
         ///      &lt;Acc&gt;1&lt;/Acc&gt;
-        ///      &lt;GammaM&gt;1.5&lt;/GammaM&gt;
+        ///      &lt;GammaC&gt;1.5&lt;/GammaC&gt;
         ///      &lt;N&gt;2&lt;/N&gt;
-        ///      &lt;Ec2&gt;0.002&lt;/E [rest of string was truncated]&quot;;.
+        ///      &lt;Ec2&gt;0. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string materials {
             get {
