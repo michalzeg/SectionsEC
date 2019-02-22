@@ -1,73 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3251B423-DB99-41D4-9E15-7D30839855C4}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SectionsEC.Common</RootNamespace>
-    <AssemblyName>SectionsEC.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Extensions\CollectionExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Interfaces\ICompressionZoneCalculations.cs" />
-    <Compile Include="Interfaces\IIntegrable.cs" />
-    <Compile Include="Interfaces\IIntegration.cs" />
-    <Compile Include="Interfaces\IStrainCalculations.cs" />
-    <Compile Include="Extensions\DoubleExtensions.cs" />
-    <Compile Include="Geometry\PointD.cs" />
-    <Compile Include="LoadCases\LoadCase.cs" />
-    <Compile Include="Materials\Concrete.cs" />
-    <Compile Include="Materials\Material.cs" />
-    <Compile Include="Materials\MaterialProvider.cs" />
-    <Compile Include="Materials\Steel.cs" />
-    <Compile Include="Progress\ProgressArgument.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Results\CalculationResults.cs" />
-    <Compile Include="Results\CompressionZoneResult.cs" />
-    <Compile Include="Results\DetailedResults.cs" />
-    <Compile Include="Results\IntegrationCurveResult.cs" />
-    <Compile Include="SectionProperties\SectionPropertiesCalculator.cs" />
-    <Compile Include="Sections\Bar.cs" />
-    <Compile Include="Sections\Reinforcement.cs" />
-    <Compile Include="Sections\Section.cs" />
-    <Compile Include="StressFunctions\StrainCalculations.cs" />
-    <Compile Include="StressFunctions\StrainFunction.cs" />
-    <Compile Include="StressFunctions\StressFunction.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <Folder Include="Properties\" />
+    </ItemGroup>
 </Project>
